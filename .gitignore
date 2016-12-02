@@ -5,3 +5,6 @@ db.json
 node_modules/
 dist/
 .deploy*/
+
+# Ignore default hexo theme files if present
+themes/landscape/
