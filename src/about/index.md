@@ -21,7 +21,7 @@ like I'm playing catch-up with a lot of people smarter than I am, but I love to 
 
 #### Life Outside of Tech
 <div class="container">
-<img src="/content/images/2014/Mar/OSUMichigan2013.jpg" />
+<img src="/images/OSUMichigan2013.jpg" />
 <div class="reference">
 <strong>Ohio State vs. Michigan, the 2013 Edition</strong>
 <p>One of the interesting things when your friends start having kids?  Introducing yet another generation to the rivalry.  In fairness, he's probably more interested in the giraffe.</p>
