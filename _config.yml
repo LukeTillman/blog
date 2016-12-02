@@ -69,3 +69,11 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+# hexo-renderer marked configuration
+marked:
+  gfm: true
+  tables: true
+  breaks: false
+  pedantic: false
+  sanitize: false
