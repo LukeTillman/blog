@@ -104,7 +104,7 @@ subject.
 Speaking of the code structure, once you've cloned [the repository](https://github.com/luketillman/killrvideo-csharp)
 and opened the solution in Visual Studio, I'm hoping that things will be pretty straightforward.
 
-![KillrVideo Solution Explorer Screenshot](/content/images/2015/01/2015-01-21_14h33_49.png)
+{% asset_img 2015-01-21_14h33_49.png KillrVideo Solution Explorer Screenshot %}
 
 The projects in the solution can really be put into three main categories: top-level projects, services, and
 utility/deployment projects.

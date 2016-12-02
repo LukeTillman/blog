@@ -11,7 +11,7 @@ this is a lot easier than it was just a few years ago.
 The first thing to do is to jump over to the [Planet Cassandra downloads page](http://planetcassandra.org/cassandra/).
 Here you'll find a list of DataStax Community Edition downloads organized by Cassandra version and operating system.
 
-![Planet Cassandra downloads page](/content/images/2015/01/2015-01-22_10h44_05.png)
+{% asset_img 2015-01-22_10h44_05.png Planet Cassandra downloads page %}
 
 DataStax Community Edition is really just the open source version of [Apache Cassandra](http://cassandra.apache.org/)
 bundled with the [DataStax OpsCenter](http://www.datastax.com/what-we-offer/products-services/datastax-opscenter) tool
@@ -27,19 +27,18 @@ for managing and monitoring a cluster.  You'll want to grab the appropriate MSI 
 ## Install Cassandra on Windows
 Once you've downloaded the appropriate MSI from Planet Cassandra, run it to launch the setup wizard.
 
-![DataStax Community Edition setup wizard](/content/images/2015/01/2015-01-22_11h14_11.png)
+{% asset_img 2015-01-22_11h14_11.png DataStax Community Edition setup wizard %}
 
 Follow the prompts in the setup wizard.  By default, the installer will put the Community Edition under `C:\Program
 Files\DataStax Community`.  Be sure that you leave the boxes checked when asked about automatically starting services.
 
-![Setup wizard prompt about starting services](/content/images/2015/01/2015-01-22_11h16_33.png)
+{% asset_img 2015-01-22_11h16_33.png Setup wizard prompt about starting services %}
 
 When the wizard has completed the installation, hit Finish to exit the installer.  The installer will add three Windows
 services to the system.  You can verify this using the Services snap-in control panel (in Windows 7, do Start, Run...,
 `services.msc`).
 
-![Services control panel in Windows 7 with DataStax Community Edition
-services](/content/images/2015/01/2015-01-22_11h27_50.png)
+{% asset_img 2015-01-22_11h27_50.png Services control panel in Windows 7 with DataStax Community Edition services %}
 
 The three services installed are:
 
@@ -109,7 +108,7 @@ By default (and when launching from the Windows Start Menu), `cqlsh` will connec
 You can use CQL Shell to check that your newly installed Cassandra cluster is running properly.  For example, we could
 run the `DESCRIBE KEYSPACES` command to list the Keyspaces currently available in our cluster.
 
-![Running DESCRIBE KEYSPACES with cqlsh on Windows](/content/images/2015/01/2015-01-22_12h00_36.png)
+{% asset_img 2015-01-22_12h00_36.png Running DESCRIBE KEYSPACES with cqlsh on Windows %}
 
 Check out the [CQL documentation](http://www.datastax.com/documentation/cql/3.1/cql/cql_using/about_cql_c.html) on
 DataStax web site for more details on CQL and using CQL Shell.
@@ -122,8 +121,7 @@ available to you.
 
 Here's an example of using it to check the Cassandra version of my local node, and then the status of the cluster.
 
-![Using nodetool version and nodetool status from the Windows command
-prompt](/content/images/2015/01/2015-01-22_12h52_06.png)
+{% asset_img 2015-01-22_12h52_06.png Using nodetool version and nodetool status from the Windows command prompt %}
 
 Check out the [nodetool
 documentation](http://www.datastax.com/documentation/cassandra/2.0/cassandra/tools/toolsNodetool_r.html) on the DataStax
@@ -139,7 +137,7 @@ unzip the archive you've downloaded and then run the `DevCenter.exe` executable 
 Here's what it looks like exploring/querying the data from the [KillrVideo app](/killrvideo-cassandra-csharp-and-azure/)
 from inside DevCenter.
 
-![Querying the KillrVideo schema from DevCenter](/content/images/2015/01/2015-01-22_13h09_17.png)
+{% asset_img 2015-01-22_13h09_17.png Querying the KillrVideo schema from DevCenter %}
 
 ## The Future of Cassandra on Windows
 Getting Cassandra running on Windows is a pretty straightforward task these days, but what about production deployments?

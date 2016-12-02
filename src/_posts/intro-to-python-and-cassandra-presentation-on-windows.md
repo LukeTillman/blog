@@ -60,4 +60,4 @@ Then you should be to start up the tutorial in iPython Notebook by running:
 
 This should launch a browser with the interactive tutorial up and running.
 
-![Running tutorial](/content/images/2014/Oct/2014-10-13_13h13_08.png)
+{% asset_img 2014-10-13_13h13_08.png Running tutorial %}

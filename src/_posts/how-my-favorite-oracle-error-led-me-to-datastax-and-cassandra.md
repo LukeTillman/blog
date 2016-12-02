@@ -19,7 +19,7 @@ Ultimately, I settled on this brief tale of how the Oracle error seen here led m
 at <a href="http://www.datastax.com" target="_blank">DataStax</a>.
 
 <div class="container">
-<img src="/content/images/2014/Mar/OracleException.png" alt="Wallet is not Open, indeed" />
+{% asset_img OracleException.png Wallet is not Open, indeed %}
 <div class="reference">
 <strong>This practically begs for a caption contest</strong>
 <p>I originally posted it to Facebook with the caption:  "I assume this is the error you start getting when you forget to pay your massive support contract's bill or start contemplating a switch to Postgres."</p>

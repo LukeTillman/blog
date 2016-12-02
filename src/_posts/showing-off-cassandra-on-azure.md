@@ -21,7 +21,7 @@ GitHub](https://github.com/aspnet) under the Apache 2 license--my mind is blown.
 the Darth Vader analogy would have been bringing Larry Ellison to the Summit.
 
 <div class="container">
-<img src="/content/images/2014/Sep/Vader-Elevator.jpg" alt="Darth Vader in Elevator" />
+{% asset_img Vader-Elevator.jpg Darth Vader in Elevator %}
 <div class="reference">
 <strong>Microsoft is at Cassandra Summit?</strong>
 <p>How I imagine some attendees reacted to Microsoft being a sponsor at Cassandra Summit 2014.  (h/t <a href="http://nerdreactor.com/2010/11/15/darth-vader-approves-the-samsung-galaxy-s/">Nerd Reactor</a> for the image)</p>
@@ -40,7 +40,7 @@ compatible, thumbnail generation, etc.
 
 Here's a slide from my presentation at the Summit showing off the basic logical architecture of the site.
 
-![KillrVideo logical architecture slide](/content/images/2014/Sep/KillrVideo-LogicalArchitecture.png)
+{% asset_img KillrVideo-LogicalArchitecture.png KillrVideo logical architecture slide %}
 
 I think the boxes on the slide do a pretty good job summarizing what's going on within the app, and the arrows represent
 how data flows and what components are talking to each other as you move down the stack from the app tier (in yellow) to
@@ -113,7 +113,7 @@ and DataStax I'm also hoping that Cassandra in Azure is a real option for develo
 And if things don't work out, maybe I can get Oracle to tag along for next year's Summit.
 
 <div class="container">
-<img src="/content/images/2014/Sep/Vader-AddressingCrowd.jpg" alt="Darth Vader addresses the crowd" />
+{% asset_img Vader-AddressingCrowd.jpg Darth Vader addresses the crowd %}
 <div class="reference">
 <strong>Cassandra Summit 2015?</strong>
 <p>Larry Ellison addresses the crowd at Cassandra Summit 2015.  (h/t <a href="https://www.facebook.com/Darth.Vader.IPU">Ukranian Internet Party</a> for the image)</p>
