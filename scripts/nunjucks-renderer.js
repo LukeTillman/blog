@@ -10,7 +10,7 @@ function njRender(data, locals) {
 }
 
 njRender.compile = function(data, locals) {
-  let template = new nj.Template(data.text, njEnv);
+  let template = new nj.Template(data.text, njEnv, data.path);
   return template.render.bind(template);
 };
 
