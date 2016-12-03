@@ -1,6 +1,11 @@
 {
   "name": "luketillman.com",
   "version": "1.0.0",
+  "scripts": {
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "serve": "hexo serve"
+  },
   "private": true,
   "hexo": {
     "version": "3.2.2"
@@ -12,8 +17,9 @@
     "hexo-generator-index": "^0.2.0",
     "hexo-generator-tag": "^0.2.0",
     "hexo-renderer-ejs": "^0.2.0",
-    "hexo-renderer-stylus": "^0.3.1",
     "hexo-renderer-marked": "^0.2.10",
-    "hexo-server": "^0.2.0"
+    "hexo-renderer-stylus": "^0.3.1",
+    "hexo-server": "^0.2.0",
+    "nunjucks": "^3.0.0"
   }
 }
