@@ -1,9 +1,12 @@
 const nj = require('nunjucks');
 const path = require('path');
 
+// Don't use a cache when doing serve for local development
+let noCache = hexo.env.args._[0] === 'serve' ? true : false;
+
 // Get path to layouts and create NJ environment
-const layoutsPath = path.join(hexo.theme.base, 'layouts');
-const njEnv = nj.configure(layoutsPath);
+const layoutsPath = path.join(hexo.theme.base, 'layout');
+const njEnv = nj.configure(layoutsPath, { noCache });
 
 function njRender(data, locals) {
   return njEnv.renderString(data.text, locals);
