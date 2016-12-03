@@ -1,5 +1,16 @@
 {% extends "./_common/base.njk" %}
 
 {% block content %}
-  {{ page.content | safe }}
+<section class="section">
+  <div class="container">
+  {% for p in page.posts.data %}
+    <article>
+      <h1 class="title">{{ p.title }}</h1>
+      <div class="content">
+        {{ p.excerpt | safe }}
+      </div>
+    </article>
+  {% endfor %}
+  </div>
+</section>
 {% endblock %}
