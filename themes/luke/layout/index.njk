@@ -1,9 +1,5 @@
-<!doctype html>
-<html>
-<head>
-  <title>Luke Tillman - {{ page.title }}</title>
-</head>
-<body>
+{% extends "./_common/base.njk" %}
+
+{% block content %}
   {{ page.content | safe }}
-</body>
-</html>
+{% endblock %}
