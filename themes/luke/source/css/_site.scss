@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,400i,700,700i');
+
 /**
  * Common styles used by the site
  */
@@ -16,32 +18,43 @@ img.is-circle {
  */
 article.post {
   padding: 40px 0;
-}
 
-article.post:first-child {
-  padding-top: 0;
-}
+  &:first-child {
+    padding-top: 0;
+  }
 
-article.post + article.post {
-  border-top: 1px solid $border;
-}
+  &+article.post {
+    border-top: 1px solid $border;
+  }
 
-article.post > .post-date {
-  color: $grey-light;
-  margin-bottom: 1em;
-}
+  .post-date {
+    color: $grey-light;
+    margin-bottom: 1em;
 
-article.post > .post-date > time {
-  color: $blue;
-}
+    time {
+      color: $blue;
+    }
+  }
 
-article.post > .title > a {
-  color: $black;
-  border-bottom: 3px solid transparent;
-  transition: border 0.2s, color 0.2s ease-out;
-}
+  .title {
+    font-family: "Domine", serif;
 
-article.post > .title > a:hover {
-  color: $blue;
-  border-bottom-color: $grey-lighter;
+    a {
+      color: $text;
+      border-bottom: 3px solid transparent;
+      transition: border 0.2s, color 0.2s ease-out;
+      line-height: 1.45em;
+
+      &:hover {
+        color: $blue;
+        border-bottom-color: $grey-lighter;
+      }
+    }
+  }
+
+  .content {
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Domine", serif;
+    }
+  }
 }
