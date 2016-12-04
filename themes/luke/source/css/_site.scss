@@ -1,12 +1,47 @@
 /**
  * Common styles used by the site
  */
+img.is-circle {
+  border-radius: 50%;
+}
 
+.bio {
+  border-bottom: 1px solid $border;
+  padding-bottom: 20px;
+  text-align: justify;
+}
 
 /**
- * Home page styles
+ * Posts
  */
-#article-list article {
-  border-bottom: 1px solid $border;
+article.post {
   padding: 40px 0;
+}
+
+article.post:first-child {
+  padding-top: 0;
+}
+
+article.post + article.post {
+  border-top: 1px solid $border;
+}
+
+article.post > .post-date {
+  color: $grey-light;
+  margin-bottom: 1em;
+}
+
+article.post > .post-date > time {
+  color: $blue;
+}
+
+article.post > .title > a {
+  color: $black;
+  border-bottom: 3px solid transparent;
+  transition: border 0.2s, color 0.2s ease-out;
+}
+
+article.post > .title > a:hover {
+  color: $blue;
+  border-bottom-color: $grey-lighter;
 }
