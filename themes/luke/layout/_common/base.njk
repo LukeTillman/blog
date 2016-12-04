@@ -1,12 +1,36 @@
 <!doctype html>
 <html>
 <head>
-  <title>Luke Tillman - {{ page.title }}</title>
+  <title>{{ page.title }} - Luke Tillman</title>
   <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
   {# Site header #}
-  <header></header>
+  <header>
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item is-brand" href="/">
+          Luke Tillman
+        </a>
+      </div>
+
+      <!-- Menu on mobile -->
+      <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+
+      <div class="nav-right nav-menu">
+        <a class="nav-item" href="/about">
+          About
+        </a>
+        <a class="nav-item" href="/contact">
+          Contact
+        </a>
+      </div>
+    </nav>
+  </header>
 
   {# Main contents #}
   {% block content %}

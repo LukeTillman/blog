@@ -5,7 +5,11 @@
   <div class="container">
   {% for p in page.posts.data %}
     <article>
-      <h1 class="title">{{ p.title }}</h1>
+      <h1 class="title">
+        <a href="{{ url_for(p.path) }}">
+          {{ p.title }}
+        </a>
+      </h1>
       <div class="content">
         {{ p.excerpt | safe }}
       </div>
