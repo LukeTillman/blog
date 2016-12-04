@@ -10,15 +10,12 @@ img.is-circle {
 .bio {
   border-bottom: 1px solid $border;
   padding-bottom: 20px;
-  text-align: justify;
 }
 
 #site-footer {
   color: $grey-light;
   font-size: $size-6;
   text-align: center;
-  padding-top: 40px;
-  border-top: 1px solid $border;
 }
 
 /**
@@ -26,16 +23,13 @@ img.is-circle {
  */
 article.post {
   padding: 40px 0;
+  border-bottom: 1px solid $border;
 
   &:first-child {
     padding-top: 0;
   }
 
-  &+article.post {
-    border-top: 1px solid $border;
-  }
-
-  .post-date {
+  .post-metadata {
     color: $grey-light;
     margin-bottom: 1em;
 

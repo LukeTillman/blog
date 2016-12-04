@@ -20,7 +20,7 @@
           </span>
         </div>
 
-        <!-- Menu on mobile -->
+        {# Hamburger menu on mobile #}
         <span class="nav-toggle">
           <span></span>
           <span></span>
@@ -39,16 +39,29 @@
     </nav>
   </header>
 
-  {# Main contents #}
-  {% block content %}
-  {% endblock %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          {% block content %}
+          {% endblock %}
+        </div>
+        <div class="column">
+          {% block sidebar %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </section>
 
   {# Site Footer #}
   <footer id="site-footer" class="section">
     <div class="container">
-      <p>
-        Copyright &copy; <a href="{{ config.url }}">{{ config.author }}</a>. {{ config.copyright_year }} &bull; All rights reserved.
-      </p>
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          Copyright &copy; <a href="{{ config.url }}">{{ config.author }}</a>. {{ config.copyright_year }} &bull; All rights reserved.
+        </div>
+      </div>
     </div>
   </footer>
 </body>

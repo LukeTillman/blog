@@ -3,42 +3,39 @@
 {# On home page, just use the site title #} 
 {% block title %}{{ config.title }}{% endblock %}
 
+
+{# List page of articles on home page #}
 {% block content %}
-<div class="section">
-  <div class="container">
-    <div class="columns">
-      <section id="article-list" class="column is-8 is-offset-2">
-      {% for p in page.posts.data %}
-        <article class="post">
-          <h1 class="title">
-            <a href="{{ url_for(p.path) }}">
-              {{ p.title }}
-            </a>
-          </h1>
-          <p class="post-date">
-            Posted on <span class="icon"><i class="fa fa-clock-o"></i></span> <time datetime="{{ p.date.toISOString() }}">{{ p.date.format('LL') }}</time>
-          </p>
-          <p>
-            {{ p.excerpt }}
-          </p>
-        </article>
-      {% endfor %}
-      </section>
-      <aside class="column">
-        <div class="bio">
-          <figure class="image is-128x128">
-            <img class="is-circle" src="/images/luke.jpg">
-          </figure>
-          <br/>
-          <h4 class="title is-4">
-            {{ config.title }}
-          </h4>
-          <p>
-            {{ config.description }}
-          </p>
-        </div>
-      </aside>
-    </div>
-  </div>
-</div>
+{% for p in page.posts.data %}
+<article class="post">
+  <h1 class="title">
+    <a href="{{ url_for(p.path) }}">
+      {{ p.title }}
+    </a>
+  </h1>
+  <p class="post-metadata">
+    Posted on <span class="icon"><i class="fa fa-clock-o"></i></span> <time datetime="{{ p.date.toISOString() }}">{{ p.date.format('LL') }}</time>
+  </p>
+  <p>
+    {{ p.excerpt }}
+  </p>
+</article>
+{% endfor %}
+{% endblock %}
+
+
+{# Include site bio on sidebar #}
+{% block sidebar %}
+<aside class="bio">
+  <figure class="image is-128x128">
+    <img class="is-circle" src="/images/luke.jpg">
+  </figure>
+  <br/>
+  <h4 class="title is-4">
+    {{ config.title }}
+  </h4>
+  <p>
+    {{ config.description }}
+  </p>
+</aside>
 {% endblock %}

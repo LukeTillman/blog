@@ -1,14 +1,26 @@
 {% extends "./_common/base.njk" %}
 
 {% block content %}
-<div class="section">
-  <div class="container">
-    <article class="post">
-      <h1 class="title">{{ page.title }}</h1>
-      <div class="content">
-        {{ page.content | safe }}
-      </div>
-    </article>
+<article class="post">
+  <h1 class="title">{{ page.title }}</h1>
+  <div class="content">
+    {{ page.content | safe }}
   </div>
-</div>
+</article>
+{% endblock %}
+
+{% block sidebar %}
+<aside class="bio">
+  <figure class="image is-128x128">
+    <img class="is-circle" src="/images/luke.jpg">
+  </figure>
+  <br/>
+  <h4 class="title is-4">
+    {{ config.author }}
+  </h4>
+  <p>
+    I'm an engineer, soccer fan, political junkie, and lover of all nerdery. Currently employed as
+    a Technical Evangelist at DataStax where I frequently work with Cassandra, .NET, and Node.js.
+  </p>
+</aside>
 {% endblock %}
