@@ -9,6 +9,7 @@ description: The blog and personal site for Luke Tillman
 author: Luke Tillman
 language: en
 timezone:
+copyright_year: 2016
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
