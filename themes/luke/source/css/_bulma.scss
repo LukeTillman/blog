@@ -1,7 +1,18 @@
 /**
- * Bulma overrides
+ * Bulma overrides (originals are at: https://github.com/jgthms/bulma/blob/master/sass/utilities/variables.sass)
  */
 
+// Some type sizes (use http://type-scale.com/ to calculate)
+$size-1: 64px;
+$size-2: 45px;
+$size-3: 32px;
+$size-4: 23px;
+$size-5: 16px;
+
+$size-normal: $size-5;
+$size-medium: $size-4;
+$size-large: $size-2;
+$size-huge: $size-1;
 
 // Now import bulma after overriding
 @import "../../../../node_modules/bulma/bulma.sass";

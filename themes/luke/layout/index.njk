@@ -1,7 +1,7 @@
 {% extends "./_common/base.njk" %}
 
 {% block content %}
-<section class="section">
+<section class="section" id="article-list">
   <div class="container">
   {% for p in page.posts.data %}
     <article>
@@ -10,9 +10,12 @@
           {{ p.title }}
         </a>
       </h1>
-      <div class="content">
-        {{ p.excerpt | safe }}
-      </div>
+      <p class="subtitle">
+        Posted on <time datetime="{{ p.date.toISOString() }}">{{ p.date.format('LL') }}</time>
+      </p>
+      <p>
+        {{ p.excerpt }}
+      </p>
     </article>
   {% endfor %}
   </div>

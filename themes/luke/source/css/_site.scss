@@ -1,3 +1,12 @@
 /**
  * Common styles used by the site
  */
+
+
+/**
+ * Home page styles
+ */
+#article-list article {
+  border-bottom: 1px solid $border;
+  padding: 40px 0;
+}
