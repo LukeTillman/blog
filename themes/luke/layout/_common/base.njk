@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>{{ page.title }} - {{ config.title }}</title>
+  <title>{% block title %}{{ page.title }} - {{ config.title }}{% endblock %}</title>
   <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
