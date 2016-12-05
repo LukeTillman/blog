@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600');
 
 /**
  * Common styles used by the site
@@ -8,23 +8,21 @@ a {
   transition: color 0.2s ease-out;
 }
 
-// Titles and title links on posts/pages
-.post, .page {
-  .title, 
-  .content h1, .content h2, .content h3, 
-  .content h4, .content h5, .content h6 {
-    font-family: "Domine", serif;
-    line-height: 1.45em;
+// Titles and title links
+.title, .subtitle,
+.content h1, .content h2, .content h3, 
+.content h4, .content h5, .content h6 {
+  font-family: "Domine", serif;
+  line-height: 1.45em;
 
-    a {
-      color: $text;
-      border-bottom: 3px solid transparent;
-      transition: border 0.2s, color 0.2s ease-out;
+  a {
+    color: $text-strong;
+    border-bottom: 3px solid transparent;
+    transition: border 0.2s, color 0.2s ease-out;
 
-      &:hover {
-        color: $blue;
-        border-bottom-color: $grey-lighter;
-      }
+    &:hover {
+      color: $blue;
+      border-bottom: 3px solid $grey-lighter;
     }
   }
 }
@@ -91,6 +89,7 @@ img.is-circle {
       display: inline-block;
       padding-right: 5px;
       font-size: $size-4;
+      font-weight: $weight-bold;
 
       &:last-child {
         padding-right: 0;
@@ -111,6 +110,7 @@ img.is-circle {
     margin-bottom: 1em;
 
     .post-time {
+      font-weight: $weight-bold;
       color: $blue;
     }
   }
