@@ -111,6 +111,18 @@ a {
   }
 }
 
+.posts-pagination {
+  padding: 40px 0;
+  border-bottom: 1px solid $border;
+
+  .button {
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: $weight-bold;
+  }
+}
+
 /**
  * Sidebar asides
  */

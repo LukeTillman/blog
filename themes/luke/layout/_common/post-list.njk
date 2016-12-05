@@ -1,4 +1,4 @@
-{# Partial view to render a list of posts #}
+{# Partial view to render a list of posts and pagination #}
 {% for p in page.posts.data %}
 <article class="post">
   <ul class="post-tags">
@@ -22,3 +22,27 @@
   </p>
 </article>
 {% endfor %}
+
+<nav class="level posts-pagination">
+  <div class="level-left">
+    {% if page.prev !== 0 %}
+    <div class="level-item">
+      <a class="button" href="{{ url_for(page.prev_link) }}">
+        <span class="icon"><i class="fa fa-angle-left"></i></span>
+        <span>Newer Posts</span>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="level-right">
+    {% if page.next !== 0 %}
+    <div class="level-item">
+      <a class="button" href="{{ url_for(page.next_link) }}">
+        <span>Older Posts</span>
+        <span class="icon"><i class="fa fa-angle-right"></i></span>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</nav>
