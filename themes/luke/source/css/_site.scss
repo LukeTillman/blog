@@ -4,6 +4,10 @@
  * Common styles used by the site
  */
 
+a {
+  transition: color 0.2s ease-out;
+}
+
 // Titles and title links on posts/pages
 .post, .page {
   .title, 
@@ -43,19 +47,43 @@ img.is-circle {
 /**
  * Posts
  */
-article.post {
+.post {
   padding: 40px 0;
   border-bottom: 1px solid $border;
 
+  // No padding on first post (if in a list or by itself)
   &:first-child {
     padding-top: 0;
+  }
+
+  .post-tags {
+    display: block;
+    margin-bottom: 1em;
+
+    .post-tag {
+      display: inline-block;
+      padding-right: 5px;
+      font-size: $size-4;
+
+      &:last-child {
+        padding-right: 0;
+      }
+
+      a {
+        color: $grey-lighter;
+
+        &:hover {
+          color: $grey-light;
+        }
+      }
+    }
   }
 
   .post-metadata {
     color: $grey-light;
     margin-bottom: 1em;
 
-    time {
+    .post-time {
       color: $blue;
     }
   }
