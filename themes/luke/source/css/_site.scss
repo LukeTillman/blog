@@ -54,13 +54,8 @@ a {
   }
 }
 
-img.is-circle {
+.is-circle {
   border-radius: 50%;
-}
-
-.bio {
-  border-bottom: 1px solid $border;
-  padding-bottom: 20px;
 }
 
 #site-footer {
@@ -113,5 +108,23 @@ img.is-circle {
       font-weight: $weight-bold;
       color: $blue;
     }
+  }
+}
+
+/**
+ * Sidebar asides
+ */
+.sidebar-aside {
+  border-bottom: 1px solid $border;
+  padding-bottom: 20px;
+
+  .sidebar-aside-image {
+    margin-bottom: $size-normal;
+  }
+
+  .sidebar-aside-title {
+    font-size: $size-4;
+    font-weight: $weight-bold;
+    margin-bottom: $size-normal;
   }
 }
