@@ -1,7 +1,7 @@
 {% extends "./_common/base.njk" %}
 
 {% block content %}
-  <div class="notification is-info">
+  <div class="notification is-info is-medium">
     {# Just go to home page when the notification is "closed" #}
     <a class="delete" href="/"></a>
     <span class="notification-title">Tag</span> <span class="notification-message">{{ page.tag }}</span>

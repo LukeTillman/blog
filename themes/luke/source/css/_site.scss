@@ -14,18 +14,45 @@ a {
   .content h1, .content h2, .content h3, 
   .content h4, .content h5, .content h6 {
     font-family: "Domine", serif;
+    line-height: 1.45em;
 
     a {
       color: $text;
       border-bottom: 3px solid transparent;
       transition: border 0.2s, color 0.2s ease-out;
-      line-height: 1.45em;
 
       &:hover {
         color: $blue;
         border-bottom-color: $grey-lighter;
       }
     }
+  }
+}
+
+// The bulma notification element (http://bulma.io/documentation/elements/notification/) 
+.notification {
+  // Support different text sizes
+  &.is-small {
+    font-size: $size-small;
+  }
+
+  &.is-medium {
+    font-size: $size-medium;
+  }
+
+  &.is-large {
+    font-size: $size-large;
+  }
+
+  // Support title/message in notification
+  .notification-title {
+    padding-right: 20px;
+    border-right: 2px solid;
+    opacity: 0.6;
+  } 
+
+  .notification-message {
+    padding-left: 20px;
   }
 }
 
