@@ -1,8 +1,11 @@
 ---
 title: Developing with Cassandra on Windows
 date: 2015-01-27T17:06:23.569Z
+tags:
+- cassandra
+- killrvideo
+- windows
 ---
-
 If you're like me and currently do most of your development work on a Windows machine, the first thing you'll need to do
 when you want to build an application on Cassandra is figure out how to install it on said machine.  When I started
 working on [KillrVideo](/killrvideo-cassandra-csharp-and-azure/), this was one of the first things I did.  Fortunately,

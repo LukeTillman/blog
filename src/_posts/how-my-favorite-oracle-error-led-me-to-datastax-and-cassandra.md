@@ -1,8 +1,11 @@
 ---
 title: How My Favorite Oracle Error Led Me to DataStax and Cassandra
 date: 2014-03-18T18:40:32.272Z
+tags:
+- cassandra
+- datastax
+- oracle
 ---
-
 Putting up a blog is hard.
 
 I can almost hear people's thoughts now, "Why would I ever listen to what this guy has to say when he thinks putting up

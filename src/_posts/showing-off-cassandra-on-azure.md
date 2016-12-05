@@ -1,8 +1,12 @@
 ---
 title: Showing Off Cassandra on Azure
 date: 2014-09-15T23:07:14.376Z
+tags:
+- cassandra
+- azure
+- cassandra summit
+- killrvideo
 ---
-
 One of the cool things about the evangelist team at DataStax is that we're encouraged to spend time writing code to
 contribute back to the community.  For example, [Helena's](http://helenaedelson.com/) work on the [Spark Cassandra
 connector](https://github.com/datastax/spark-cassandra-connector), [Jon's](http://rustyrazorblade.com/) work on

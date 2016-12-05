@@ -1,8 +1,14 @@
 ---
 title: "KillrVideo: Cassandra, C#, and Azure"
 date: 2015-01-21T22:27:00.000Z
+tags:
+- cassandra
+- azure
+- killrvideo
+- c#
+- microservices
+- software architecture
 ---
-
 When I started at DataStax 11 months ago, I was a total Cassandra newb.  Sure, I'd been writing code for a number of
 years (with most of the last 10 years spent in the world of .NET), but the applications I was building were typically
 built using a RDBMS for storage.  At most of the .NET shops where I worked, this meant SQL Server, but at my last job we

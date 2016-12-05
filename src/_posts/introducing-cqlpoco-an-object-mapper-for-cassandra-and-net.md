@@ -1,8 +1,11 @@
 ---
 title: "Introducing CqlPoco: an object mapper for Cassandra and .NET"
 date: 2014-08-11T18:17:30.880Z
+tags:
+- cassandra
+- c#
+- cqlpoco
 ---
-
 After spending some time writing the [KillrVideo](https://github.com/LukeTillman/killrvideo-csharp) app and [ASP.NET
 Identity](https://github.com/joshuadeanhall/AspNet.Identity.Cassandra) persistence for Cassandra, one thing became
 glaringly obvious to me--I really missed having a micro-ORM.  I spent a lot of time writing boilerplate mapping code,

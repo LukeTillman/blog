@@ -2,7 +2,6 @@
 title: Cassandra Day Silicon Valley 2014 Roundup
 date: 2014-04-09T15:09:53.939Z
 ---
-
 I've been spending an awful lot of my time lately digging through [DataStax C#
 Driver](https://github.com/datastax/csharp-driver) for Cassandra, trying to help our team formulate a plan to make it
 better.  To that end, I headed out to San Jose last week to meet up with the newest addition to our drivers team, [Jorge

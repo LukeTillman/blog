@@ -1,8 +1,11 @@
 ---
 title: Intro to Python and Cassandra Presentation on Windows
 date: 2014-10-13T19:19:03.236Z
+tags:
+- cassandra
+- python
+- windows
 ---
-
 My colleague, [Jon Haddad](https://twitter.com/rustyrazorblade), has a great interactive "Intro to Python and Cassandra"
 presentation [available on GitHub](https://github.com/rustyrazorblade/python-presentation).
 
