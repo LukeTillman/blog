@@ -47,7 +47,20 @@
           {% endblock %}
         </div>
         <div class="column">
+          {# The sidebar, which by default just includes the site title and description #}
           {% block sidebar %}
+          <aside class="sidebar-aside">
+            <figure class="image is-128x128">
+              <img class="is-circle" src="/images/luke.jpg">
+            </figure>
+            <br/>
+            <h4 class="sidebar-aside-title">
+              {{ config.title }}
+            </h4>
+            <p class="sidebar-aside-description">
+              {{ config.description }}
+            </p>
+          </aside>
           {% endblock %}
         </div>
       </div>

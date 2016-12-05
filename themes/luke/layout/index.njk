@@ -3,25 +3,7 @@
 {# On home page, just use the site title #} 
 {% block title %}{{ config.title }}{% endblock %}
 
-
 {# List page of articles on home page #}
 {% block content %}
   {% include "./_common/post-list.njk" %}
-{% endblock %}
-
-
-{# Include site bio on sidebar #}
-{% block sidebar %}
-<aside class="sidebar-aside">
-  <figure class="image is-128x128">
-    <img class="is-circle" src="/images/luke.jpg">
-  </figure>
-  <br/>
-  <h4 class="sidebar-aside-title">
-    {{ config.title }}
-  </h4>
-  <p>
-    {{ config.description }}
-  </p>
-</aside>
 {% endblock %}
