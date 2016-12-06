@@ -20,14 +20,34 @@
 </article>
 {% endblock %}
 
+{# A macro for social media icon button links #}
+{% macro socialButton(href, icon, size = 'small') %}
+  {% set buttonClass = icon %}
+  {% if size %}
+    {% set buttonClass = buttonClass + ' is-' + size %}
+  {% endif %}
+  <a href="{{ href }}" target="_blank" class="social-button {{ buttonClass }}">
+    <span class="icon">
+      <i class="fa fa-{{ icon }}"></i>
+    </span>
+  </a>
+{% endmacro %}
+
 {% block sidebar %}
 <aside class="sidebar-aside">
   <figure class="image is-128x128 sidebar-aside-image">
-    <img class="is-circle" src="/images/luke.jpg">
+    <img src="/images/luke.jpg">
   </figure>
   <h4 class="sidebar-aside-title">
     {{ config.author }}
   </h4>
+  <p class="sidebar-aside-buttons">
+    {{ socialButton('https://twitter.com/LukeTillman', 'twitter') }}
+    {{ socialButton('https://github.com/LukeTillman', 'github') }}
+    {{ socialButton('/rss', 'rss') }}
+    {{ socialButton('https://plus.google.com/+LukeTillman1', 'google-plus') }}
+    {{ socialButton('https://www.linkedin.com/in/luketillman', 'linkedin') }}
+  </p>
   <p class="sidebar-aside-description">
     I'm an engineer, soccer fan, political junkie, and lover of all nerdery. Currently employed as
     a Technical Evangelist at DataStax where I frequently work with Cassandra, .NET, and Node.js.

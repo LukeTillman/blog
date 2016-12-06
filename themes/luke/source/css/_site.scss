@@ -54,10 +54,6 @@ a {
   }
 }
 
-.is-circle {
-  border-radius: 50%;
-}
-
 #site-footer {
   color: $grey-light;
   font-size: $size-6;
@@ -128,10 +124,13 @@ a {
  */
 .sidebar-aside {
   border-bottom: 1px solid $border;
-  padding-bottom: 20px;
 
   .sidebar-aside-image {
     margin-bottom: $size-normal;
+
+    img {
+      border-radius: 50%;
+    }
   }
 
   .sidebar-aside-title {
@@ -140,7 +139,79 @@ a {
     margin-bottom: $size-normal;
   }
 
+  .sidebar-aside-buttons {
+    margin-bottom: $size-normal;
+  }
+
   .sidebar-aside-description {
     font-size: $size-6;
+    margin-bottom: $size-normal;
   }
 }
+
+// A mixin for common social button classes below
+@mixin social-button-sizes($size, $font-size) {
+  line-height: $size;
+
+  .icon {
+    width: $size;
+    height: $size;
+    font-size: $font-size;
+    line-height: $size;
+  }
+}
+
+@mixin social-button-colors($background, $text) {
+  transition: color 0.2s ease-out, background-color 0.2s ease-out;
+  
+  &:hover {
+    background-color: $background;
+    color: $text;
+  }
+}
+
+// Social media link buttons
+.social-button {
+  display: inline-block;
+  background-color: $grey-lighter;
+  border-radius: 50%;
+  color: $grey;
+  padding: 7px;
+
+  @include social-button-sizes(24px, 21px);
+  
+  // Support size modifiers
+  &.is-small {
+    @include social-button-sizes(16px, 14px);
+  }
+
+  &.is-medium {
+    @include social-button-sizes(32px, 28px);
+  }
+
+  &.is-large {
+    @include social-button-sizes(48px, 42px);
+  }
+
+  // Colors for specific social media buttons
+  &.twitter {
+    @include social-button-colors(#00acee, #fff);
+  }
+
+  &.github {
+    @include social-button-colors(#171515, #fff);
+  }
+
+  &.rss {
+    @include social-button-colors(#ee802f, #fff);
+  }
+
+  &.google-plus {
+    @include social-button-colors(#db4437, #fff);
+  }
+
+  &.linkedin {
+    @include social-button-colors(#0084BF, #fff);
+  }
+}
+
