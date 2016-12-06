@@ -1,11 +1,10 @@
 {# Partial view to render a list of posts and pagination #}
-{% for p in page.posts.data %}
+{% for post in page.posts.data %}
 <article class="post">
-  {% set post = p %}
   {% include "./post-header.njk" %}
 
   <p>
-    {{ p.excerpt }}
+    {{ post.excerpt }}
   </p>
 </article>
 {% endfor %}

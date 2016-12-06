@@ -19,11 +19,18 @@
   {% set post = page %}
   {% include "./_common/post-header.njk" %}
 
-  <div class="content">
-    {{ page.content | safe }}
+  <div class="content post-content">
+    {{ post.content | safe }}
   </div>
-  <footer class="post-footer">
 
+  <footer class="post-footer">
+    <ul class="post-tags">
+      {% for t in post.tags.data %}
+      <li class="post-tag">
+        <a href="{{ url_for(t.path) }}" class="button is-light">{{ t.name }}</a>
+      </li>
+      {% endfor %}
+    </ul>
   </footer>
 </article>
 {% endblock %}
