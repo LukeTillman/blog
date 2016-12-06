@@ -27,6 +27,11 @@ a {
   }
 }
 
+// Change the default height of buttons since we altered the base text size for bulma
+.button {
+  height: 36px;
+}
+
 #site-footer {
   color: $grey-light;
   font-size: $size-6;
