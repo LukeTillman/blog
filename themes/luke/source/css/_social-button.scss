@@ -6,6 +6,11 @@
 @mixin social-button-sizes($size, $font-size) {
   line-height: $size;
 
+  // When next to another button, add some margin
+  &+& {
+    margin-left: $size - $font-size;
+  }
+
   .icon {
     width: $size;
     height: $size;
@@ -18,9 +23,23 @@
 @mixin social-button-colors($background, $text) {
   transition: color 0.2s ease-out, background-color 0.2s ease-out;
 
+  // By default, transition to the background and color specified
   &:hover {
     background-color: $background;
     color: $text;
+  }
+
+  // When using color buttons start as the backround and color specified
+  &.is-color {
+    background-color: $background;
+    color: $text;
+    border: 2px solid $background;
+
+    // And transition to the opposite
+    &:hover {
+      background-color: $text;
+      color: $background;
+    }
   }
 }
 
@@ -32,6 +51,7 @@
   color: $grey;
   padding: 7px;
 
+  // Default size (i.e. "normal")
   @include social-button-sizes(24px, 21px);
   
   // Support size modifiers

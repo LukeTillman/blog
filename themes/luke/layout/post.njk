@@ -1,11 +1,16 @@
 {% extends "./_common/base.njk" %}
 
 {# A macro for a social media icon button link #}
-{% macro socialButton(href, icon, size) %}
+{% macro socialButton(href, icon, size, isColor) %}
+  {# Figure out what classes to put on the button #}
   {% set buttonClass = icon %}
-  {% if size %}
+  {% if size !== 'normal' %}
     {% set buttonClass = buttonClass + ' is-' + size %}
   {% endif %}
+  {% if isColor %}
+    {% set buttonClass = buttonClass + ' is-color' %}
+  {% endif %}
+
   <a href="{{ href }}" target="_blank" class="social-button {{ buttonClass }}">
     <span class="icon">
       <i class="fa fa-{{ icon }}"></i>
@@ -14,12 +19,12 @@
 {% endmacro %}
 
 {# A macro that outputs all the social media icon buttons #}
-{% macro socialButtons(size) %}
-  {{ socialButton('https://twitter.com/LukeTillman', 'twitter', size) }}
-  {{ socialButton('https://github.com/LukeTillman', 'github', size) }}
-  {{ socialButton('/rss', 'rss', size) }}
-  {{ socialButton('https://plus.google.com/+LukeTillman1', 'google-plus', size) }}
-  {{ socialButton('https://www.linkedin.com/in/luketillman', 'linkedin', size) }}
+{% macro socialButtons(size = 'normal', isColor = false) %}
+  {{ socialButton('https://twitter.com/LukeTillman', 'twitter', size, isColor) }}
+  {{ socialButton('https://github.com/LukeTillman', 'github', size, isColor) }}
+  {{ socialButton('/rss', 'rss', size, isColor) }}
+  {{ socialButton('https://plus.google.com/+LukeTillman1', 'google-plus', size, isColor) }}
+  {{ socialButton('https://www.linkedin.com/in/luketillman', 'linkedin', size, isColor) }}
 {% endmacro %}
 
 {# The main content block with the post #}
@@ -57,7 +62,7 @@
           {{ site.data.author.bio }}
         </p>
         <p class="bio-text">
-          {{ socialButtons() }}
+          {{ socialButtons('normal', true) }}
         </p>
       </div>
     </div>
