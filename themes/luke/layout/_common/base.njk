@@ -51,8 +51,8 @@
           {# The sidebar, which by default just includes the site title and description #}
           {% block sidebar %}
           <aside class="sidebar-aside">
-            <figure class="image is-128x128">
-              <img class="is-circle" src="/images/luke.jpg">
+            <figure class="image is-128x128 is-circle">
+              <img src="{{ url_for(site.data.author.image_path) }}">
             </figure>
             <br/>
             <h4 class="title is-4">

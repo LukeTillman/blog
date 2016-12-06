@@ -33,6 +33,7 @@
   </div>
 
   <footer class="post-footer">
+    {# Tags for the post #}
     <ul class="post-tags">
       {% for t in post.tags.data %}
       <li class="post-tag">
@@ -40,14 +41,16 @@
       </li>
       {% endfor %}
     </ul>
+
+    {# Author information #}
     <div class="media post-author">
       <figure class="media-left">
-        <p class="image is-128x128">
+        <p class="image is-128x128 is-circle">
           <img src="{{ url_for(site.data.author.image_path) }}">
         </p>
       </figure>
       <div class="media-content">
-        <h4>{{ config.author }}</h4>
+        <h4 class="title is-4">{{ config.author }}</h4>
         <p>
           {{ site.data.author.bio }}
         </p>
@@ -63,7 +66,7 @@
 {# The sidebar with the author bio #}
 {% block sidebar %}
 <aside class="sidebar-aside">
-  <figure class="image is-128x128 sidebar-aside-image">
+  <figure class="image is-128x128 is-circle sidebar-aside-image">
     <img src="{{ url_for(site.data.author.image_path) }}">
   </figure>
   <h4 class="title is-4">

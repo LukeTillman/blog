@@ -30,6 +30,13 @@ a {
   height: 36px;
 }
 
+// Circular images
+.image.is-circle {
+  img {
+    border-radius: 50%;
+  }
+}
+
 #site-footer {
   color: $grey-light;
   font-size: $size-6;
