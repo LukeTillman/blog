@@ -9,6 +9,13 @@
   line-height: 1.45em;
 }
 
+// Temporary bug fix (see https://github.com/jgthms/bulma/issues/393)
+.content {
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: $weight-title-normal;
+  }
+}
+
 // On posts and pages...
 .post, .page {
   // Post and page header titles
