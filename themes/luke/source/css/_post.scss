@@ -1,15 +1,9 @@
 /**
  * Posts (including in post lists) and pagination
  */
+
+// General post styles
 .post {
-  padding: 40px 0;
-  border-bottom: 1px solid $border;
-
-  // No padding on first post (if in a list or by itself)
-  &:first-child {
-    padding-top: 0;
-  }
-
   // General styles for a list of tags
   .post-tags {
     display: block;
@@ -57,17 +51,15 @@
 
   // The post content
   .post-content {
-    margin-bottom: 0;
+    margin-bottom: 40px;
   }
 
   // The post footer
   .post-footer {
-    // Tags list in the footer
-    .post-tags {
-      padding: 40px 0;
-      border-bottom: 1px solid $border;
-      text-align: right;
-    }
+    margin-top: 40px;
+    padding: 40px 0;
+    border-top: 1px solid $border;
+    border-bottom: 1px solid $border;
 
     // Author bio
     .post-author {
@@ -76,6 +68,20 @@
       .media-content {
         padding-left: 20px;
       }
+    }
+  }
+}
+
+// A list of posts
+.posts {
+  // A post in a list of posts
+  .post {
+    padding: 40px 0;
+    border-bottom: 1px solid $border;
+
+    // No padding on first post (if in a list or by itself)
+    &:first-child {
+      padding-top: 0;
     }
   }
 }

@@ -32,17 +32,17 @@
     {{ post.content | safe }}
   </div>
 
-  <footer class="post-footer">
-    {# Tags for the post #}
-    <ul class="post-tags">
-      {% for t in post.tags.data %}
-      <li class="post-tag">
-        <a href="{{ url_for(t.path) }}" class="button is-light">{{ t.name }}</a>
-      </li>
-      {% endfor %}
-    </ul>
+  {# Tags for the post #}
+  <ul class="post-tags has-text-right">
+    {% for t in post.tags.data %}
+    <li class="post-tag">
+      <a href="{{ url_for(t.path) }}" class="button is-light">{{ t.name }}</a>
+    </li>
+    {% endfor %}
+  </ul>
 
-    {# Author information #}
+  {# Author information #}
+  <footer class="post-footer">
     <div class="media bio">
       <figure class="media-left">
         <p class="image is-128x128">

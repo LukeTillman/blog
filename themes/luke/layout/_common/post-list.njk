@@ -1,13 +1,15 @@
 {# Partial view to render a list of posts and pagination #}
-{% for post in page.posts.data %}
-<article class="post">
-  {% include "./post-header.njk" %}
+<div class="posts">
+  {% for post in page.posts.data %}
+  <article class="post">
+    {% include "./post-header.njk" %}
 
-  <p>
-    {{ post.excerpt }}
-  </p>
-</article>
-{% endfor %}
+    <p>
+      {{ post.excerpt }}
+    </p>
+  </article>
+  {% endfor %}
+</div>
 
 <nav class="level posts-pagination">
   <div class="level-left">
