@@ -4,17 +4,15 @@
  * Common styles used by the site
  */
 
+// Default link settings
 a {
   transition: color 0.2s ease-out;
 }
 
-// Titles and title links
+// Links inside titles
 .title, .subtitle,
 .content h1, .content h2, .content h3, 
 .content h4, .content h5, .content h6 {
-  font-family: "Domine", serif;
-  line-height: 1.45em;
-
   a {
     color: $text-strong;
     border-bottom: 3px solid transparent;

@@ -1,0 +1,27 @@
+/**
+ * Title (header) alternate styles
+ */
+
+// The alternate serif font family and weight
+@mixin serif-title {
+  font-family: "Domine", serif;
+  font-weight: 700;
+  line-height: 1.45em;
+}
+
+// On posts and pages...
+.post, .page {
+  // Post and page header titles
+  .header {
+    .title, .subtitle {
+      @include serif-title;
+    }
+  }
+
+  // Post and page content blocks
+  .content {
+    h1, h2, h3, h4, h5, h6 {
+      @include serif-title;
+    }
+  }
+}

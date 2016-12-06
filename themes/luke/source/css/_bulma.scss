@@ -20,8 +20,8 @@ $family-sans-serif: "Open Sans", sans-serif;
 // Font weights
 $weight-normal: 400;
 $weight-bold: 600;
-$weight-title-normal: 700;
-$weight-title-bold: 700;
+$weight-title-normal: 600;
+$weight-title-bold: 600;
 
 // Now import bulma after overriding
 @import "../../../../node_modules/bulma/bulma.sass";
