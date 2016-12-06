@@ -1,0 +1,26 @@
+/**
+ * Author and site bio styles
+ */
+.bio {
+  .image {
+    img {
+      border-radius: 50%;
+    }
+  }
+  
+  .bio-text {
+    font-size: $size-small;
+    margin-bottom: 1em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Sidebar bios
+.sidebar.bio {
+  .image {
+    margin-bottom: 1em;
+  }
+}

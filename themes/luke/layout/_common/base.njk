@@ -50,15 +50,16 @@
         <div class="column">
           {# The sidebar, which by default just includes the site title and description #}
           {% block sidebar %}
-          <aside class="sidebar-aside">
-            <figure class="image is-128x128 is-circle">
+          <aside class="sidebar bio">
+            <p class="image is-128x128">
               <img src="{{ url_for(site.data.author.image_path) }}">
-            </figure>
-            <br/>
+            </p>
+
             <h4 class="title is-4">
               {{ config.title }}
             </h4>
-            <p class="sidebar-aside-description">
+
+            <p class="bio-text">
               {{ config.description }}
             </p>
           </aside>

@@ -43,18 +43,20 @@
     </ul>
 
     {# Author information #}
-    <div class="media post-author">
+    <div class="media bio">
       <figure class="media-left">
-        <p class="image is-128x128 is-circle">
+        <p class="image is-128x128">
           <img src="{{ url_for(site.data.author.image_path) }}">
         </p>
       </figure>
       <div class="media-content">
-        <h4 class="title is-4">{{ config.author }}</h4>
-        <p>
+        <h4 class="title is-4">
+          {{ config.author }}
+        </h4>
+        <p class="bio-text">
           {{ site.data.author.bio }}
         </p>
-        <p>
+        <p class="bio-text">
           {{ socialButtons() }}
         </p>
       </div>
@@ -65,17 +67,20 @@
 
 {# The sidebar with the author bio #}
 {% block sidebar %}
-<aside class="sidebar-aside">
-  <figure class="image is-128x128 is-circle sidebar-aside-image">
+<aside class="sidebar bio">
+  <p class="image is-128x128">
     <img src="{{ url_for(site.data.author.image_path) }}">
-  </figure>
+  </p>
+
   <h4 class="title is-4">
     {{ config.author }}
   </h4>
-  <p class="sidebar-aside-buttons">
+
+  <p class="bio-text">
     {{ socialButtons('small') }}
   </p>
-  <p class="sidebar-aside-description">
+
+  <p class="bio-text">
     {{ site.data.author.bio }}
   </p>
 </aside>
