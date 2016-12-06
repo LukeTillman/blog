@@ -1,7 +1,7 @@
 {% extends "./_common/base.njk" %}
 
-{# A macro for social media icon button links #}
-{% macro socialButton(href, icon, size = 'small') %}
+{# A macro for a social media icon button link #}
+{% macro socialButton(href, icon, size) %}
   {% set buttonClass = icon %}
   {% if size %}
     {% set buttonClass = buttonClass + ' is-' + size %}
@@ -11,6 +11,15 @@
       <i class="fa fa-{{ icon }}"></i>
     </span>
   </a>
+{% endmacro %}
+
+{# A macro that outputs all the social media icon buttons #}
+{% macro socialButtons(size) %}
+  {{ socialButton('https://twitter.com/LukeTillman', 'twitter', size) }}
+  {{ socialButton('https://github.com/LukeTillman', 'github', size) }}
+  {{ socialButton('/rss', 'rss', size) }}
+  {{ socialButton('https://plus.google.com/+LukeTillman1', 'google-plus', size) }}
+  {{ socialButton('https://www.linkedin.com/in/luketillman', 'linkedin', size) }}
 {% endmacro %}
 
 {# The main content block with the post #}
@@ -31,6 +40,22 @@
       </li>
       {% endfor %}
     </ul>
+    <div class="media post-author">
+      <figure class="media-left">
+        <p class="image is-128x128">
+          <img src="{{ url_for(site.data.author.image_path) }}">
+        </p>
+      </figure>
+      <div class="media-content">
+        <h4>{{ config.author }}</h4>
+        <p>
+          {{ site.data.author.bio }}
+        </p>
+        <p>
+          {{ socialButtons() }}
+        </p>
+      </div>
+    </div>
   </footer>
 </article>
 {% endblock %}
@@ -39,21 +64,16 @@
 {% block sidebar %}
 <aside class="sidebar-aside">
   <figure class="image is-128x128 sidebar-aside-image">
-    <img src="/images/luke.jpg">
+    <img src="{{ url_for(site.data.author.image_path) }}">
   </figure>
   <h4 class="sidebar-aside-title">
     {{ config.author }}
   </h4>
   <p class="sidebar-aside-buttons">
-    {{ socialButton('https://twitter.com/LukeTillman', 'twitter') }}
-    {{ socialButton('https://github.com/LukeTillman', 'github') }}
-    {{ socialButton('/rss', 'rss') }}
-    {{ socialButton('https://plus.google.com/+LukeTillman1', 'google-plus') }}
-    {{ socialButton('https://www.linkedin.com/in/luketillman', 'linkedin') }}
+    {{ socialButtons('small') }}
   </p>
   <p class="sidebar-aside-description">
-    I'm an engineer, soccer fan, political junkie, and lover of all nerdery. Currently employed as
-    a Technical Evangelist at DataStax where I frequently work with Cassandra, .NET, and Node.js.
+    {{ site.data.author.bio }}
   </p>
 </aside>
 {% endblock %}

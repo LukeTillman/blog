@@ -13,7 +13,6 @@
   // General styles for a list of tags
   .post-tags {
     display: block;
-    margin-bottom: 1em;
 
     .post-tag {
       display: inline-block;
@@ -29,6 +28,8 @@
   .post-header {
     // Tags list in the header
     .post-tags {
+      margin-bottom: $size-normal;
+
       .post-tag {
         a {
           font-size: $size-4;
@@ -45,7 +46,7 @@
     // Metadata like the author and post date
     .post-metadata {
       color: $grey-light;
-      margin-bottom: 1em;
+      margin-bottom: $size-normal;
 
       .post-time {
         font-weight: $weight-bold;
@@ -66,6 +67,15 @@
       padding: 40px 0;
       border-bottom: 1px solid $border;
       text-align: right;
+    }
+
+    // Author bio
+    .post-author {
+      padding-top: 40px;
+
+      .media-content {
+        padding-left: 20px;
+      }
     }
   }
 }

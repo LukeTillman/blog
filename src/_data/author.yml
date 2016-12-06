@@ -1,0 +1,7 @@
+# Author bio image
+image_path: images/luke.jpg
+
+# Bio text
+bio: >
+  I'm an engineer, soccer fan, political junkie, and lover of all nerdery. Currently employed as 
+  a Technical Evangelist at DataStax where I frequently work with Cassandra, .NET, and Node.js.
