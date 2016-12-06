@@ -1,0 +1,58 @@
+/**
+ * Posts (including in post lists) and pagination
+ */
+.post {
+  padding: 40px 0;
+  border-bottom: 1px solid $border;
+
+  // No padding on first post (if in a list or by itself)
+  &:first-child {
+    padding-top: 0;
+  }
+
+  .post-tags {
+    display: block;
+    margin-bottom: 1em;
+
+    .post-tag {
+      display: inline-block;
+      padding-right: 5px;
+      font-size: $size-4;
+      font-weight: $weight-bold;
+
+      &:last-child {
+        padding-right: 0;
+      }
+
+      a {
+        color: $grey-lighter;
+
+        &:hover {
+          color: $grey-light;
+        }
+      }
+    }
+  }
+
+  .post-metadata {
+    color: $grey-light;
+    margin-bottom: 1em;
+
+    .post-time {
+      font-weight: $weight-bold;
+      color: $blue;
+    }
+  }
+}
+
+.posts-pagination {
+  padding: 40px 0;
+  border-bottom: 1px solid $border;
+
+  .button {
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: $weight-bold;
+  }
+}

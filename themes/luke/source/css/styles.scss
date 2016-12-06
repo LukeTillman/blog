@@ -1,3 +1,12 @@
+// Third party dependencies
 @import "font-awesome";
 @import "bulma";
+
+// General site styles
 @import "site";
+
+// Specific component styles
+@import "post";
+@import "sidebar-aside";
+@import "notification";
+@import "social-button";
