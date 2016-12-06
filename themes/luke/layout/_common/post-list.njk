@@ -1,22 +1,9 @@
 {# Partial view to render a list of posts and pagination #}
 {% for p in page.posts.data %}
 <article class="post">
-  <ul class="post-tags">
-    {% for t in p.tags.data %}
-    <li class="post-tag">
-      <a href="{{ url_for(t.path) }}">{{ t.name }}</a>
-    </li>
-    {% endfor %}
-  </ul>
-  <h1 class="title">
-    <a href="{{ url_for(p.path) }}">
-      {{ p.title }}
-    </a>
-  </h1>
-  <p class="post-metadata">
-    Posted on <span class="icon"><i class="fa fa-clock-o"></i></span>
-    <time class="post-time" datetime="{{ p.date.toISOString() }}">{{ p.date.format('LL') }}</time>
-  </p>
+  {% set post = p %}
+  {% include "./post-header.njk" %}
+
   <p>
     {{ p.excerpt }}
   </p>

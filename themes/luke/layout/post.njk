@@ -1,25 +1,5 @@
 {% extends "./_common/base.njk" %}
 
-{% block content %}
-<article class="post">
-  <ul class="post-tags">
-    {% for t in page.tags.data %}
-    <li class="post-tag">
-      <a href="{{ url_for(t.path) }}">{{ t.name }}</a>
-    </li>
-    {% endfor %}
-  </ul>
-  <h1 class="title">{{ page.title }}</h1>
-  <p class="post-metadata">
-    Posted on <span class="icon"><i class="fa fa-clock-o"></i></span> 
-    <time class="post-time" datetime="{{ page.date.toISOString() }}">{{ page.date.format('LL') }}</time>
-  </p>
-  <div class="content">
-    {{ page.content | safe }}
-  </div>
-</article>
-{% endblock %}
-
 {# A macro for social media icon button links #}
 {% macro socialButton(href, icon, size = 'small') %}
   {% set buttonClass = icon %}
@@ -33,6 +13,22 @@
   </a>
 {% endmacro %}
 
+{# The main content block with the post #}
+{% block content %}
+<article class="post">
+  {% set post = page %}
+  {% include "./_common/post-header.njk" %}
+
+  <div class="content">
+    {{ page.content | safe }}
+  </div>
+  <footer class="post-footer">
+
+  </footer>
+</article>
+{% endblock %}
+
+{# The sidebar with the author bio #}
 {% block sidebar %}
 <aside class="sidebar-aside">
   <figure class="image is-128x128 sidebar-aside-image">

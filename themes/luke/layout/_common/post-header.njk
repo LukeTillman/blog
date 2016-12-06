@@ -1,0 +1,24 @@
+{# Header including tags, title, and metadata about a post #}
+{# NOTE: expects a variable called 'post' to be set #}
+
+<header class="post-header">
+  <ul class="post-tags">
+    {% for t in post.tags.data %}
+    <li class="post-tag">
+      <a href="{{ url_for(t.path) }}">{{ t.name }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <h1 class="title">
+    {# Render link to post only if we're not on that page already #}
+    {% if page.path !== post.path %}
+    <a href="{{ url_for(post.path) }}">{{ post.title }}</a>
+    {% else %}
+    {{ post.title }}
+    {% endif %}
+  </h1>
+  <p class="post-metadata">
+    Posted on <span class="icon"><i class="fa fa-clock-o"></i></span> 
+    <time class="post-time" datetime="{{ post.date.toISOString() }}">{{ post.date.format('LL') }}</time>
+  </p>
+</header>
