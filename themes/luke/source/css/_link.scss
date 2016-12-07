@@ -1,0 +1,30 @@
+/**
+ * Styles for links
+ */
+
+// Default link settings
+.link,
+.content a:not(.button) {
+  font-weight: $weight-bold;
+  transition: color 0.2s ease-out, border-color 0.2s ease-out;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-bottom-color: $grey-lighter;
+  }
+}
+
+// Links inside titles
+.title, .subtitle,
+.content h1, .content h2, .content h3, 
+.content h4, .content h5, .content h6 {
+  a {
+    color: $text-strong;
+    border-bottom: 3px solid transparent;
+
+    &:hover {
+      color: $link;
+      border-bottom: 3px solid $grey-lighter;
+    }
+  }
+}
