@@ -148,13 +148,14 @@ The current reality (as of Cassandra 2.1) is that while Windows support is prett
 development and prototyping with, it's definitely still in "beta".  In fact, Jonathan Ellis talked about this briefly in
 his recent keynote address at Cassandra Summit Europe 2014.
 
-<div class="container">
-<iframe width="560" height="315" src="//www.youtube.com/embed/efYIRKs63T4#t=78m42s" frameborder="0" allowfullscreen></iframe>
-<div class="reference">
-<strong>Cassandra Summit Europe 2014 Keynote</strong>
-<p>Jonathan Ellis, chair of the Apache Cassandra project and CTO of DataStax talks about Cassandra on Windows during his keynote address at Cassandra Summit Europe 2014 in London.</p>
-</div>
-</div>
+<figure>
+  <iframe width="560" height="315" src="//www.youtube.com/embed/efYIRKs63T4#t=78m42s" frameborder="0" allowfullscreen></iframe>
+  <figcaption>
+    <header>Cassandra Summit Europe 2014 Keynote</header>
+    Jonathan Ellis, chair of the Apache Cassandra project and CTO of DataStax talks about Cassandra on Windows during his keynote
+    address at Cassandra Summit Europe 2014 in London.
+  </figcaption>
+</figure>
 
 If you're feeling adventurous and using Cassandra 2.1 or higher, deploying in production on Windows is certainly an
 option.  (And be sure to [file bug reports](https://issues.apache.org/jira/browse/CASSANDRA) for any issues you

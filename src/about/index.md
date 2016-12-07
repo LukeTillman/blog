@@ -20,13 +20,13 @@ away" as a behind-the-scenes developer, being in a more public-facing role is bo
 like I'm playing catch-up with a lot of people smarter than I am, but I love to learn.
 
 #### Life Outside of Tech
-<div class="container">
-<img src="/images/OSUMichigan2013.jpg" />
-<div class="reference">
-<strong>Ohio State vs. Michigan, the 2013 Edition</strong>
-<p>One of the interesting things when your friends start having kids?  Introducing yet another generation to the rivalry.  In fairness, he's probably more interested in the giraffe.</p>
-</div>
-</div>
+<figure>
+  <img src="/images/OSUMichigan2013.jpg" />
+  <figcaption>
+    <header>Ohio State vs. Michigan, the 2013 Edition</header>
+    One of the interesting things when your friends start having kids?  Introducing yet another generation to the rivalry.  In fairness, he's probably more interested in the giraffe.
+  </figcaption>
+</figure>
 
 I'm a recent transplant to Denver, CO by way of Cincinnati, OH.  (No, I didn't come for the pot.)  I'm a huge <a
 href="http://www.ussoccer.com" target="_blank">USMNT</a> and <a href="http://www.thecrew.com" target="_blank">Columbus

@@ -24,14 +24,15 @@ too much of a stretch.  (The example I use a lot recently is the ASP.NET vNext w
 GitHub](https://github.com/aspnet) under the Apache 2 license--my mind is blown.)  And let's be honest, a better fit for
 the Darth Vader analogy would have been bringing Larry Ellison to the Summit.
 
-<div class="container">
-{% asset_img Vader-Elevator.jpg Darth Vader in Elevator %}
-<div class="reference">
-<strong>Microsoft is at Cassandra Summit?</strong>
-<p>How I imagine some attendees reacted to Microsoft being a sponsor at Cassandra Summit 2014.  (h/t <a href="http://nerdreactor.com/2010/11/15/darth-vader-approves-the-samsung-galaxy-s/">Nerd Reactor</a> for the image)</p>
-</div>
-</div>
-
+<figure>
+  {% asset_img Vader-Elevator.jpg Darth Vader in Elevator %}
+  <figcaption>
+    <header>Microsoft is at Cassandra Summit?</header>
+    How I imagine some attendees reacted to Microsoft being a sponsor at Cassandra Summit 2014.  (h/t 
+    <a href="http://nerdreactor.com/2010/11/15/darth-vader-approves-the-samsung-galaxy-s/">Nerd Reactor</a>
+    for the image)
+  </figcaption>
+</figure>
 
 ## KillrVideo Demo
 My talk was all about [KillrVideo](http://www.killrvideo.com), a demo video sharing application built in C# and running
@@ -116,10 +117,11 @@ what's possible.  And with the live demo in Azure, along with the cooperation ha
 and DataStax I'm also hoping that Cassandra in Azure is a real option for developers of all languages going forward.
 And if things don't work out, maybe I can get Oracle to tag along for next year's Summit.
 
-<div class="container">
-{% asset_img Vader-AddressingCrowd.jpg Darth Vader addresses the crowd %}
-<div class="reference">
-<strong>Cassandra Summit 2015?</strong>
-<p>Larry Ellison addresses the crowd at Cassandra Summit 2015.  (h/t <a href="https://www.facebook.com/Darth.Vader.IPU">Ukranian Internet Party</a> for the image)</p>
-</div>
-</div>
+<figure>
+  {% asset_img Vader-AddressingCrowd.jpg Darth Vader addresses the crowd %}
+  <figcaption>
+    <header>Cassandra Summit 2015?</header>
+    Larry Ellison addresses the crowd at Cassandra Summit 2015.  (h/t 
+    <a href="https://www.facebook.com/Darth.Vader.IPU">Ukranian Internet Party</a> for the image)
+  </figcaption>
+</figure>

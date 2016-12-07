@@ -21,13 +21,14 @@ introduction to who I am and how I got here.
 Ultimately, I settled on this brief tale of how the Oracle error seen here led me to my new gig as a Language Evangelist
 at <a href="http://www.datastax.com" target="_blank">DataStax</a>.
 
-<div class="container">
-{% asset_img OracleException.png Wallet is not Open, indeed %}
-<div class="reference">
-<strong>This practically begs for a caption contest</strong>
-<p>I originally posted it to Facebook with the caption:  "I assume this is the error you start getting when you forget to pay your massive support contract's bill or start contemplating a switch to Postgres."</p>
-</div>
-</div>
+<figure>
+  {% asset_img OracleException.png Wallet is not Open, indeed %}
+  <figcaption>
+    <header>This practically begs for a caption contest</header>
+    I originally posted it to Facebook with the caption:  "I assume this is the error you start getting when you forget to 
+    pay your massive support contract's bill or start contemplating a switch to Postgres."
+  </figcaption>
+</figure>
 
 ### The Unholy Alliance of Oracle and .NET
 I've worked in a lot of Microsoft-centric shops over the years and as a result, managed to pick up a decent amount of
@@ -65,15 +66,14 @@ audacity to just drop it into an error message.  Obviously, I thought it was fun
 posted it to Facebook, sure that some of my other tech friends would enjoy ridiculing it and that some day, maybe it
 could become an internet meme on the order of Jake Weary.
 
-<div class="container">
-<iframe width="560" height="315" src="//www.youtube.com/embed/UzyoT4DziQ4?rel=0&start=1261&wmode=transparent" frameborder="0" allowfullscreen></iframe>
-<div class="reference">
-<strong>The legend of Jake Weary is born</strong>
-<p>One of the funniest talks I've seen in a long time, you should probably watch the whole thing if you've got 20 minutes.</p>
-</div>
-</div>
+<figure>
+  <iframe width="560" height="315" src="//www.youtube.com/embed/UzyoT4DziQ4?rel=0&start=1261&wmode=transparent" frameborder="0" allowfullscreen></iframe>
+  <figcaption>
+    <header>The legend of Jake Weary is born</header>
+    One of the funniest talks I've seen in a long time, you should probably watch the whole thing if you've got 20 minutes.
+  </figcaption>
+</figure>
 
-<br/>
 ### The Glamorous Life of a Language Evangelist
 As luck would have it, one of my former colleagues [Patrick McFadin](https://twitter.com/PatrickMcFadin) saw my Facebook
 post and decided to offer me a job on the evangelist team at DataStax.  But just what does a "Language Evangelist" do?
