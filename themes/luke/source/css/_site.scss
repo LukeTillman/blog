@@ -9,7 +9,7 @@ body {
 }
 
 // Default link settings
-a:not(.button), 
+.link,
 .content a:not(.button) {
   font-weight: $weight-bold;
   transition: color 0.2s ease-out, border-color 0.2s ease-out;
