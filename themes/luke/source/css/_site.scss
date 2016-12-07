@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600');
 
-// Some additional variables that are available
+// Primary color variations
 $primary-light: lighten($primary, 40%);
 $primary-lighter: lighten($primary, 55%);
+
+
+// The width of the sidebars (currently 2 of 12 columns wide)
+$sidebar-width-widescreen: ($widescreen + 40) * .16667;
 
 /**
  * Common styles used by the site

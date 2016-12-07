@@ -14,15 +14,20 @@
 
     figcaption {
       display: block;
-      position: absolute;
-      top: 0;
-      left: -200px;
-      width: 180px;
       font-size: $size-small;
-      text-align: right;
-      padding: 20px 0;
-      border-top: 1px solid $border;
+      padding-bottom: 20px;
       border-bottom: 1px solid $border;
+
+      // Move captions next to the figure contents (image, video, etc) on widescreen
+      @include widescreen {
+        position: absolute;
+        top: 0;
+        left: -$sidebar-width-widescreen;
+        width: $sidebar-width-widescreen - 20;  // Minus 20 for padding normally inside a column (10 on each side)
+        text-align: right;
+        padding-top: 20px;
+        border-top: 1px solid $border;
+      }
 
       header {
         font-size: $size-normal;
