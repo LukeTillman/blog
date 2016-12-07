@@ -5,3 +5,6 @@ image_path: images/luke.jpg
 bio: >
   Luke is an engineer, soccer fan, political junkie, and lover of all nerdery. He's currently employed as 
   a Technical Evangelist at DataStax where he frequently works with Cassandra, .NET, and Node.js.
+
+# Twitter
+twitter_site: "@LukeTillman"

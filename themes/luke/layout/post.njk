@@ -29,8 +29,29 @@
 
 {# Metadata for the head element #}
 {% block head %}
-<meta name="description" content="{{ page.excerpt }}" />
+{% set descriptionMd = page.excerpt | striptags(false) %}
+<link rel="canonical" href="{{ page.permalink }}" />
+
+<meta name="description" content="{{ descriptionMd }}" />
 <meta name="keywords" content="{{ _.map(page.tags.data, 'name').join(',') }}" />
+
+{# Twitter card metadata (see https://dev.twitter.com/cards/types/summary) #}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="{{ site.data.author.twitter_site }}" />
+
+{# Open graph metadata (Twitter will fallback to some of this), see: http://ogp.me #}
+<meta property="og:title" content="{{ page.title }}" />
+<meta property="og:description" content="{{ descriptionMd }}" />
+<meta property="og:site_name" content="{{ config.title }}" />
+<meta property="og:url" content="{{ page.permalink }}" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="{{ page.date.toISOString() }}" />
+<meta property="article:modified_time" content="{{ page.updated.toISOString() }}" />
+<meta property="article:author" content="{{ config.author }}" />
+{% for t in page.tags.data -%}
+<meta property="article:tag" content="{{ t.name }}" />
+{% endfor -%}
+
 {% endblock %}
 
 {# The main content block with the post #}
