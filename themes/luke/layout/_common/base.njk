@@ -1,9 +1,20 @@
 <!doctype html>
 <html>
 <head>
+  <meta charset="utf-8" />
+
   <title>{% block title %}{{ page.title }} - {{ config.title }}{% endblock %}</title>
-  <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
-  <link href="/css/styles.css" rel="stylesheet">
+
+  <link rel="alternate" href="/atom.xml" type="application/atom+xml" title="{{ config.title }} ATOM Feed" />
+  <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
+  <link rel="prefetch" href="{{ config.url }}" />
+
+  <link href="/css/styles.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="canonical" href="{{ url }}" />
+  {% block head %}
+  {% endblock %}  
 </head>
 <body>
   {# Site header #}
