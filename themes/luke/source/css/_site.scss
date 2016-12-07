@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600');
 
+// Some additional variables that are available
+$primary-light: lighten($primary, 40%);
+$primary-lighter: lighten($primary, 55%);
+
 /**
  * Common styles used by the site
  */
-
 body {
   line-height: 1.45em;
 }

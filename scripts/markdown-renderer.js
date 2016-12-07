@@ -12,7 +12,7 @@ renderer.code = function(code, language) {
   if (language) {
     return `<pre><code class="hljs">${highlightJs.highlight(language, code).value}</pre></code>`; 
   }
-  return `<pre><code>${code}</code></pre>`;
+  return `<pre><code class="hljs">${code}</code></pre>`;
 };
 
 // Open external links in a new window

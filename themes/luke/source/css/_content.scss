@@ -2,7 +2,46 @@
  * Overrides and additions for bulma content blocks
  */
 .content {
+  // Images
   img:not(:last-child) {
     margin-bottom: 1em;
+  }
+
+  // Blockquotes
+  blockquote {
+    background-color: $primary-lighter;
+    border-color: $primary-light;
+  }
+
+  // General code styles
+  code {
+    font-size: $size-small;
+
+    // Code tags that aren't blocks (since blocks always get the hljs class)
+    &:not(.hljs) {
+      color: $text;
+      padding: 2px 6px;
+      border: 1px solid $border;
+      border-radius: $radius;
+    }
+  }
+
+  // Pre + code styles
+  pre {
+    &:not(:last-child) {
+      margin-bottom: 1em;
+    }
+    
+    code.hljs {
+      padding: 20px;
+      border-radius: $radius-large;
+    }
+  }
+
+  // List items
+  li {
+    &+li {
+      margin-top: 0.5em;
+    }
   }
 }
