@@ -2,7 +2,15 @@
  * Bulma overrides (originals are at: https://github.com/jgthms/bulma/blob/master/sass/utilities/variables.sass)
  */
 
+// Colors
+$primary: #026ed2;
+
+$link: $primary;
+$link-visited: $primary;
+$link-hover: #0079ec;
+
 // Some type sizes (use http://type-scale.com/ to calculate with 1.250 scale)
+//    http://type-scale.com/?size=16&scale=1.250&text=A%20Visual%20Type%20Scale&webfont=Open%2BSans&font-family=%27Open%20Sans%27%2C%20sans-serif&font-weight=400&font-family-headers=&font-weight-headers=inherit&background-color=white&font-color=%23333
 $size-1: 39px;
 $size-2: 32px;
 $size-3: 25px;

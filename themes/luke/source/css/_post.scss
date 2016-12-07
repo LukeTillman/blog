@@ -29,9 +29,11 @@
           font-size: $size-4;
           font-weight: $weight-bold;
           color: $grey-lighter;
+          border: none;
 
           &:hover {
             color: $grey-light;
+            border: none;
           }
         }
       }

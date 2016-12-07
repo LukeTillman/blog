@@ -4,9 +4,20 @@
  * Common styles used by the site
  */
 
+body {
+  line-height: 1.45em;
+}
+
 // Default link settings
-a {
-  transition: color 0.2s ease-out;
+a:not(.button), 
+.content a:not(.button) {
+  font-weight: $weight-bold;
+  transition: color 0.2s ease-out, border-color 0.2s ease-out;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-bottom-color: $grey-lighter;
+  }
 }
 
 // Links inside titles
@@ -16,10 +27,9 @@ a {
   a {
     color: $text-strong;
     border-bottom: 3px solid transparent;
-    transition: border 0.2s, color 0.2s ease-out;
 
     &:hover {
-      color: $blue;
+      color: $link;
       border-bottom: 3px solid $grey-lighter;
     }
   }
