@@ -37,11 +37,6 @@ render_drafts: false
 post_asset_folder: true
 relative_link: false
 future: true
-highlight:
-  enable: false
-  line_number: true
-  auto_detect: false
-  tab_replace:
 
 # Category & Tag
 default_category: uncategorized
@@ -69,11 +64,3 @@ theme: luke
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
-
-# hexo-renderer marked configuration
-marked:
-  gfm: true
-  tables: true
-  breaks: false
-  pedantic: false
-  sanitize: false
