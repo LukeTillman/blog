@@ -30,6 +30,7 @@
           font-weight: $weight-bold;
           color: $grey-lighter;
           border: none;
+          transition: color 0.2s ease-out;
 
           &:hover {
             color: $grey-light;
