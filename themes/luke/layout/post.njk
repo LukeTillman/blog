@@ -57,7 +57,7 @@
     <div class="media bio">
       <figure class="media-left">
         <p class="image is-128x128">
-          <img src="{{ url_for(site.data.author.image_path) }}">
+          <img src="{{ url_for(site.data.author.image_path) }}" alt="{{ config.author }}">
         </p>
       </figure>
       <div class="media-content">
@@ -80,7 +80,7 @@
 {% block sidebar %}
 <aside class="sidebar bio">
   <p class="image is-128x128">
-    <img src="{{ url_for(site.data.author.image_path) }}">
+    <img src="{{ url_for(site.data.author.image_path) }}" alt="{{ config.author }}">
   </p>
 
   <h4 class="title is-4">
