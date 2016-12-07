@@ -21,13 +21,23 @@ body {
 }
 
 // Sidebars
-.sidebar {
-  padding-bottom: 20px;
-  border-bottom: 1px solid $border;
+.sidebar-column {
+  // Hidden by default
+  display: none;
 
-  &.bio {
-    .image {
-      margin-bottom: $size-normal;
+  // Show on widescreen
+  @include widescreen {
+    display: block;
+  }
+
+  .sidebar {
+    padding-bottom: 20px;
+    border-bottom: 1px solid $border;
+
+    &.bio {
+      .image {
+        margin-bottom: $size-normal;
+      }
     }
   }
 }
