@@ -1,5 +1,12 @@
 {% extends "./_common/base.njk" %}
 
+{# Metadata for head element #}
+{% block head %}
+<meta name="description" content="Articles for tag {{ page.tag }} on {{ config.title }}" />
+<meta name="keywords" content="{{ page.tag }}" />
+{% endblock %}
+
+{# Main content #}
 {% block content %}
   <div class="notification is-info is-medium">
     {# Just go to home page when the notification is "closed" #}

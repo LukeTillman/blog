@@ -27,6 +27,12 @@
   {{ socialButton('https://www.linkedin.com/in/luketillman', 'linkedin', size, isColor) }}
 {% endmacro %}
 
+{# Metadata for the head element #}
+{% block head %}
+<meta name="description" content="{{ page.excerpt }}" />
+<meta name="keywords" content="{{ _.map(page.tags.data, 'name').join(',') }}" />
+{% endblock %}
+
 {# The main content block with the post #}
 {% block content %}
 <article class="post">

@@ -3,6 +3,12 @@
 {# On home page, just use the site title #} 
 {% block title %}{{ config.title }}{% endblock %}
 
+{# Add some metadata to head element #}
+{% block head %}
+<meta name="description" content="{{ config.description }}" />
+{% endblock %}
+
+
 {# List page of articles on home page #}
 {% block content %}
   {% include "./_common/post-list.njk" %}
