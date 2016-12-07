@@ -1,22 +1,22 @@
 {% extends "./_common/base.njk" %}
 
 {# A macro for a social media icon button link #}
-{% macro socialButton(href, icon, size, isColor) %}
+{% macro socialButton(href, icon, size, isColor) -%}
   {# Figure out what classes to put on the button #}
-  {% set buttonClass = icon %}
-  {% if size !== 'normal' %}
-    {% set buttonClass = buttonClass + ' is-' + size %}
-  {% endif %}
-  {% if isColor %}
-    {% set buttonClass = buttonClass + ' is-color' %}
-  {% endif %}
+  {%- set buttonClass = icon -%}
+  {%- if size !== 'normal' -%}
+    {%- set buttonClass = buttonClass + ' is-' + size -%}
+  {%- endif -%}
+  {%- if isColor -%}
+    {%- set buttonClass = buttonClass + ' is-color' -%}
+  {%- endif -%}
 
   <a href="{{ href }}" target="_blank" class="social-button {{ buttonClass }}">
     <span class="icon">
       <i class="fa fa-{{ icon }}"></i>
     </span>
   </a>
-{% endmacro %}
+{%- endmacro %}
 
 {# A macro that outputs all the social media icon buttons #}
 {% macro socialButtons(size = 'normal', isColor = false) %}
