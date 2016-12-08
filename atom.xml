@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luketillman.com/"/>
-  <updated>2016-12-08T17:38:28.926Z</updated>
+  <updated>2015-01-27T17:06:23.569Z</updated>
   <id>http://www.luketillman.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.luketillman.com/developing-with-cassandra-on-windows/"/>
     <id>http://www.luketillman.com/developing-with-cassandra-on-windows/</id>
     <published>2015-01-27T17:06:23.569Z</published>
-    <updated>2016-12-08T17:38:28.926Z</updated>
+    <updated>2015-01-27T17:06:23.569Z</updated>
     
     <summary type="html">
     
@@ -42,7 +42,7 @@
     <link href="http://www.luketillman.com/killrvideo-cassandra-csharp-and-azure/"/>
     <id>http://www.luketillman.com/killrvideo-cassandra-csharp-and-azure/</id>
     <published>2015-01-21T22:27:00.000Z</published>
-    <updated>2016-12-08T17:38:28.938Z</updated>
+    <updated>2015-01-21T22:27:00.000Z</updated>
     
     <summary type="html">
     
@@ -70,7 +70,7 @@
     <link href="http://www.luketillman.com/intro-to-python-and-cassandra-presentation-on-windows/"/>
     <id>http://www.luketillman.com/intro-to-python-and-cassandra-presentation-on-windows/</id>
     <published>2014-10-13T19:19:03.236Z</published>
-    <updated>2016-12-08T17:38:28.938Z</updated>
+    <updated>2014-10-13T19:19:03.236Z</updated>
     
     <summary type="html">
     
@@ -92,7 +92,7 @@
     <link href="http://www.luketillman.com/showing-off-cassandra-on-azure/"/>
     <id>http://www.luketillman.com/showing-off-cassandra-on-azure/</id>
     <published>2014-09-15T23:07:14.376Z</published>
-    <updated>2016-12-08T17:38:28.938Z</updated>
+    <updated>2014-09-15T23:07:14.376Z</updated>
     
     <summary type="html">
     
@@ -116,7 +116,7 @@
     <link href="http://www.luketillman.com/introducing-cqlpoco-an-object-mapper-for-cassandra-and-net/"/>
     <id>http://www.luketillman.com/introducing-cqlpoco-an-object-mapper-for-cassandra-and-net/</id>
     <published>2014-08-11T18:17:30.880Z</published>
-    <updated>2016-12-08T17:38:28.938Z</updated>
+    <updated>2014-08-11T18:17:30.880Z</updated>
     
     <summary type="html">
     
@@ -138,7 +138,7 @@
     <link href="http://www.luketillman.com/cassandra-day-silicon-valley-2014-roundup/"/>
     <id>http://www.luketillman.com/cassandra-day-silicon-valley-2014-roundup/</id>
     <published>2014-04-09T15:09:53.939Z</published>
-    <updated>2016-12-08T17:38:28.926Z</updated>
+    <updated>2014-04-09T15:09:53.939Z</updated>
     
     <summary type="html">
     
@@ -154,7 +154,7 @@
     <link href="http://www.luketillman.com/how-my-favorite-oracle-error-led-me-to-datastax-and-cassandra/"/>
     <id>http://www.luketillman.com/how-my-favorite-oracle-error-led-me-to-datastax-and-cassandra/</id>
     <published>2014-03-18T18:40:32.272Z</published>
-    <updated>2016-12-08T17:38:28.938Z</updated>
+    <updated>2014-03-18T18:40:32.272Z</updated>
     
     <summary type="html">
     
