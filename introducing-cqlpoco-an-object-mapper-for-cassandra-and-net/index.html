@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <title>Introducing CqlPoco: an object mapper for Cassandra and .NET - Luke Tillman</title>
+  <meta name="author" content="Luke Tillman" />
+
+  <link rel="alternate" href="/atom.xml" type="application/atom+xml" title="Luke Tillman ATOM Feed" />
+  <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
+  <link rel="prefetch" href="http://www.luketillman.com" />
+
+  <link href="/css/styles.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  
+
+<link rel="canonical" href="http://www.luketillman.com/introducing-cqlpoco-an-object-mapper-for-cassandra-and-net/" />
+
+<meta name="description" content="After spending some time writing the KillrVideo app and ASP.NET Identity persistence for Cassandra, one thing became glaringly obvious to me--I really missed having a micro-ORM. I spent a lot of time writing boilerplate mapping code, taking rows" />
+<meta name="keywords" content="cassandra,c#,cqlpoco" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@LukeTillman" />
+
+
+<meta property="og:title" content="Introducing CqlPoco: an object mapper for Cassandra and .NET" />
+<meta property="og:description" content="After spending some time writing the KillrVideo app and ASP.NET Identity persistence for Cassandra, one thing became glaringly obvious to me--I really missed having a micro-ORM. I spent a lot of time writing boilerplate mapping code, taking rows" />
+<meta property="og:site_name" content="Luke Tillman" />
+<meta property="og:url" content="http://www.luketillman.com/introducing-cqlpoco-an-object-mapper-for-cassandra-and-net/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-08-11T18:17:30.880Z" />
+<meta property="article:modified_time" content="2016-12-08T16:59:57.434Z" />
+<meta property="article:author" content="Luke Tillman" />
+<meta property="article:tag" content="cassandra" />
+<meta property="article:tag" content="c#" />
+<meta property="article:tag" content="cqlpoco" />
+
+<script type="application/ld+json">
+  {"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":"http://www.luketillman.com/introducing-cqlpoco-an-object-mapper-for-cassandra-and-net/","author":{"@type":"Person","name":"Luke Tillman"},"publisher":{"@type":"Person","name":"Luke Tillman"},"headline":"Introducing CqlPoco: an object mapper for Cassandra and .NET","keywords":"cassandra,c#,cqlpoco","description":"After spending some time writing the KillrVideo app and ASP.NET Identity persistence for Cassandra, one thing became glaringly obvious to me--I really missed having a micro-ORM.  I spent a lot of time writing boilerplate mapping code, taking rows","dateModified":"2016-12-08T16:59:57.434Z","datePublished":"2014-08-11T18:17:30.880Z"}
+</script>
+  
+</head>
+<body>
+  
+  <header id="site-header">
+    <nav class="nav">
+      <div class="container is-fluid">
+        <div class="nav-left">
+          <span class="nav-item is-brand">
+            <a class="button is-dark is-medium" href="/">
+              <span class="icon">
+                <i class="fa fa-bookmark-o"></i>
+              </span>
+              <span>Luke Tillman</span>
+            </a>
+          </span>
+        </div>
+
+        
+        <span class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+
+        <div class="nav-right nav-menu">
+          <a class="nav-item" href="/about">
+            About
+          </a>
+          <a class="nav-item" href="/contact">
+            Contact
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          
+          
+<article class="post">
+  
+  
+
+
+<header class="header">
+  <ul class="post-tags">
+    
+    <li class="post-tag">
+      <a href="/tags/cassandra/">cassandra</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/c/">c#</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/cqlpoco/">cqlpoco</a>
+    </li>
+    
+  </ul>
+  <h1 class="title">
+    
+    
+    Introducing CqlPoco: an object mapper for Cassandra and .NET
+    
+  </h1>
+  <p class="post-metadata">
+    Posted on <span class="icon"><i class="fa fa-clock-o"></i></span> 
+    <time class="post-time" datetime="2014-08-11T18:17:30.880Z">August 11, 2014</time>
+  </p>
+</header>
+
+  <div class="content post-content">
+    <p>After spending some time writing the <a href="https://github.com/LukeTillman/killrvideo-csharp" target="_blank">KillrVideo</a> app and <a href="https://github.com/joshuadeanhall/AspNet.Identity.Cassandra" target="_blank">ASP.NET
+Identity</a> persistence for Cassandra, one thing became
+glaringly obvious to me--I really missed having a micro-ORM.  I spent a lot of time writing boilerplate mapping code,
+taking rows returned from Cassandra and mapping them to POCOs in my code.  When interacting with a relational database
+in .NET we have a number of packages available to handle this for us.  They span the gamut from the more heavyweight,
+full-fledged ORMs (Entity Framework, NHibernate), to the more lightweight micro-ORMs
+(<a href="https://github.com/StackExchange/dapper-dot-net" target="_blank">Dapper.NET</a>, <a href="https://github.com/schotime/NPoco" target="_blank">PetaPoco/NPoco</a>,
+<a href="https://github.com/robconery/massive" target="_blank">Massive</a>).</p>
+<p>I personally have always been more of a fan of the micro-ORM approach and so I set out to create a project that would
+allow me to eliminate a lot of the boilerplate mapping code in my applications, but still allow me to write vanilla CQL
+queries when interacting with Cassandra.  The result:  <a href="https://github.com/LukeTillman/cqlpoco" target="_blank">CqlPoco</a>, an object
+mapper for Cassandra and .NET.</p>
+<h2 id="a-simple-query-example">A simple query example</h2>
+<p>All right, on with the code samples.  Here&#39;s what a simple query might look like with CqlPoco.</p>
+<pre><code class="hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+{
+    <span class="hljs-keyword">public</span> Guid UserId { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Name { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+}
+
+<span class="hljs-comment">// Get a list of users from Cassandra with CqlPoco</span>
+List&lt;User&gt; users = client.Fetch&lt;User&gt;(<span class="hljs-string">"SELECT userid, name FROM users"</span>);</code></pre><p>This works by mapping the column names in your CQL statement to the property names on the <code>User</code> class (using a
+case-insensitive match).  Simple query scenarios like this are possible without doing any mapping configuration.</p>
+<h2 id="configuring-cqlpoco">Configuring CqlPoco</h2>
+<p>After looking at the last example, you might be asking yourself what the <code>client</code> object is and where it came from.  The
+main interface for interacting with CqlPoco is the <code>ICqlClient</code> interface and getting one is pretty easy.  CqlPoco uses
+the <a href="https://github.com/datastax/csharp-driver" target="_blank">DataStax .NET driver</a> for Apache Cassandra to execute queries.  When you
+install CqlPoco via <a href="https://www.nuget.org/packages/CqlPoco/" target="_blank">the NuGet package</a>, the driver will be installed as well.
+You&#39;ll want to configure CqlPoco at the same time as you configure the driver.  Here&#39;s an example of what that might
+look like.</p>
+<pre><code class="hljs"><span class="hljs-comment">// Use the Cluster builder from the DataStax driver to connect </span>
+<span class="hljs-comment">// to your Cassandra cluster</span>
+Cluster cluster = Cluster.Builder().AddContactPoint(<span class="hljs-string">"127.0.0.1"</span>).Build();
+ISession session = cluster.Connect(<span class="hljs-string">"mykeyspace"</span>);
+
+<span class="hljs-comment">// Now configure CqlPoco by providing your ISesssion instance</span>
+ICqlClient client = CqlClientConfiguration.ForSession(session).BuildCqlClient();</code></pre><p>This instance of <code>ICqlClient</code> is thread-safe and should be saved and reused all over your application.  For example, you
+might register is as a Singleton in your IoC container of choice.</p>
+<h2 id="defining-mappings">Defining Mappings</h2>
+<p>For more complex scenarios than the simple query above, you&#39;ll want to have more control over how Cassandra rows are
+mapped to your POCOs.  You have two options for how to define mappings with CqlPoco: decorate your POCOs with attributes
+or define the mappings in a separate class using a fluent interface.</p>
+<h4 id="attribute-example">Attribute Example</h4>
+<pre><code class="hljs">[TableName(<span class="hljs-string">"users"</span>)]
+[PrimaryKey(<span class="hljs-string">"userid"</span>)]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+{
+    [Column(<span class="hljs-string">"userid"</span>)]
+    <span class="hljs-keyword">public</span> Guid Id { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Name { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+}</code></pre><h4 id="fluent-interface-example">Fluent Interface Example</h4>
+<pre><code class="hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MyMappings</span> : <span class="hljs-title">Mappings</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyMappings</span>(<span class="hljs-params"></span>)
+    </span>{
+        <span class="hljs-comment">// Just define mappings in the constructor of your class that</span>
+        <span class="hljs-comment">// inherits from Mappings</span>
+        For&lt;User&gt;().TableName(<span class="hljs-string">"users"</span>)
+                   .PrimaryKey(<span class="hljs-string">"userid"</span>)
+                   .Column(u =&gt; u.Id, cm =&gt; cm.WithName(<span class="hljs-string">"userid"</span>));
+    }
+}</code></pre><p>If you decide to go the fluent interface route, you can tell CqlPoco about your mappings when you configure it.  For
+example:</p>
+<pre><code class="hljs">ICqlClient client = CqlClientConfiguration.ForSession(session)
+                                          .UseMappings&lt;MyMappings&gt;()
+                                          .BuildCqlClient();</code></pre><h2 id="more-api-examples">More API Examples</h2>
+<p>The <code>ICqlClient</code> interface has a lot of other methods covering Inserts, Updates, Deletes, and more.  And all of the
+methods come in both synchronous and <code>async</code> flavors.  Here&#39;s a quick sampling of some of what&#39;s available.</p>
+<h4 id="auto-generate-select-and-from-on-all-query-methods">Auto-generate SELECT and FROM on all query methods</h4>
+<p>All of the query methods will auto-generate the <code>SELECT</code> and <code>FROM</code> parts of your query if omitted, allowing you to just
+provide the predicate (or omit it completely).</p>
+<pre><code class="hljs"><span class="hljs-comment">// All query methods (Fetch, Single, First, etc.) will auto generate the SELECT and FROM</span>
+<span class="hljs-comment">// clauses if not specified</span>
+List&lt;User&gt; users = client.Fetch&lt;User&gt;();
+List&lt;User&gt; users = client.Fetch&lt;User&gt;(<span class="hljs-string">"FROM users WHERE name = ?"</span>, someName);
+List&lt;User&gt; users = client.Fetch&lt;User&gt;(<span class="hljs-string">"WHERE name = ?"</span>, someName);</code></pre><h4 id="getting-one-record">Getting one record</h4>
+<p>There are query methods for retrieving a single record that behave identically to the LINQ methods you&#39;re used to using
+in other parts of the framework.</p>
+<pre><code class="hljs"><span class="hljs-comment">// Single and SingleOrDefault for getting a single record</span>
+<span class="hljs-keyword">var</span> user = client.Single&lt;User&gt;(<span class="hljs-string">"WHERE userid = ?"</span>, userId);
+<span class="hljs-keyword">var</span> user = client.SingleOrDefault&lt;User&gt;(<span class="hljs-string">"WHERE userid = ?"</span>, userId);
+
+<span class="hljs-comment">// First and FirstOrDefault for getting first record</span>
+<span class="hljs-keyword">var</span> user = client.First&lt;User&gt;(<span class="hljs-string">"SELECT * FROM users"</span>);
+<span class="hljs-keyword">var</span> user = client.FirstOrDefault&lt;User&gt;(<span class="hljs-string">"SELECT * FROM users"</span>);</code></pre><h4 id="flattening-when-selecting-a-single-column">Flattening when selecting a single column</h4>
+<p>Sometimes you want to retrieve just a single column without creating a POCO with a property for holding that data.  For
+this case, CqlPoco supports &quot;flattening&quot; the single column to just the column value&#39;s type.</p>
+<pre><code class="hljs"><span class="hljs-comment">// Fetch just a single column and return as the column value's type</span>
+Guid userId = client.First&lt;Guid&gt;(<span class="hljs-string">"SELECT userid FROM users"</span>);
+List&lt;<span class="hljs-keyword">string</span>&gt; names = client.Fetch&lt;<span class="hljs-keyword">string</span>&gt;(<span class="hljs-string">"SELECT name FROM users"</span>);</code></pre><h4 id="insert">Insert</h4>
+<p>Inserting a POCO is pretty straightforward and CqlPoco will generate the CQL statement for you.</p>
+<pre><code class="hljs"><span class="hljs-comment">// Insert a POCO</span>
+<span class="hljs-keyword">var</span> newUser = <span class="hljs-keyword">new</span> User { UserId = Guid.NewGuid(), Name = <span class="hljs-string">"SomeNewUser"</span> };
+client.Insert(newUser);</code></pre><h4 id="update">Update</h4>
+<p>You can update using a POCO and the whole CQL statement will be generated for you, or you can update with CQL of your
+own and CqlPoco will automatically prepend your CQL with <code>UPDATE tablename</code> as appropriate for your POCO.</p>
+<pre><code class="hljs"><span class="hljs-comment">// Update with POCO</span>
+someUser.Name = <span class="hljs-string">"A new name!"</span>;
+client.Update(someUser);
+
+<span class="hljs-comment">// Update with CQL (will prepend table name to CQL)</span>
+client.Update&lt;User&gt;(<span class="hljs-string">"SET name = ? WHERE userid = ?"</span>, someNewName, userId);</code></pre><h4 id="delete">Delete</h4>
+<p>You can delete by providing a POCO and the whole CQL statement will be generated for you, or you delete with CQL of your
+own and CqlPoco will automatically prepend your CQL with <code>DELETE FROM tablename</code> as appropriate for your POCO.</p>
+<pre><code class="hljs"><span class="hljs-comment">// Delete with POCO</span>
+client.Delete(someUser);
+
+<span class="hljs-comment">// Delete with CQL (will prepend table name to CQL)</span>
+client.Delete&lt;User&gt;(<span class="hljs-string">"WHERE userid = ?"</span>, userId);</code></pre><h4 id="atomic-batches">Atomic Batches</h4>
+<p>Atomic batches are frequently used in Cassandra when you want to duplicate/denormalize your data on write.  All of write
+methods discussed above (Insert, Update, Delete) are available from a batch as well.</p>
+<pre><code class="hljs"><span class="hljs-comment">// Create a new batch</span>
+ICqlBatch batch = cqlClient.CreateBatch();
+
+<span class="hljs-keyword">var</span> newUser = <span class="hljs-keyword">new</span> User { UserId = Guid.NewGuid(), Name = <span class="hljs-string">"SomeNewUser"</span> };
+
+<span class="hljs-comment">// Add some commands to the batch using the same API</span>
+batch.Insert(newUser);
+batch.Delete(<span class="hljs-string">"WHERE userid = ?"</span>, userId);
+
+<span class="hljs-comment">// Now execute the batch</span>
+cqlClient.Execute(batch);</code></pre><h2 id="the-future">The Future</h2>
+<p>This is a pretty good round-up of the 1.0 API for CqlPoco and I&#39;m hoping that it will eliminate a lot of boilerplate
+code for .NET developers when interacting with Cassandra.  But there&#39;s much more to be done.  Things like schema
+syncing/generation from POCOs, support for polymorphism, and more are definitely candidates for future releases (the
+great <a href="https://github.com/cqlengine/cqlengine" target="_blank">cqlengine</a> project for Python has been and will continue to be an
+inspiration for future features).</p>
+<p>Let me know if you&#39;re using CqlPoco, what your pain points still are, and how we can make it better by sending me a
+message on <a href="https://twitter.com/LukeTillman" target="_blank">Twitter</a> or by getting involved on
+<a href="https://github.com/LukeTillman/cqlpoco" target="_blank">GitHub</a>.  The code is available under the Apache 2 license and I&#39;m happily
+accepting PRs.</p>
+
+  </div>
+
+  
+  <ul class="post-tags has-text-right">
+    
+    <li class="post-tag">
+      <a href="/tags/cassandra/" class="button is-light">cassandra</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/c/" class="button is-light">c#</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/cqlpoco/" class="button is-light">cqlpoco</a>
+    </li>
+    
+  </ul>
+
+  
+  <footer class="post-footer">
+    <div class="media bio">
+      <figure class="media-left">
+        <p class="image is-128x128">
+          <img src="/images/luke.jpg" alt="Luke Tillman">
+        </p>
+      </figure>
+      <div class="media-content">
+        <h4 class="title is-4">
+          Luke Tillman
+        </h4>
+        <p class="bio-text">
+          Luke is an engineer, soccer fan, political junkie, and lover of all nerdery. He&#39;s currently employed as  a Technical Evangelist at DataStax where he frequently works with Cassandra, .NET, and Node.js.
+
+        </p>
+        <p class="bio-text">
+          
+  <a href="https://twitter.com/LukeTillman" target="_blank" class="social-button twitter is-color">
+    <span class="icon">
+      <i class="fa fa-twitter"></i>
+    </span>
+  </a>
+  <a href="https://github.com/LukeTillman" target="_blank" class="social-button github is-color">
+    <span class="icon">
+      <i class="fa fa-github"></i>
+    </span>
+  </a>
+  <a href="/atom.xml" target="_blank" class="social-button rss is-color">
+    <span class="icon">
+      <i class="fa fa-rss"></i>
+    </span>
+  </a>
+  <a href="https://plus.google.com/+LukeTillman1" target="_blank" class="social-button google-plus is-color">
+    <span class="icon">
+      <i class="fa fa-google-plus"></i>
+    </span>
+  </a>
+  <a href="https://www.linkedin.com/in/luketillman" target="_blank" class="social-button linkedin is-color">
+    <span class="icon">
+      <i class="fa fa-linkedin"></i>
+    </span>
+  </a>
+
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+        </div>
+        <div class="column sidebar-column">
+          
+          
+<aside class="sidebar bio">
+  <p class="image is-128x128">
+    <img src="/images/luke.jpg" alt="Luke Tillman">
+  </p>
+
+  <h4 class="title is-4">
+    Luke Tillman
+  </h4>
+
+  <p class="bio-text">
+    
+  <a href="https://twitter.com/LukeTillman" target="_blank" class="social-button twitter is-small">
+    <span class="icon">
+      <i class="fa fa-twitter"></i>
+    </span>
+  </a>
+  <a href="https://github.com/LukeTillman" target="_blank" class="social-button github is-small">
+    <span class="icon">
+      <i class="fa fa-github"></i>
+    </span>
+  </a>
+  <a href="/atom.xml" target="_blank" class="social-button rss is-small">
+    <span class="icon">
+      <i class="fa fa-rss"></i>
+    </span>
+  </a>
+  <a href="https://plus.google.com/+LukeTillman1" target="_blank" class="social-button google-plus is-small">
+    <span class="icon">
+      <i class="fa fa-google-plus"></i>
+    </span>
+  </a>
+  <a href="https://www.linkedin.com/in/luketillman" target="_blank" class="social-button linkedin is-small">
+    <span class="icon">
+      <i class="fa fa-linkedin"></i>
+    </span>
+  </a>
+
+  </p>
+
+  <p class="bio-text">
+    Luke is an engineer, soccer fan, political junkie, and lover of all nerdery. He&#39;s currently employed as  a Technical Evangelist at DataStax where he frequently works with Cassandra, .NET, and Node.js.
+
+  </p>
+</aside>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <footer id="site-footer" class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          Copyright &copy; <a class="link" href="http://www.luketillman.com">Luke Tillman</a>. 2016 &bull; 
+          All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49061569-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</body>
+</html>

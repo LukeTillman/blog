@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <title>Developing with Cassandra on Windows - Luke Tillman</title>
+  <meta name="author" content="Luke Tillman" />
+
+  <link rel="alternate" href="/atom.xml" type="application/atom+xml" title="Luke Tillman ATOM Feed" />
+  <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
+  <link rel="prefetch" href="http://www.luketillman.com" />
+
+  <link href="/css/styles.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  
+
+<link rel="canonical" href="http://www.luketillman.com/developing-with-cassandra-on-windows/" />
+
+<meta name="description" content="If you&#39;re like me and currently do most of your development work on a Windows machine, the first thing you&#39;ll need to do when you want to build an application on Cassandra is figure out how to install it on said machine. When I" />
+<meta name="keywords" content="cassandra,killrvideo,windows" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@LukeTillman" />
+
+
+<meta property="og:title" content="Developing with Cassandra on Windows" />
+<meta property="og:description" content="If you&#39;re like me and currently do most of your development work on a Windows machine, the first thing you&#39;ll need to do when you want to build an application on Cassandra is figure out how to install it on said machine. When I" />
+<meta property="og:site_name" content="Luke Tillman" />
+<meta property="og:url" content="http://www.luketillman.com/developing-with-cassandra-on-windows/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-01-27T17:06:23.569Z" />
+<meta property="article:modified_time" content="2016-12-08T16:59:57.426Z" />
+<meta property="article:author" content="Luke Tillman" />
+<meta property="article:tag" content="cassandra" />
+<meta property="article:tag" content="killrvideo" />
+<meta property="article:tag" content="windows" />
+
+<script type="application/ld+json">
+  {"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":"http://www.luketillman.com/developing-with-cassandra-on-windows/","author":{"@type":"Person","name":"Luke Tillman"},"publisher":{"@type":"Person","name":"Luke Tillman"},"headline":"Developing with Cassandra on Windows","keywords":"cassandra,killrvideo,windows","description":"If you're like me and currently do most of your development work on a Windows machine, the first thing you'll need to do when you want to build an application on Cassandra is figure out how to install it on said machine.  When I","dateModified":"2016-12-08T16:59:57.426Z","datePublished":"2015-01-27T17:06:23.569Z"}
+</script>
+  
+</head>
+<body>
+  
+  <header id="site-header">
+    <nav class="nav">
+      <div class="container is-fluid">
+        <div class="nav-left">
+          <span class="nav-item is-brand">
+            <a class="button is-dark is-medium" href="/">
+              <span class="icon">
+                <i class="fa fa-bookmark-o"></i>
+              </span>
+              <span>Luke Tillman</span>
+            </a>
+          </span>
+        </div>
+
+        
+        <span class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+
+        <div class="nav-right nav-menu">
+          <a class="nav-item" href="/about">
+            About
+          </a>
+          <a class="nav-item" href="/contact">
+            Contact
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          
+          
+<article class="post">
+  
+  
+
+
+<header class="header">
+  <ul class="post-tags">
+    
+    <li class="post-tag">
+      <a href="/tags/cassandra/">cassandra</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/killrvideo/">killrvideo</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/windows/">windows</a>
+    </li>
+    
+  </ul>
+  <h1 class="title">
+    
+    
+    Developing with Cassandra on Windows
+    
+  </h1>
+  <p class="post-metadata">
+    Posted on <span class="icon"><i class="fa fa-clock-o"></i></span> 
+    <time class="post-time" datetime="2015-01-27T17:06:23.569Z">January 27, 2015</time>
+  </p>
+</header>
+
+  <div class="content post-content">
+    <p>If you&#39;re like me and currently do most of your development work on a Windows machine, the first thing you&#39;ll need to do
+when you want to build an application on Cassandra is figure out how to install it on said machine.  When I started
+working on <a href="/killrvideo-cassandra-csharp-and-azure/">KillrVideo</a>, this was one of the first things I did.  Fortunately,
+this is a lot easier than it was just a few years ago.</p>
+<p>The first thing to do is to jump over to the <a href="http://planetcassandra.org/cassandra/" target="_blank">Planet Cassandra downloads page</a>.
+Here you&#39;ll find a list of DataStax Community Edition downloads organized by Cassandra version and operating system.</p>
+<img src="/developing-with-cassandra-on-windows/2015-01-22_10h44_05.png" alt="Planet Cassandra downloads page" title="Planet Cassandra downloads page">
+<p>DataStax Community Edition is really just the open source version of <a href="http://cassandra.apache.org/" target="_blank">Apache Cassandra</a>
+bundled with the <a href="http://www.datastax.com/what-we-offer/products-services/datastax-opscenter" target="_blank">DataStax OpsCenter</a> tool
+for managing and monitoring a cluster.  You&#39;ll want to grab the appropriate MSI installer for your version of Windows
+(32-bit or 64-bit).</p>
+<blockquote>
+<p>You&#39;ll also find a link to download <a href="http://www.datastax.com/what-we-offer/products-services/datastax-enterprise" target="_blank">DataStax
+Enterprise</a> on the page.  If you&#39;re
+interested in easy integration with things like Spark, Solr, and Hadoop, you might want to take a look at using DSE.
+Unfortunately, DSE does not currently support installation on Windows machines, so if you want to prototype against
+DSE, you&#39;re going to have to create a Linux VM and install DSE there (a topic for another blog post).</p>
+</blockquote>
+<h2 id="install-cassandra-on-windows">Install Cassandra on Windows</h2>
+<p>Once you&#39;ve downloaded the appropriate MSI from Planet Cassandra, run it to launch the setup wizard.</p>
+<img src="/developing-with-cassandra-on-windows/2015-01-22_11h14_11.png" alt="DataStax Community Edition setup wizard" title="DataStax Community Edition setup wizard">
+<p>Follow the prompts in the setup wizard.  By default, the installer will put the Community Edition under <code>C:\Program
+Files\DataStax Community</code>.  Be sure that you leave the boxes checked when asked about automatically starting services.</p>
+<img src="/developing-with-cassandra-on-windows/2015-01-22_11h16_33.png" alt="Setup wizard prompt about starting services" title="Setup wizard prompt about starting services">
+<p>When the wizard has completed the installation, hit Finish to exit the installer.  The installer will add three Windows
+services to the system.  You can verify this using the Services snap-in control panel (in Windows 7, do Start, Run...,
+<code>services.msc</code>).</p>
+<img src="/developing-with-cassandra-on-windows/2015-01-22_11h27_50.png" alt="Services control panel in Windows 7 with DataStax Community Edition services" title="Services control panel in Windows 7 with DataStax Community Edition services">
+<p>The three services installed are:</p>
+<ul>
+<li><strong>DataStax Cassandra Community Server</strong>: this is the Cassandra database itself.</li>
+<li><strong>DataStax OpsCenter Agent</strong>: the agent for OpsCenter that collects health/statistics information on your cluster and
+reports them back to OpsCenter.</li>
+<li><strong>DataStax OpsCenter Community</strong>: the OpsCenter program. Collects information from the agents and provides the web UI
+you can use to view health information and manage your cluster.</li>
+</ul>
+<h2 id="optional-configuration">Optional Configuration</h2>
+<p>At this point, you should have a running Cassandra cluster (with a single node) on your machine with no further
+configuration needed.  If you&#39;re interested in digging into some of the configuration options available to you with
+Cassandra though, you&#39;ll want to have a look at the <code>cassandra.yaml</code> file.  If you used the default installation
+location during the setup wizard, you can find this file under:</p>
+<pre><code class="hljs">C:\Program Files\DataStax Community\apache-cassandra\conf\cassandra.yaml</code></pre><p>This file has a <em>ton</em> of configuration options and is pretty well documented in the comments.  One change that I like to
+make is the location on disk where Cassandra persists data.  By default, the installer will configure your
+<code>cassandra.yaml</code> file to place all these files in subdirectories under:</p>
+<pre><code class="hljs">C:\Program Files\DataStax Community\data</code></pre><p>I like to move these over to a directory I create on my <code>D</code> drive.  The relevant keys in the YAML file for changing this
+configuration are:</p>
+<ul>
+<li><code>data_file_directories</code>: the directories where Cassandra stores your SSTable data.</li>
+<li><code>commitlog_directory</code>: the directory where the Cassandra commit log is stored.</li>
+<li><code>saved_caches_directory</code>: the directory where Cassandra saves caches (like the Key Cache).</li>
+</ul>
+<p>If you decide to make this change, here are the steps I usually follow:</p>
+<ol>
+<li>Start by stopping the DataStax Windows services mentioned above (you can do this from the Services control panel by
+right-clicking on each service).  </li>
+<li>Update the configuration in the YAML file to point to the new location you&#39;ve created (I usually leave the
+subdirectory names like <code>saved_caches</code> and <code>commitlog</code> intact and just change the root). Be sure to save your
+changes.  </li>
+<li>With the services stopped, you should then be able to move all the data files from their old location to the new one
+(just cut and paste in Windows Explorer).</li>
+<li>Last, start the Windows services back up (again, you can do this from the Services control panel by right-clicking on
+each service).</li>
+</ol>
+<blockquote>
+<p>Any time you make any changes to the <code>cassandra.yaml</code> file, you should restart the Community Server service to make
+sure the changes take effect.</p>
+</blockquote>
+<h2 id="tools-and-utilities-provided">Tools and Utilities Provided</h2>
+<p>There are a couple of tools that come installed out of the box with Cassandra that you should become familiar with.
+While I&#39;m only going to mention two, there are a number of others available as well.  All of these are installed on
+Windows by default under:</p>
+<pre><code class="hljs">C:\Program Files\DataStax Community\apache-cassandra\bin</code></pre><h4 id="cql-shell">CQL Shell</h4>
+<p>CQL Shell, or as it&#39;s more commonly abbreviated <code>cqlsh</code> is a REPL for running commands and CQL statements interactively
+against a Cassandra cluster.  When you install Cassandra on Windows with the installer, you&#39;ll automatically get a Start
+Menu link (under the DataStax Community Edition folder) to launch it.  You can also launch it from the command line
+using <code>cqlsh.bat</code> from the Cassandra <code>bin</code> directory mentioned above.  Try using the <code>-h</code> or <code>--help</code> flag if launching
+from the command line to see all of the options available.</p>
+<p>By default (and when launching from the Windows Start Menu), <code>cqlsh</code> will connect to your Cassandra node on <code>localhost</code>.
+You can use CQL Shell to check that your newly installed Cassandra cluster is running properly.  For example, we could
+run the <code>DESCRIBE KEYSPACES</code> command to list the Keyspaces currently available in our cluster.</p>
+<img src="/developing-with-cassandra-on-windows/2015-01-22_12h00_36.png" alt="Running DESCRIBE KEYSPACES with cqlsh on Windows" title="Running DESCRIBE KEYSPACES with cqlsh on Windows">
+<p>Check out the <a href="http://www.datastax.com/documentation/cql/3.1/cql/cql_using/about_cql_c.html" target="_blank">CQL documentation</a> on
+DataStax web site for more details on CQL and using CQL Shell.</p>
+<h4 id="nodetool">NodeTool</h4>
+<p>NodeTool is the swiss army knife of tools for Cassandra.  It&#39;s got a <em>ton</em> of commands for managing your cluster.  You
+can find it under the Cassandra <code>bin</code> directory mentioned above.  NodeTool is a command line only tool and you won&#39;t
+find a Start Menu link for launching it.  Try running <code>nodetool.bat</code> without any arguments to see the list of commands
+available to you.</p>
+<p>Here&#39;s an example of using it to check the Cassandra version of my local node, and then the status of the cluster.</p>
+<img src="/developing-with-cassandra-on-windows/2015-01-22_12h52_06.png" alt="Using nodetool version and nodetool status from the Windows command prompt" title="Using nodetool version and nodetool status from the Windows command prompt">
+<p>Check out the <a href="http://www.datastax.com/documentation/cassandra/2.0/cassandra/tools/toolsNodetool_r.html" target="_blank">nodetool
+documentation</a> on the DataStax
+web site for more details on what you can do with nodetool.</p>
+<h2 id="devcenter-download-it">DevCenter, Download It</h2>
+<p>One tool that doesn&#39;t come out of the box that can be really nice to have is the completely free
+<a href="http://www.datastax.com/what-we-offer/products-services/devcenter" target="_blank">DevCenter</a> tool from DataStax.  DevCenter provides a
+GUI for interacting with and exploring your Cassandra cluster.  You can grab a copy for Windows from the <a href="http://www.datastax.com/download#dl-devcenter" target="_blank">DataStax
+Downloads</a> page.  It currently doesn&#39;t offer a Windows installer, so just
+unzip the archive you&#39;ve downloaded and then run the <code>DevCenter.exe</code> executable from Windows.</p>
+<p>Here&#39;s what it looks like exploring/querying the data from the <a href="/killrvideo-cassandra-csharp-and-azure/">KillrVideo app</a>
+from inside DevCenter.</p>
+<img src="/developing-with-cassandra-on-windows/2015-01-22_13h09_17.png" alt="Querying the KillrVideo schema from DevCenter" title="Querying the KillrVideo schema from DevCenter">
+<h2 id="the-future-of-cassandra-on-windows">The Future of Cassandra on Windows</h2>
+<p>Getting Cassandra running on Windows is a pretty straightforward task these days, but what about production deployments?
+The current reality (as of Cassandra 2.1) is that while Windows support is pretty robust and totally fine to do
+development and prototyping with, it&#39;s definitely still in &quot;beta&quot;.  In fact, Jonathan Ellis talked about this briefly in
+his recent keynote address at Cassandra Summit Europe 2014.</p>
+<figure>
+  <iframe width="560" height="315" src="//www.youtube.com/embed/efYIRKs63T4#t=78m42s" frameborder="0" allowfullscreen></iframe>
+  <figcaption>
+    <header>Cassandra Summit Europe 2014 Keynote</header>
+    Jonathan Ellis, chair of the Apache Cassandra project and CTO of DataStax talks about Cassandra on Windows during his keynote
+    address at Cassandra Summit Europe 2014 in London.
+  </figcaption>
+</figure>
+
+<p>If you&#39;re feeling adventurous and using Cassandra 2.1 or higher, deploying in production on Windows is certainly an
+option.  (And be sure to <a href="https://issues.apache.org/jira/browse/CASSANDRA" target="_blank">file bug reports</a> for any issues you
+encounter).  If you&#39;re a little more risk-averse though (or want to ensure you get the best performance possible from
+Cassandra), you&#39;ll probably want to stick with doing production deployments on Linux, at least until Cassandra 3.0 rolls
+out where we&#39;ll hopefully have close to performance parity.</p>
+<h2 id="further-reading">Further Reading</h2>
+<p>The <a href="http://www.datastax.com/dev/blog" target="_blank">DataStax Dev Blog</a> always has great content for Cassandra developers and users.
+A couple of recent blog posts might be of interest to Windows users:</p>
+<ul>
+<li><a href="http://www.datastax.com/dev/blog/cassandra-and-windows-past-present-and-future" target="_blank">Cassandra and Windows: Past, Present, and
+Future</a> by Josh McKenzie is a great
+writeup of some of the challenges of getting Cassandra performance parity under Windows.  If you&#39;re interested in why
+Cassandra performance in Windows has historically lagged Linux, take a look.</li>
+<li><a href="http://www.datastax.com/dev/blog/ccm-2-0-and-windows" target="_blank">CCM 2.0 and Windows</a> by Kishan Karunaratne is a great rundown
+of using the <a href="https://github.com/pcmanus/ccm" target="_blank">Cassandra Cluster Manager</a> tool for running a cluster of Cassandra nodes
+on your local Windows machine.  If you&#39;re in a more advanced testing scenario locally and you need a cluster of nodes
+instead of the single node that DataStax Community Edition provides, this will get you started.</li>
+</ul>
+
+  </div>
+
+  
+  <ul class="post-tags has-text-right">
+    
+    <li class="post-tag">
+      <a href="/tags/cassandra/" class="button is-light">cassandra</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/killrvideo/" class="button is-light">killrvideo</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/windows/" class="button is-light">windows</a>
+    </li>
+    
+  </ul>
+
+  
+  <footer class="post-footer">
+    <div class="media bio">
+      <figure class="media-left">
+        <p class="image is-128x128">
+          <img src="/images/luke.jpg" alt="Luke Tillman">
+        </p>
+      </figure>
+      <div class="media-content">
+        <h4 class="title is-4">
+          Luke Tillman
+        </h4>
+        <p class="bio-text">
+          Luke is an engineer, soccer fan, political junkie, and lover of all nerdery. He&#39;s currently employed as  a Technical Evangelist at DataStax where he frequently works with Cassandra, .NET, and Node.js.
+
+        </p>
+        <p class="bio-text">
+          
+  <a href="https://twitter.com/LukeTillman" target="_blank" class="social-button twitter is-color">
+    <span class="icon">
+      <i class="fa fa-twitter"></i>
+    </span>
+  </a>
+  <a href="https://github.com/LukeTillman" target="_blank" class="social-button github is-color">
+    <span class="icon">
+      <i class="fa fa-github"></i>
+    </span>
+  </a>
+  <a href="/atom.xml" target="_blank" class="social-button rss is-color">
+    <span class="icon">
+      <i class="fa fa-rss"></i>
+    </span>
+  </a>
+  <a href="https://plus.google.com/+LukeTillman1" target="_blank" class="social-button google-plus is-color">
+    <span class="icon">
+      <i class="fa fa-google-plus"></i>
+    </span>
+  </a>
+  <a href="https://www.linkedin.com/in/luketillman" target="_blank" class="social-button linkedin is-color">
+    <span class="icon">
+      <i class="fa fa-linkedin"></i>
+    </span>
+  </a>
+
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+        </div>
+        <div class="column sidebar-column">
+          
+          
+<aside class="sidebar bio">
+  <p class="image is-128x128">
+    <img src="/images/luke.jpg" alt="Luke Tillman">
+  </p>
+
+  <h4 class="title is-4">
+    Luke Tillman
+  </h4>
+
+  <p class="bio-text">
+    
+  <a href="https://twitter.com/LukeTillman" target="_blank" class="social-button twitter is-small">
+    <span class="icon">
+      <i class="fa fa-twitter"></i>
+    </span>
+  </a>
+  <a href="https://github.com/LukeTillman" target="_blank" class="social-button github is-small">
+    <span class="icon">
+      <i class="fa fa-github"></i>
+    </span>
+  </a>
+  <a href="/atom.xml" target="_blank" class="social-button rss is-small">
+    <span class="icon">
+      <i class="fa fa-rss"></i>
+    </span>
+  </a>
+  <a href="https://plus.google.com/+LukeTillman1" target="_blank" class="social-button google-plus is-small">
+    <span class="icon">
+      <i class="fa fa-google-plus"></i>
+    </span>
+  </a>
+  <a href="https://www.linkedin.com/in/luketillman" target="_blank" class="social-button linkedin is-small">
+    <span class="icon">
+      <i class="fa fa-linkedin"></i>
+    </span>
+  </a>
+
+  </p>
+
+  <p class="bio-text">
+    Luke is an engineer, soccer fan, political junkie, and lover of all nerdery. He&#39;s currently employed as  a Technical Evangelist at DataStax where he frequently works with Cassandra, .NET, and Node.js.
+
+  </p>
+</aside>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <footer id="site-footer" class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          Copyright &copy; <a class="link" href="http://www.luketillman.com">Luke Tillman</a>. 2016 &bull; 
+          All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49061569-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</body>
+</html>

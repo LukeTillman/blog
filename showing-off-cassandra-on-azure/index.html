@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <title>Showing Off Cassandra on Azure - Luke Tillman</title>
+  <meta name="author" content="Luke Tillman" />
+
+  <link rel="alternate" href="/atom.xml" type="application/atom+xml" title="Luke Tillman ATOM Feed" />
+  <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
+  <link rel="prefetch" href="http://www.luketillman.com" />
+
+  <link href="/css/styles.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  
+
+<link rel="canonical" href="http://www.luketillman.com/showing-off-cassandra-on-azure/" />
+
+<meta name="description" content="One of the cool things about the evangelist team at DataStax is that we&#39;re encouraged to spend time writing code to contribute back to the community. For example, Helena&#39;s work on the Spark Cassandra connector, Jon&#39;s work on cqlengine," />
+<meta name="keywords" content="cassandra,killrvideo,azure,cassandra summit" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@LukeTillman" />
+
+
+<meta property="og:title" content="Showing Off Cassandra on Azure" />
+<meta property="og:description" content="One of the cool things about the evangelist team at DataStax is that we&#39;re encouraged to spend time writing code to contribute back to the community. For example, Helena&#39;s work on the Spark Cassandra connector, Jon&#39;s work on cqlengine," />
+<meta property="og:site_name" content="Luke Tillman" />
+<meta property="og:url" content="http://www.luketillman.com/showing-off-cassandra-on-azure/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-09-15T23:07:14.376Z" />
+<meta property="article:modified_time" content="2016-12-08T16:59:57.438Z" />
+<meta property="article:author" content="Luke Tillman" />
+<meta property="article:tag" content="cassandra" />
+<meta property="article:tag" content="killrvideo" />
+<meta property="article:tag" content="azure" />
+<meta property="article:tag" content="cassandra summit" />
+
+<script type="application/ld+json">
+  {"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":"http://www.luketillman.com/showing-off-cassandra-on-azure/","author":{"@type":"Person","name":"Luke Tillman"},"publisher":{"@type":"Person","name":"Luke Tillman"},"headline":"Showing Off Cassandra on Azure","keywords":"cassandra,killrvideo,azure,cassandra summit","description":"One of the cool things about the evangelist team at DataStax is that we're encouraged to spend time writing code to contribute back to the community.  For example, Helena's work on the Spark Cassandra connector, Jon's work on cqlengine,","dateModified":"2016-12-08T16:59:57.438Z","datePublished":"2014-09-15T23:07:14.376Z"}
+</script>
+  
+</head>
+<body>
+  
+  <header id="site-header">
+    <nav class="nav">
+      <div class="container is-fluid">
+        <div class="nav-left">
+          <span class="nav-item is-brand">
+            <a class="button is-dark is-medium" href="/">
+              <span class="icon">
+                <i class="fa fa-bookmark-o"></i>
+              </span>
+              <span>Luke Tillman</span>
+            </a>
+          </span>
+        </div>
+
+        
+        <span class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+
+        <div class="nav-right nav-menu">
+          <a class="nav-item" href="/about">
+            About
+          </a>
+          <a class="nav-item" href="/contact">
+            Contact
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          
+          
+<article class="post">
+  
+  
+
+
+<header class="header">
+  <ul class="post-tags">
+    
+    <li class="post-tag">
+      <a href="/tags/cassandra/">cassandra</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/killrvideo/">killrvideo</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/azure/">azure</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/cassandra-summit/">cassandra summit</a>
+    </li>
+    
+  </ul>
+  <h1 class="title">
+    
+    
+    Showing Off Cassandra on Azure
+    
+  </h1>
+  <p class="post-metadata">
+    Posted on <span class="icon"><i class="fa fa-clock-o"></i></span> 
+    <time class="post-time" datetime="2014-09-15T23:07:14.376Z">September 15, 2014</time>
+  </p>
+</header>
+
+  <div class="content post-content">
+    <p>One of the cool things about the evangelist team at DataStax is that we&#39;re encouraged to spend time writing code to
+contribute back to the community.  For example, <a href="http://helenaedelson.com/" target="_blank">Helena&#39;s</a> work on the <a href="https://github.com/datastax/spark-cassandra-connector" target="_blank">Spark Cassandra
+connector</a>, <a href="http://rustyrazorblade.com/" target="_blank">Jon&#39;s</a> work on
+<a href="https://github.com/cqlengine/cqlengine" target="_blank">cqlengine</a>, or even my latest foray into OSS,
+<a href="https://github.com/LukeTillman/cqlpoco" target="_blank">CqlPoco</a>.  At Cassandra Summit 2014 last week, many of us got the opportunity
+to connect with members of the Cassandra community about some of that work and in my case, I even got the opportunity to
+give a talk about it.</p>
+<p>My talk was entitled &quot;Highly Scalable Web Application in the Cloud with Cassandra, C#, and Azure&quot; and was great because
+I got the chance to show off Cassandra running live in Azure.  And I got to do it while co-presenting with <a href="https://twitter.com/JST2Cents" target="_blank">Jeremiah
+Talkar</a>, an Azure Evangelist at Microsoft.  Showing up at an OSS conference like
+Cassandra Summit with a guy from Microsoft might seem a bit like bringing Darth Vader to a summit for the Rebel
+Alliance, but Microsoft has really started <a href="http://msopentech.com/" target="_blank">embracing open source</a>, so I don&#39;t feel like it was
+too much of a stretch.  (The example I use a lot recently is the ASP.NET vNext web stack being <a href="https://github.com/aspnet" target="_blank">available on
+GitHub</a> under the Apache 2 license--my mind is blown.)  And let&#39;s be honest, a better fit for
+the Darth Vader analogy would have been bringing Larry Ellison to the Summit.</p>
+<figure>
+  <img src="/showing-off-cassandra-on-azure/Vader-Elevator.jpg" alt="Darth Vader in Elevator" title="Darth Vader in Elevator">
+  <figcaption>
+    <header>Microsoft is at Cassandra Summit?</header>
+    How I imagine some attendees reacted to Microsoft being a sponsor at Cassandra Summit 2014.  (h/t 
+    <a href="http://nerdreactor.com/2010/11/15/darth-vader-approves-the-samsung-galaxy-s/" target="_blank" rel="external">Nerd Reactor</a>
+    for the image)
+  </figcaption>
+</figure>
+
+<h2 id="killrvideo-demo">KillrVideo Demo</h2>
+<p>My talk was all about <a href="http://www.killrvideo.com" target="_blank">KillrVideo</a>, a demo video sharing application built in C# and running
+on top of Cassandra with a live copy of the demo running in Azure.  All the code, including the data model, is available
+on <a href="https://github.com/luketillman/killrvideo-csharp" target="_blank">my GitHub</a> and anyone with an Azure account should be able to get
+it up and running locally pretty easily.  The application  tries to show off some of the capabilities of the DataStax
+.NET driver for Cassandra, as well as some data modelling techniques for Cassandra.  It also uses some Azure services,
+like Media Services and Storage to support video uploads, re-encoding of source videos to something that&#39;s web streaming
+compatible, thumbnail generation, etc.</p>
+<p>Here&#39;s a slide from my presentation at the Summit showing off the basic logical architecture of the site.</p>
+<img src="/showing-off-cassandra-on-azure/KillrVideo-LogicalArchitecture.png" alt="KillrVideo logical architecture slide" title="KillrVideo logical architecture slide">
+<p>I think the boxes on the slide do a pretty good job summarizing what&#39;s going on within the app, and the arrows represent
+how data flows and what components are talking to each other as you move down the stack from the app tier (in yellow) to
+some of the infrastructure components along the bottom of the slide.  Architectually, it&#39;s a pretty good place to be
+because every component you see on that slide is able to be scaled horizontally with pretty minimal effort (whether
+that&#39;s adding more reserved video encoding power with Azure Media Services, adding more workers in the two app tier
+roles, or adding more nodes to my DataStax Enterprise Cassandra cluster).</p>
+<h4 id="side-note-about-that-arrow-from-the-web-ui-to-azure-storage">Side Note About that Arrow from the Web UI to Azure Storage</h4>
+<p>One interesting side note about that slide--you may have noticed that we have an arrow going directly from the Web UI
+tier (i.e. the browser) back to Azure Storage.  This is to represent what we do when users upload videos to the site.
+In that scenario, we upload their video files directly to the Azure Storage account associated with our Media Services
+account so we don&#39;t put unnecessary load on our web tier just to stream data into Azure Storage.  We can do this (even
+though Azure Storage and our demo site are on different domains and thus subject to browser <a href="http://en.wikipedia.org/wiki/Same-origin_policy" target="_blank">cross-domain
+restrictions</a>) by taking advantage of some of the new HTML5 File APIs
+and <a href="http://www.mono-software.com/blog/post/Mono/237/Building-Windows-Azure-Media-Services-async-CORS-enabled-upload/" target="_blank">CORS-enabled
+uploads</a>
+directly to Azure Storage.</p>
+<h2 id="setting-up-cassandra-on-azure">Setting up Cassandra on Azure</h2>
+<p>I&#39;m hoping that in the very near future we (DataStax) will be making public some documentation and scripts we&#39;ve been
+working on with the team at Microsoft that includes recommendations on how to setup and configure Cassandra in Azure.
+(Huge props to <a href="https://twitter.com/thetweetofmatt" target="_blank">Matt Kennedy</a>, <a href="https://twitter.com/rstml" target="_blank">Rustam Aliyev</a>, and all
+the others involved at both DataStax and Microsoft in testing Cassandra on Azure).  But until that GitHub repo becomes
+public, I&#39;ll quickly mention how I setup KillrVideo there.  This is a just a very high level overview of the steps
+involved:</p>
+<ol>
+<li>Create an affinity group for your application that will be using Cassandra.</li>
+<li>Create a virtual network for your Cassandra cluster.  Since vnets are no longer associated with affinity groups,
+just make sure it&#39;s in the same data center as your affinity group.</li>
+<li>Create some Azure Storage accounts to hold the data disks for your Cassandra nodes.  Our performance testing seemed
+to indicate that you&#39;ll need <strong>1</strong> storage account for every <strong>2</strong> Cassandra nodes in your cluster, as 2 nodes seem
+to be able to use 80-90% of the IOPS limit on a single storage account.</li>
+<li>Create a Cloud Service that can be used to expose an HTTP Endpoint for OpsCenter for management/provisioning of your
+cluster.</li>
+<li>Spin up some Linux VMs in your Cloud Service for your Cassandra Nodes, as well as one for OpsCenter.  I deployed 3
+VMs for Cassandra nodes plus 1 VM to run OpsCenter:<ul>
+<li><em>VM image used:</em> 5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-65-20140606</li>
+<li><em>Size:</em> A4 for Cassandra nodes (but we recommend using A7s for a real production cluster), A2 for OpsCenter</li>
+<li><em>Data Disks:</em>  16 disks x 64 GB each on each Cassandra node VM</li>
+<li><em>Subnet / IP:</em> The VM should use the Subnet and Set a static IP inside the virtual network you created</li>
+<li><em>SSH access:</em> Add an Azure endpoint and your SSH key to the VM if you want to be able to access the VM via SSH (and
+you&#39;ll want to)</li>
+</ul>
+</li>
+<li>Setup the data disks on each Linux VM.  This basically came down to:<ul>
+<li>Using <code>mdadm</code> to stripe the 16 data disks into a RAID0 setup and a single device</li>
+<li>Create a filesystem on that device using <code>mkfs.ext4</code></li>
+<li>Create a <code>/var/lib/cassandra</code> directory</li>
+<li>Edit <code>/etc/fstab</code> to point <code>/var/lib/cassandra</code> at the new device we created with <code>mdadm</code></li>
+<li>Mount <code>/var/lib/cassandra</code></li>
+</ul>
+</li>
+</ol>
+<p>At this point, I was ready to <a href="http://www.datastax.com/documentation/opscenter/5.0/opsc/about_c.html" target="_blank">install OpsCenter</a>
+on its designated VM and expose it via a Cloud Service HTTP endpoint in Azure.  You&#39;ll definitely want to <a href="http://www.datastax.com/documentation/opscenter/5.0/opsc/configure/opscConfiguringEnablingHttps_t.html" target="_blank">turn on
+HTTPS</a> and
+<a href="http://www.datastax.com/documentation/opscenter/5.0/opsc/configure/opscConfigureUserAccess_c.html" target="_blank">authentication</a> in
+OpsCenter since you&#39;ll be exposing it via a public endpoint in Azure.  Once I had OpsCenter running and I could login
+via the web UI (exposed as an Azure endpoint), provisioning a DataStax Enterprise cluster was a simple point and click
+affair where all I had to provide was the IP addresses (on my Azure vnet) for the node VMs.</p>
+<h2 id="the-future-of-azure-deployments">The Future of Azure Deployments</h2>
+<p>The steps above were deliberately a bit vague and without scripts to automate the VM setup.  This is because I want to
+wait until DataStax and Microsoft make this information public so you can go directly to the source for it.  So a
+disclaimer:  hopefully the steps above will get you started with setting things up if you&#39;re interested, but stay tuned
+for the official guidance on not only how to set things up, but also how to automate that setup.</p>
+<p>I&#39;m really hoping that KillrVideo will help other .NET developers looking to get started with Cassandra see some of
+what&#39;s possible.  And with the live demo in Azure, along with the cooperation happening between the teams at Microsoft
+and DataStax I&#39;m also hoping that Cassandra in Azure is a real option for developers of all languages going forward.
+And if things don&#39;t work out, maybe I can get Oracle to tag along for next year&#39;s Summit.</p>
+<figure>
+  <img src="/showing-off-cassandra-on-azure/Vader-AddressingCrowd.jpg" alt="Darth Vader addresses the crowd" title="Darth Vader addresses the crowd">
+  <figcaption>
+    <header>Cassandra Summit 2015?</header>
+    Larry Ellison addresses the crowd at Cassandra Summit 2015.  (h/t 
+    <a href="https://www.facebook.com/Darth.Vader.IPU" target="_blank" rel="external">Ukranian Internet Party</a> for the image)
+  </figcaption>
+</figure>
+
+  </div>
+
+  
+  <ul class="post-tags has-text-right">
+    
+    <li class="post-tag">
+      <a href="/tags/cassandra/" class="button is-light">cassandra</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/killrvideo/" class="button is-light">killrvideo</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/azure/" class="button is-light">azure</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/cassandra-summit/" class="button is-light">cassandra summit</a>
+    </li>
+    
+  </ul>
+
+  
+  <footer class="post-footer">
+    <div class="media bio">
+      <figure class="media-left">
+        <p class="image is-128x128">
+          <img src="/images/luke.jpg" alt="Luke Tillman">
+        </p>
+      </figure>
+      <div class="media-content">
+        <h4 class="title is-4">
+          Luke Tillman
+        </h4>
+        <p class="bio-text">
+          Luke is an engineer, soccer fan, political junkie, and lover of all nerdery. He&#39;s currently employed as  a Technical Evangelist at DataStax where he frequently works with Cassandra, .NET, and Node.js.
+
+        </p>
+        <p class="bio-text">
+          
+  <a href="https://twitter.com/LukeTillman" target="_blank" class="social-button twitter is-color">
+    <span class="icon">
+      <i class="fa fa-twitter"></i>
+    </span>
+  </a>
+  <a href="https://github.com/LukeTillman" target="_blank" class="social-button github is-color">
+    <span class="icon">
+      <i class="fa fa-github"></i>
+    </span>
+  </a>
+  <a href="/atom.xml" target="_blank" class="social-button rss is-color">
+    <span class="icon">
+      <i class="fa fa-rss"></i>
+    </span>
+  </a>
+  <a href="https://plus.google.com/+LukeTillman1" target="_blank" class="social-button google-plus is-color">
+    <span class="icon">
+      <i class="fa fa-google-plus"></i>
+    </span>
+  </a>
+  <a href="https://www.linkedin.com/in/luketillman" target="_blank" class="social-button linkedin is-color">
+    <span class="icon">
+      <i class="fa fa-linkedin"></i>
+    </span>
+  </a>
+
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+        </div>
+        <div class="column sidebar-column">
+          
+          
+<aside class="sidebar bio">
+  <p class="image is-128x128">
+    <img src="/images/luke.jpg" alt="Luke Tillman">
+  </p>
+
+  <h4 class="title is-4">
+    Luke Tillman
+  </h4>
+
+  <p class="bio-text">
+    
+  <a href="https://twitter.com/LukeTillman" target="_blank" class="social-button twitter is-small">
+    <span class="icon">
+      <i class="fa fa-twitter"></i>
+    </span>
+  </a>
+  <a href="https://github.com/LukeTillman" target="_blank" class="social-button github is-small">
+    <span class="icon">
+      <i class="fa fa-github"></i>
+    </span>
+  </a>
+  <a href="/atom.xml" target="_blank" class="social-button rss is-small">
+    <span class="icon">
+      <i class="fa fa-rss"></i>
+    </span>
+  </a>
+  <a href="https://plus.google.com/+LukeTillman1" target="_blank" class="social-button google-plus is-small">
+    <span class="icon">
+      <i class="fa fa-google-plus"></i>
+    </span>
+  </a>
+  <a href="https://www.linkedin.com/in/luketillman" target="_blank" class="social-button linkedin is-small">
+    <span class="icon">
+      <i class="fa fa-linkedin"></i>
+    </span>
+  </a>
+
+  </p>
+
+  <p class="bio-text">
+    Luke is an engineer, soccer fan, political junkie, and lover of all nerdery. He&#39;s currently employed as  a Technical Evangelist at DataStax where he frequently works with Cassandra, .NET, and Node.js.
+
+  </p>
+</aside>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <footer id="site-footer" class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          Copyright &copy; <a class="link" href="http://www.luketillman.com">Luke Tillman</a>. 2016 &bull; 
+          All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49061569-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</body>
+</html>

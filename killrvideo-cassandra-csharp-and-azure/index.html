@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <title>KillrVideo: Cassandra, C#, and Azure - Luke Tillman</title>
+  <meta name="author" content="Luke Tillman" />
+
+  <link rel="alternate" href="/atom.xml" type="application/atom+xml" title="Luke Tillman ATOM Feed" />
+  <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
+  <link rel="prefetch" href="http://www.luketillman.com" />
+
+  <link href="/css/styles.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  
+
+<link rel="canonical" href="http://www.luketillman.com/killrvideo-cassandra-csharp-and-azure/" />
+
+<meta name="description" content="When I started at DataStax 11 months ago, I was a total Cassandra newb. Sure, I&#39;d been writing code for a number of years (with most of the last 10 years spent in the world of .NET), but the applications I was building were typically built" />
+<meta name="keywords" content="cassandra,killrvideo,c#,azure,microservices,software architecture" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@LukeTillman" />
+
+
+<meta property="og:title" content="KillrVideo: Cassandra, C#, and Azure" />
+<meta property="og:description" content="When I started at DataStax 11 months ago, I was a total Cassandra newb. Sure, I&#39;d been writing code for a number of years (with most of the last 10 years spent in the world of .NET), but the applications I was building were typically built" />
+<meta property="og:site_name" content="Luke Tillman" />
+<meta property="og:url" content="http://www.luketillman.com/killrvideo-cassandra-csharp-and-azure/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-01-21T22:27:00.000Z" />
+<meta property="article:modified_time" content="2016-12-08T16:59:57.434Z" />
+<meta property="article:author" content="Luke Tillman" />
+<meta property="article:tag" content="cassandra" />
+<meta property="article:tag" content="killrvideo" />
+<meta property="article:tag" content="c#" />
+<meta property="article:tag" content="azure" />
+<meta property="article:tag" content="microservices" />
+<meta property="article:tag" content="software architecture" />
+
+<script type="application/ld+json">
+  {"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":"http://www.luketillman.com/killrvideo-cassandra-csharp-and-azure/","author":{"@type":"Person","name":"Luke Tillman"},"publisher":{"@type":"Person","name":"Luke Tillman"},"headline":"KillrVideo: Cassandra, C#, and Azure","keywords":"cassandra,killrvideo,c#,azure,microservices,software architecture","description":"When I started at DataStax 11 months ago, I was a total Cassandra newb.  Sure, I'd been writing code for a number of years (with most of the last 10 years spent in the world of .NET), but the applications I was building were typically built","dateModified":"2016-12-08T16:59:57.434Z","datePublished":"2015-01-21T22:27:00.000Z"}
+</script>
+  
+</head>
+<body>
+  
+  <header id="site-header">
+    <nav class="nav">
+      <div class="container is-fluid">
+        <div class="nav-left">
+          <span class="nav-item is-brand">
+            <a class="button is-dark is-medium" href="/">
+              <span class="icon">
+                <i class="fa fa-bookmark-o"></i>
+              </span>
+              <span>Luke Tillman</span>
+            </a>
+          </span>
+        </div>
+
+        
+        <span class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+
+        <div class="nav-right nav-menu">
+          <a class="nav-item" href="/about">
+            About
+          </a>
+          <a class="nav-item" href="/contact">
+            Contact
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          
+          
+<article class="post">
+  
+  
+
+
+<header class="header">
+  <ul class="post-tags">
+    
+    <li class="post-tag">
+      <a href="/tags/cassandra/">cassandra</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/killrvideo/">killrvideo</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/c/">c#</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/azure/">azure</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/microservices/">microservices</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/software-architecture/">software architecture</a>
+    </li>
+    
+  </ul>
+  <h1 class="title">
+    
+    
+    KillrVideo: Cassandra, C#, and Azure
+    
+  </h1>
+  <p class="post-metadata">
+    Posted on <span class="icon"><i class="fa fa-clock-o"></i></span> 
+    <time class="post-time" datetime="2015-01-21T22:27:00.000Z">January 21, 2015</time>
+  </p>
+</header>
+
+  <div class="content post-content">
+    <p>When I started at DataStax 11 months ago, I was a total Cassandra newb.  Sure, I&#39;d been writing code for a number of
+years (with most of the last 10 years spent in the world of .NET), but the applications I was building were typically
+built using a RDBMS for storage.  At most of the .NET shops where I worked, this meant SQL Server, but at my last job we
+were purveyors of the unholy alliance of technology vendors, <a href="/how-my-favorite-oracle-error-led-me-to-datastax-and-cassandra">Oracle and
+.NET</a>.</p>
+<p>As a way to get up to speed, my boss suggested writing a demo web application using Cassandra and C#.  He already had a
+<a href="https://github.com/pmcfadin/cassandra-videodb-sample-schema" target="_blank">sample CQL schema</a> for a video sharing web site (like
+YouTube) that I could use as a starting point.  He&#39;d been using this schema in some of his talks (both publicly and
+privately in front of customers) to illustrate some of the ways data modeling was done in Cassandra.</p>
+<p>And thus, <a href="https://github.com/luketillman/killrvideo-csharp" target="_blank">KillrVideo</a> was born.</p>
+<h2 id="what-is-killrvideo-">What is KillrVideo?</h2>
+<p>KillrVideo is a demo video sharing application built with Cassandra, C#, and Azure.  Users can upload videos (or share
+videos from other sources like YouTube), watch them, comment on them, rate them, and more.  All the code is open source
+and <a href="https://github.com/luketillman/killrvideo-csharp" target="_blank">available on GitHub</a> under an Apache 2 license.  My hope is that
+other .NET developers, whether completely new to Cassandra or not, can use the schema and code available there as a
+reference for figuring out how you build a .NET application or service on Cassandra.</p>
+<p>So what exactly is this thing built on?  Here&#39;s a quick rundown of some of the components at the time of writing:</p>
+<ul>
+<li>.NET Framework 4.5, making liberal use of async/await</li>
+<li>ASP.NET MVC 5</li>
+<li>Cassandra 2.0.x, I use <a href="http://planetcassandra.org/cassandra/" target="_blank">DataStax Community Edition</a> while developing locally on
+Windows</li>
+<li><a href="https://github.com/datastax/csharp-driver" target="_blank">DataStax C# Driver</a> for Cassandra, available via NuGet</li>
+<li><a href="http://docs.castleproject.org/Default.aspx?Page=MainPage&amp;NS=Windsor" target="_blank">Castle Windsor</a>, my IoC container of choice</li>
+<li>Google&#39;s <a href="https://developers.google.com/youtube/" target="_blank">YouTube API</a>, for loading sample data and videos shared from YouTube</li>
+</ul>
+<h4 id="wait-i-thought-you-said-azure-">Wait, I thought you said Azure?</h4>
+<p>One of the goals of putting this demo application together was to ultimately host it live in Azure with a real Cassandra
+cluster.  Fortunately, my boss already owned the domain name and so a <a href="http://www.killrvideo.com/" target="_blank">live demo is
+available</a>, deployed in Azure.  As a result, the code contains an Azure deployment project
+and developers can use the <a href="http://azure.microsoft.com/en-us/downloads/" target="_blank">Azure SDK</a> for running the demo locally on the
+SDK&#39;s emulator.  One minor difference between the live demo and the way most developers will run the code locally is
+that the live demo is running against a <a href="http://www.datastax.com/what-we-offer/products-services/datastax-enterprise" target="_blank">DataStax
+Enterprise</a> cluster hosted in Azure.</p>
+<p>I also wanted to support user-generated videos (i.e. uploaded videos) as part of the application.  After all, the demo
+would probably be a little underwhelming if all you could do was share videos already uploaded to YouTube.  Fortunately,
+Microsoft offers <a href="http://azure.microsoft.com/en-us/services/media-services/" target="_blank">Azure Media Services</a> as part of their
+platform for just this scenario.  Initially, Media Services was the only piece of Azure that the site relied on, but
+over time it has evolved and it currently makes use of the following Azure services:</p>
+<ul>
+<li><a href="http://azure.microsoft.com/en-us/services/media-services/" target="_blank">Azure Media Services</a>, for re-encoding uploaded videos
+into something suitable for playback on the web and generating preview thumbnails for those videos</li>
+<li><a href="http://azure.microsoft.com/en-us/services/storage/" target="_blank">Azure Storage</a>, for storage of uploaded videos and notifications
+(via storage queues) of video encoding task progress</li>
+<li><a href="http://azure.microsoft.com/en-us/services/service-bus/" target="_blank">Azure Service Bus</a>, for communication between the various
+(micro)services via events published to the bus</li>
+</ul>
+<p>It also makes use of <a href="https://github.com/NimbusAPI/Nimbus" target="_blank">Nimbus</a>, a great abstraction for working with Azure Service
+Bus that will be familiar to any developer who&#39;s ever worked with any of the popular .NET service bus libraries (like
+<a href="https://github.com/Particular/NServiceBus" target="_blank">NServiceBus</a>, <a href="https://github.com/MassTransit/MassTransit" target="_blank">MassTransit</a>, or
+<a href="https://github.com/rebus-org/Rebus" target="_blank">Rebus</a>).</p>
+<h2 id="software-architecture-a-love-story">Software Architecture, a love story</h2>
+<blockquote>
+<p>Disclaimer: I am fascinated with software architecture, but I am by no means an expert.</p>
+</blockquote>
+<p>When I first started writing the demo, I made a decision that a lot of developers make--that the fastest and easiest way
+to get a prototype working was to build a mostly <a href="http://en.wikipedia.org/wiki/Monolithic_application" target="_blank">monolithic app</a>
+with a traditional <a href="http://en.wikipedia.org/wiki/Multitier_architecture" target="_blank">three-tier achitecture</a>.  I even spoke about
+this and included a slide with a diagram when I <a href="/showing-off-cassandra-on-azure/">presented at the Cassandra Summit
+2014</a> in San Francisco.  Over time though, my goal was always to move things towards
+more of a modular architecture.</p>
+<p>In the last few months, I got that opportunity as part of a redesign effort triggered by an overhaul of the UI to try
+and look a bit less &quot;bootstrap-y&quot; and a bit more professional.  Yes, it is kind of strange that a UI reboot allowed me
+to restructure a lot of the backend code, but since I was already spending a lot of time writing code, it seemed to make
+sense.  As a result, KillrVideo is now a lot more modular, using more of a
+<a href="http://en.wikipedia.org/wiki/Service-oriented_architecture" target="_blank">SOA</a> approach (or
+<a href="http://martinfowler.com/articles/microservices.html" target="_blank">microservices</a> if you prefer, since that&#39;s the new hotness).</p>
+<blockquote>
+<p>Yes, I feel like I might be winning buzzword bingo right now.  But wait, there&#39;s more!</p>
+</blockquote>
+<p>If you take a look at the code now, you&#39;ll notice that the web app is composed of a bunch of logically independent
+services.  Each service is responsible for a different business capability or feature of the site.  I&#39;m a big fan of
+<a href="http://en.wikipedia.org/wiki/Event-driven_architecture" target="_blank">Event-driven architectures</a> to achieve loose coupling and
+scalability, so much of the interaction between services happens as a result of events (messages) published on Azure
+Service Bus.</p>
+<p>For simplicity&#39;s sake and to make it easier for developers to run the demo locally, there are only two physical units of
+deployment: the web app (running as an Azure Web Role), and a background worker (running as an Azure Worker Role).  Each
+of those physical endpoints is composed of multiple <em>logical</em> services running in-process together.  I realize that some
+people may disagree with me characterizing this as a microservices architecture because the services are not
+independently hosted/deployed.</p>
+<p>To me the physical process boundry is not as important as the services being autonomous and the idea that the services
+be independently <em>deployable</em> (as opposed to <em>deployed</em>).  I&#39;ve tried to structure the solution&#39;s code in a way that
+indicates how trivial it would be to break any of these services out into their own separate physically deployed unit
+(i.e. Azure Worker Role).  The architecture should (and will) get its own blog post at some point in the future, but
+until then, I highly recommend watching Udi Dahan&#39;s <a href="https://skillsmatter.com/skillscasts/5235-keynote-an-integrated-services-approach" target="_blank">keynote from &#181;Con
+2014</a> for more thoughts on the
+subject.</p>
+<h2 id="cracking-open-the-code">Cracking Open the Code</h2>
+<p>Speaking of the code structure, once you&#39;ve cloned <a href="https://github.com/luketillman/killrvideo-csharp" target="_blank">the repository</a>
+and opened the solution in Visual Studio, I&#39;m hoping that things will be pretty straightforward.</p>
+<img src="/killrvideo-cassandra-csharp-and-azure/2015-01-21_14h33_49.png" alt="KillrVideo Solution Explorer Screenshot" title="KillrVideo Solution Explorer Screenshot">
+<p>The projects in the solution can really be put into three main categories: top-level projects, services, and
+utility/deployment projects.</p>
+<h4 id="top-level-projects">Top-Level Projects</h4>
+<p>These are the actual applications that get deployed.  There are two projects that fall under this category:</p>
+<ul>
+<li><code>KillrVideo</code>: the ASP.NET MVC web application, deployed as an Azure Web Role.</li>
+<li><code>KillrVideo.BackgroundWorker</code>: a background worker for doing any background processing for the various services,
+deployed as an Azure Worker Role.</li>
+</ul>
+<h4 id="services">Services</h4>
+<p>Any of the projects under the <code>Services</code> folder in the solution fall under this category, with each service getting its
+own sub-folder.  Each service tends to have up to 3 projects associated with it.  The top-level one (for example
+<code>KillrVideo.Uploads</code>) contains the service&#39;s API for consumption by applications like the web app.  You&#39;ll see the web
+app making calls to these projects.</p>
+<p>The <code>.Messages</code> projects (for example <code>KillrVideo.Uploads.Messages</code>) contain the events published by that service.  Like
+I mentioned in the architecture section above, services are loosely-coupled and interactions between services are driven
+by reacting to events published by other services.  For example, the <code>VideoCatalog</code> service reacts to the
+<code>UploadedVideoPublished</code> event from the <code>Uploads</code> service to add an uploaded video to its catalog when the video is
+published and ready for viewing.</p>
+<p>Lastly, the <code>.Worker</code> projects (for example <code>KillrVideo.Uploads.Worker</code>) contain the event handlers for reacting to
+events and any other backend processing code that a service needs to function.  The code from the various worker
+projects is composed and deployed in a single physical background worker (the <code>KillrVideo.BackgroundWorker</code> worker
+role).  But these could easily be converted into Azure Worker Roles of their own and deployed separately.</p>
+<h4 id="utility-deployment-projects">Utility/Deployment Projects</h4>
+<p>The category pretty much describes the two projects here:</p>
+<ul>
+<li><code>KillVideo.Utils</code>: a project with some useful utility classes used by various other projects in the solution.</li>
+<li><code>KillrVideo.Azure</code>: the deployment setup and configuration for Azure.  This should be your startup project when
+running locally on the Azure SDK emulator.</li>
+</ul>
+<h2 id="killrvideo-the-movie-err-blog-series-">KillrVideo: The Movie (err...blog series)</h2>
+<p>My original plan to do a riveting series of short films detailing the daily struggles of building your first .NET
+application on Cassandra fell through due to budget constraints.  (Apparently my insistence that only <a href="http://en.wikipedia.org/wiki/Ken_Burns" target="_blank">Ken
+Burns</a> could do such a weighty topic any justice doesn&#39;t really jibe with the
+reality of a startup company budget.)  As a result, I&#39;ve come up with an outline for a regular (and hopefully
+long-running) series of blog posts on the subject.</p>
+<p>I hope to cover things like data modeling, prepared statements, LINQ, lightweight transactions, user-defined types,
+microservices, CORS-enabled uploads to Azure, and more, all through the lens of KillrVideo.  If you&#39;re interested,
+you&#39;ll find them under the <a href="/tag/killrvideo/">killrvideo tag</a> here on my blog as they become available.</p>
+
+  </div>
+
+  
+  <ul class="post-tags has-text-right">
+    
+    <li class="post-tag">
+      <a href="/tags/cassandra/" class="button is-light">cassandra</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/killrvideo/" class="button is-light">killrvideo</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/c/" class="button is-light">c#</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/azure/" class="button is-light">azure</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/microservices/" class="button is-light">microservices</a>
+    </li>
+    
+    <li class="post-tag">
+      <a href="/tags/software-architecture/" class="button is-light">software architecture</a>
+    </li>
+    
+  </ul>
+
+  
+  <footer class="post-footer">
+    <div class="media bio">
+      <figure class="media-left">
+        <p class="image is-128x128">
+          <img src="/images/luke.jpg" alt="Luke Tillman">
+        </p>
+      </figure>
+      <div class="media-content">
+        <h4 class="title is-4">
+          Luke Tillman
+        </h4>
+        <p class="bio-text">
+          Luke is an engineer, soccer fan, political junkie, and lover of all nerdery. He&#39;s currently employed as  a Technical Evangelist at DataStax where he frequently works with Cassandra, .NET, and Node.js.
+
+        </p>
+        <p class="bio-text">
+          
+  <a href="https://twitter.com/LukeTillman" target="_blank" class="social-button twitter is-color">
+    <span class="icon">
+      <i class="fa fa-twitter"></i>
+    </span>
+  </a>
+  <a href="https://github.com/LukeTillman" target="_blank" class="social-button github is-color">
+    <span class="icon">
+      <i class="fa fa-github"></i>
+    </span>
+  </a>
+  <a href="/atom.xml" target="_blank" class="social-button rss is-color">
+    <span class="icon">
+      <i class="fa fa-rss"></i>
+    </span>
+  </a>
+  <a href="https://plus.google.com/+LukeTillman1" target="_blank" class="social-button google-plus is-color">
+    <span class="icon">
+      <i class="fa fa-google-plus"></i>
+    </span>
+  </a>
+  <a href="https://www.linkedin.com/in/luketillman" target="_blank" class="social-button linkedin is-color">
+    <span class="icon">
+      <i class="fa fa-linkedin"></i>
+    </span>
+  </a>
+
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+        </div>
+        <div class="column sidebar-column">
+          
+          
+<aside class="sidebar bio">
+  <p class="image is-128x128">
+    <img src="/images/luke.jpg" alt="Luke Tillman">
+  </p>
+
+  <h4 class="title is-4">
+    Luke Tillman
+  </h4>
+
+  <p class="bio-text">
+    
+  <a href="https://twitter.com/LukeTillman" target="_blank" class="social-button twitter is-small">
+    <span class="icon">
+      <i class="fa fa-twitter"></i>
+    </span>
+  </a>
+  <a href="https://github.com/LukeTillman" target="_blank" class="social-button github is-small">
+    <span class="icon">
+      <i class="fa fa-github"></i>
+    </span>
+  </a>
+  <a href="/atom.xml" target="_blank" class="social-button rss is-small">
+    <span class="icon">
+      <i class="fa fa-rss"></i>
+    </span>
+  </a>
+  <a href="https://plus.google.com/+LukeTillman1" target="_blank" class="social-button google-plus is-small">
+    <span class="icon">
+      <i class="fa fa-google-plus"></i>
+    </span>
+  </a>
+  <a href="https://www.linkedin.com/in/luketillman" target="_blank" class="social-button linkedin is-small">
+    <span class="icon">
+      <i class="fa fa-linkedin"></i>
+    </span>
+  </a>
+
+  </p>
+
+  <p class="bio-text">
+    Luke is an engineer, soccer fan, political junkie, and lover of all nerdery. He&#39;s currently employed as  a Technical Evangelist at DataStax where he frequently works with Cassandra, .NET, and Node.js.
+
+  </p>
+</aside>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <footer id="site-footer" class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          Copyright &copy; <a class="link" href="http://www.luketillman.com">Luke Tillman</a>. 2016 &bull; 
+          All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49061569-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</body>
+</html>
