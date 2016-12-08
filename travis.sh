@@ -20,7 +20,7 @@ function doCompile {
     echo "Cleaning $OUTPUT_DIR ..."
     rm -rf $OUTPUT_DIR/*
     echo "Copying generated files to $OUTPUT_DIR ..."
-    cp -a dist/* $OUTPUT_DIR
+    cp -av dist/* $OUTPUT_DIR
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
