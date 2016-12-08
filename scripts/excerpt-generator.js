@@ -8,4 +8,4 @@ hexo.extend.filter.register('after_post_render', function(data) {
   let excerpt = excerptHtml(data.content, { stripTags: true, pruneLength: 250, pruneString: '...', pruneSeperator: ' ' });
   data.excerpt = excerpt;
   return data;
-});
+}, 10);

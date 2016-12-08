@@ -52,6 +52,10 @@
 <meta property="article:tag" content="{{ t.name }}" />
 {% endfor -%}
 
+{# Schema.org linked data metadata (used by Google), see: https://developers.google.com/search/docs/guides/intro-structured-data #}
+<script type="application/ld+json">
+  {{ page.ld | dump | safe }}
+</script>
 {% endblock %}
 
 {# The main content block with the post #}
