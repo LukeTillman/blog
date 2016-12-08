@@ -1,6 +1,7 @@
 ---
 title: Developing with Cassandra on Windows
 date: 2015-01-27T17:06:23.569Z
+updated: 2015-01-27T17:06:23.569Z
 tags:
 - cassandra
 - killrvideo

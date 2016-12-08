@@ -1,6 +1,7 @@
 ---
 title: "Introducing CqlPoco: an object mapper for Cassandra and .NET"
 date: 2014-08-11T18:17:30.880Z
+updated: 2014-08-11T18:17:30.880Z
 tags:
 - cassandra
 - c#

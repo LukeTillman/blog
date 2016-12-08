@@ -1,6 +1,7 @@
 ---
 title: How My Favorite Oracle Error Led Me to DataStax and Cassandra
 date: 2014-03-18T18:40:32.272Z
+updated: 2014-03-18T18:40:32.272Z
 tags:
 - cassandra
 - datastax

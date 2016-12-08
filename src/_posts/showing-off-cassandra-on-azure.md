@@ -1,6 +1,7 @@
 ---
 title: Showing Off Cassandra on Azure
 date: 2014-09-15T23:07:14.376Z
+updated: 2014-09-15T23:07:14.376Z
 tags:
 - cassandra
 - azure

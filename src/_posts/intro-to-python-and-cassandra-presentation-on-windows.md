@@ -1,6 +1,7 @@
 ---
 title: Intro to Python and Cassandra Presentation on Windows
 date: 2014-10-13T19:19:03.236Z
+updated: 2014-10-13T19:19:03.236Z
 tags:
 - cassandra
 - python

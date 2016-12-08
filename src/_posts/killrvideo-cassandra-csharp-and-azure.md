@@ -1,6 +1,7 @@
 ---
 title: "KillrVideo: Cassandra, C#, and Azure"
 date: 2015-01-21T22:27:00.000Z
+updated: 2015-01-21T22:27:00.000Z
 tags:
 - cassandra
 - azure
