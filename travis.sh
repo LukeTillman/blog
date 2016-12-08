@@ -18,7 +18,7 @@ function doCompile {
 
     # Remove contents of publish folder (leaving .git intact), then copy output
     rm -rf $OUTPUT_DIR/*
-    cp -a dist/. $OUTPUT_DIR/
+    cp -a dist/* $OUTPUT_DIR
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify

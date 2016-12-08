@@ -4,6 +4,7 @@ db.json
 *.log
 node_modules/
 dist/
+publish/
 .deploy*/
 
 # Ignore default hexo theme files if present
