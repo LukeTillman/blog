@@ -17,7 +17,9 @@ function doCompile {
     npm run build
 
     # Remove contents of publish folder (leaving .git intact), then copy output
+    echo "Cleaning $OUTPUT_DIR ..."
     rm -rf $OUTPUT_DIR/*
+    echo "Copying generated files to $OUTPUT_DIR ..."
     cp -a dist/* $OUTPUT_DIR
 }
 
