@@ -13,7 +13,7 @@ env:
   global:
     - CXX=g++-4.8
     - COMMIT_AUTHOR_EMAIL="luke@luketillman.com"
-    # TODO: Encrypt deploy key - ENCRYPTION_LABEL=6bf3d914b891
+    - ENCRYPTION_LABEL=7c632440dbd2
 addons:
   apt:
     sources:

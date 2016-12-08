@@ -8,3 +8,7 @@ dist/
 
 # Ignore default hexo theme files if present
 themes/landscape/
+
+# Don't check in deploy_key except for encrypted one
+deploy_key*
+!deploy_key.enc
