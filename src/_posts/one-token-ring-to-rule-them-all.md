@@ -2,6 +2,7 @@
 title: One (Token) Ring to Rule Them All
 date: 2016-12-09 08:23:34
 updated: 2016-12-09 08:23:34
+meta_image: the-ring.png
 tags:
 - cassandra
 footer_note: 

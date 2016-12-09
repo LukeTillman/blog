@@ -45,6 +45,13 @@
 <meta property="og:site_name" content="{{ config.title }}" />
 <meta property="og:url" content="{{ page.permalink }}" />
 <meta property="og:type" content="article" />
+{#-
+  This is kinda a hack and would break if our permalink structure changes, but just use 
+  the image specified along with the permalink
+-#}
+{%- if page.meta_image %}
+<meta property="og:image" content="{{ page.permalink }}{{ page.meta_image }}" />
+{% endif -%}
 <meta property="article:published_time" content="{{ page.date.toISOString() }}" />
 <meta property="article:modified_time" content="{{ page.updated.toISOString() }}" />
 <meta property="article:author" content="{{ config.author }}" />
