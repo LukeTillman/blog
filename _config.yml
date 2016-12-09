@@ -73,3 +73,7 @@ feed:
   path: atom.xml
   limit: 20
   content: false
+
+# Git repo generation used by custom script
+git:
+  repo_url: https://github.com/LukeTillman/blog

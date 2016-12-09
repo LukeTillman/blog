@@ -52,8 +52,10 @@ body {
   }
 }
 
-#site-footer {
-  color: $grey-light;
+.footer {
   font-size: $size-6;
-  text-align: center;
+
+  .copyright {
+    margin-bottom: 1em;
+  }
 }
