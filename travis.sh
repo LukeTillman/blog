@@ -21,7 +21,6 @@ function doCompile {
     rm -rf $OUTPUT_DIR/*
     echo "Copying generated files to $OUTPUT_DIR ..."
     cp -av dist/* $OUTPUT_DIR
-    cp .nojekyll $OUTPUT_DIR
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
