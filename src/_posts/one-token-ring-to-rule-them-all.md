@@ -8,7 +8,7 @@ footer_note:
   type: info
   text: >
     This blog post originally appeared on Planet Cassandra in April 2016 before that site was 
-    donated to the Apache foundation and all the content was removed. I've reposted it here to
+    donated to the Apache Foundation and all the content was removed. I've reposted it here to
     preserve the content.
 ---
 For newcomers to Cassandra, all the terminology can be a little overwhelming at first. If you 
