@@ -6318,10 +6318,10 @@ body {
     .sidebar-column .sidebar.bio .image {
       margin-bottom: 16px; }
 
-#site-footer {
-  color: #b5b5b5;
-  font-size: 14px;
-  text-align: center; }
+.footer {
+  font-size: 14px; }
+  .footer .copyright {
+    margin-bottom: 1em; }
 
 /**
  * Title (header) alternate styles
