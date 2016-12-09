@@ -4,6 +4,12 @@ date: 2016-12-09 08:23:34
 updated: 2016-12-09 08:23:34
 tags:
 - cassandra
+footer_note: 
+  type: info
+  text: >
+    This blog post originally appeared on Planet Cassandra in April 2016 before that site was 
+    donated to the Apache foundation and all the content was removed. I've reposted it here to
+    preserve the content.
 ---
 For newcomers to Cassandra, all the terminology can be a little overwhelming at first. If you 
 have experience with relational databases, some concepts like a "Row" or a "Primary Key" will 
