@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luketillman.com/"/>
-  <updated>2015-01-27T17:06:23.569Z</updated>
+  <updated>2016-12-09T08:23:34.000Z</updated>
   <id>http://www.luketillman.com/</id>
   
   <author>
@@ -14,6 +14,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>One (Token) Ring to Rule Them All</title>
+    <link href="http://www.luketillman.com/one-token-ring-to-rule-them-all/"/>
+    <id>http://www.luketillman.com/one-token-ring-to-rule-them-all/</id>
+    <published>2016-12-09T08:23:34.000Z</published>
+    <updated>2016-12-09T08:23:34.000Z</updated>
+    
+    <summary type="html">
+    
+      For newcomers to Cassandra, all the terminology can be a little overwhelming at first. If you  have experience with relational databases, some concepts like a &quot;Row&quot; or a &quot;Primary Key&quot; will  be familiar. But other terms that seem
+    
+    </summary>
+    
+    
+      <category term="cassandra" scheme="http://www.luketillman.com/tags/cassandra/"/>
+    
+  </entry>
   
   <entry>
     <title>Developing with Cassandra on Windows</title>

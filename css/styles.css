@@ -6392,8 +6392,14 @@ body {
     font-weight: 600;
     color: #3273dc; }
 
+.post .post-excerpt, .post .post-content > p:first-child {
+  line-height: 2.1; }
+
 .post .post-content {
   margin-bottom: 40px; }
+  .post .post-content > p:first-child {
+    font-weight: 600;
+    margin-bottom: 2em; }
 
 .post .post-footer {
   margin-top: 40px;
