@@ -52,13 +52,18 @@
     }
   }
 
+  // The post excerpt when in a list of posts
+  .post-excerpt {
+    line-height: 2.1;
+  }
+
   // The post content
   .post-content {
     margin-bottom: 40px;
 
     & > p:first-child {
+      @extend .post-excerpt;
       font-weight: $weight-bold;
-      line-height: 2.1;
       margin-bottom: 2em;
     }
   }
