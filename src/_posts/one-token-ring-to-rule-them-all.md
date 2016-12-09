@@ -3,6 +3,7 @@ title: One (Token) Ring to Rule Them All
 date: 2016-12-09 08:23:34
 updated: 2016-12-09 08:23:34
 tags:
+- cassandra
 ---
 For newcomers to Cassandra, all the terminology can be a little overwhelming at first. If you 
 have experience with relational databases, some concepts like a "Row" or a "Primary Key" will 
