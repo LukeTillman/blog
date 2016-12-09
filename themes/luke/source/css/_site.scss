@@ -1,9 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600');
 
-// Primary color variations
-$primary-light: lighten($primary, 40%);
-$primary-lighter: lighten($primary, 55%);
+// Color variations
+$light-amount: 30%;
+$lighter-amount: 55%;
 
+$primary-light: lighten($primary, $light-amount);
+$primary-lighter: lighten($primary, $lighter-amount);
+$info-light: lighten($info, $light-amount);
+$info-lighter: lighten($info, $lighter-amount);
+$success-light: lighten($success, $light-amount);
+$success-lighter: lighten($success, $lighter-amount);
+$warning-light: lighten($warning, $light-amount);
+$warning-lighter: lighten($warning, $lighter-amount);
+$danger-light: lighten($danger, $light-amount);
+$danger-lighter: lighten($danger, $lighter-amount);
 
 // The width of the sidebars (currently 2 of 12 columns wide)
 $sidebar-width-widescreen: ($widescreen + 40) * .16667;

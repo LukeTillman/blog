@@ -65,7 +65,7 @@
   {% include "./_common/post-header.njk" %}
 
   {% if post.header_note %}
-    <div class="notification is-small is-{{ post.header_note.type }}">
+    <div class="notification is-small is-{{ post.header_note.type }} has-title">
       <span class="notification-title">Note</span>
       <span class="notification-message">{{ post.header_note.text }}</span>
     </div>
@@ -86,7 +86,7 @@
 
   {# Footer note if present for the post #}
   {% if post.footer_note %}
-    <div class="notification is-small is-{{ post.footer_note.type }}">
+    <div class="notification is-small is-{{ post.footer_note.type }} has-title">
       <span class="notification-title">Note</span>
       <span class="notification-message">{{ post.footer_note.text }}</span>
     </div>

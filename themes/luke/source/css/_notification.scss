@@ -16,13 +16,72 @@
   }
 
   // Support title/message in notification
-  .notification-title {
-    padding-right: 20px;
-    border-right: 2px solid;
-    opacity: 0.6;
-  } 
+  &.has-title {
+    .notification-title {
+      padding-right: 10px;
+    }
 
-  .notification-message {
-    padding-left: 20px;
+    // Set colors based on class used on notification
+    &.is-primary {
+      .notification-title {
+        color: $primary-light;
+        border-color: $primary-light;
+      }
+    }
+
+    &.is-info {
+      .notification-title {
+        color: $info-light;
+        border-color: $info-light;
+      }
+    }
+
+    &.is-success {
+      .notification-title {
+        color: $success-light;
+        border-color: $success-light;
+      }
+    }
+
+    &.is-warning {
+      .notification-title {
+        color: $warning-light;
+        border-color: $warning-light;
+      }
+    }
+
+    &.is-danger {
+      .notification-title {
+        color: $danger-light;
+        border-color: $danger-light;
+      }
+    }
+
+    // Styling for tablet and larger
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+
+      .notification-title {
+        padding-right: 20px;
+        border-right: 2px solid;
+      }
+
+      .notification-message {
+        flex: 1;
+        padding-left: 20px;
+      }
+
+      .delete {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+      }
+    }
   }
+
+  
 }

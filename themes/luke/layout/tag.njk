@@ -8,10 +8,11 @@
 
 {# Main content #}
 {% block content %}
-  <div class="notification is-info is-medium">
+  <div class="notification is-info is-medium has-title">
     {# Just go to home page when the notification is "closed" #}
     <a class="delete" href="/"></a>
-    <span class="notification-title">Tag</span> <span class="notification-message">{{ page.tag }}</span>
+    <span class="notification-title">Tag</span>
+    <span class="notification-message">{{ page.tag }}</span>
   </div>
 
   {# List page of articles for the tag #}
