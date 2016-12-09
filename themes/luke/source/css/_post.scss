@@ -7,6 +7,7 @@
   // General styles for a list of tags
   .post-tags {
     display: block;
+    margin-bottom: $size-normal;
 
     .post-tag {
       display: inline-block;
@@ -22,8 +23,6 @@
   .header {
     // Tags list in the header
     .post-tags {
-      margin-bottom: $size-normal;
-
       .post-tag {
         a {
           font-size: $size-4;

@@ -64,6 +64,13 @@
   {% set post = page %}
   {% include "./_common/post-header.njk" %}
 
+  {% if post.header_note %}
+    <div class="notification is-small is-{{ post.header_note.type }}">
+      <span class="notification-title">Note</span>
+      <span class="notification-message">{{ post.header_note.text }}</span>
+    </div>
+  {% endif %}
+
   <div class="content post-content">
     {{ post.content | safe }}
   </div>
@@ -76,6 +83,14 @@
     </li>
     {% endfor %}
   </ul>
+
+  {# Footer note if present for the post #}
+  {% if post.footer_note %}
+    <div class="notification is-small is-{{ post.footer_note.type }}">
+      <span class="notification-title">Note</span>
+      <span class="notification-message">{{ post.footer_note.text }}</span>
+    </div>
+  {% endif %}
 
   {# Author information #}
   <footer class="post-footer">
