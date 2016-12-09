@@ -6366,24 +6366,23 @@ body {
  * Posts (including in post lists) and pagination
  */
 .post .post-tags {
-  display: block; }
+  display: block;
+  margin-bottom: 16px; }
   .post .post-tags .post-tag {
     display: inline-block;
     padding-right: 5px; }
     .post .post-tags .post-tag:last-child {
       padding-right: 0; }
 
-.post .header .post-tags {
-  margin-bottom: 16px; }
-  .post .header .post-tags .post-tag a {
-    font-size: 20px;
-    font-weight: 600;
-    color: #dbdbdb;
-    border: none;
-    transition: color 0.2s ease-out; }
-    .post .header .post-tags .post-tag a:hover {
-      color: #b5b5b5;
-      border: none; }
+.post .header .post-tags .post-tag a {
+  font-size: 20px;
+  font-weight: 600;
+  color: #dbdbdb;
+  border: none;
+  transition: color 0.2s ease-out; }
+  .post .header .post-tags .post-tag a:hover {
+    color: #b5b5b5;
+    border: none; }
 
 .post .header .post-metadata {
   color: #b5b5b5;
@@ -6454,7 +6453,7 @@ body {
 
 .content blockquote {
   background-color: #eef7ff;
-  border-color: #a2d2fe; }
+  border-color: #6fb9fe; }
 
 .content code {
   font-size: 14px; }
@@ -6486,13 +6485,46 @@ body {
 .notification.is-large {
   font-size: 32px; }
 
-.notification .notification-title {
-  padding-right: 20px;
-  border-right: 2px solid;
-  opacity: 0.6; }
+.notification.has-title .notification-title {
+  padding-right: 10px; }
 
-.notification .notification-message {
-  padding-left: 20px; }
+.notification.has-title.is-primary .notification-title {
+  color: #6fb9fe;
+  border-color: #6fb9fe; }
+
+.notification.has-title.is-info .notification-title {
+  color: #b5ccf2;
+  border-color: #b5ccf2; }
+
+.notification.has-title.is-success .notification-title {
+  color: #9fefbb;
+  border-color: #9fefbb; }
+
+.notification.has-title.is-warning .notification-title {
+  color: #fffcf0;
+  border-color: #fffcf0; }
+
+.notification.has-title.is-danger .notification-title {
+  color: #ffd1da;
+  border-color: #ffd1da; }
+
+@media screen and (min-width: 769px) {
+  .notification.has-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center; }
+    .notification.has-title .notification-title {
+      padding-right: 20px;
+      border-right: 2px solid; }
+    .notification.has-title .notification-message {
+      flex: 1;
+      padding-left: 20px; }
+    .notification.has-title .delete {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0; } }
 
 /**
  * Author and site bio styles
