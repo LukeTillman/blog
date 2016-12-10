@@ -15,8 +15,9 @@ $warning-lighter: lighten($warning, $lighter-amount);
 $danger-light: lighten($danger, $light-amount);
 $danger-lighter: lighten($danger, $lighter-amount);
 
-// The width of the sidebars (currently 2 of 12 columns wide)
-$sidebar-width-widescreen: ($widescreen + 40) * .16667;
+// The width of the sidebars (only visible on widescreen)
+$sidebar-width: 190px;
+$sidebar-gutter: 40px;
 
 /**
  * Common styles used by the site
@@ -30,26 +31,42 @@ body {
   height: 36px;
 }
 
-// Sidebars
-.sidebar-column {
-  // Hidden by default
-  display: none;
+// Layout
+.layout {
+  display: flex;
 
-  // Show on widescreen
-  @include widescreen {
-    display: block;
-  }
+  .main-column {
+    // On tablet and larger, set the width of the main column
+    @include tablet {
+      // Tablet breakpoint width - 1px to get to get to previous breakpoint max - 40px for section padding
+      width: $tablet - 41px;  
+      margin: 0 auto;
+      flex: none;
+    }
 
-  .sidebar {
-    padding-bottom: 20px;
-    border-bottom: 1px solid $border;
-
-    &.bio {
-      .image {
-        margin-bottom: $size-normal;
-      }
+    @include widescreen {
+      padding: 0 $sidebar-gutter;
+      margin-left: $sidebar-width;
+      margin-right: 0;
+      flex: 1;
     }
   }
+
+  .sidebar-column {
+    display: none;
+    width: $sidebar-width;
+    flex: none;
+
+    @include widescreen {
+      display: block;
+    }
+  }
+}
+
+// Sidebars
+.sidebar {
+  padding-bottom: 20px;
+  border-bottom: 1px solid $border;
 }
 
 .footer {

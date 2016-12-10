@@ -52,13 +52,13 @@
 
   <section class="section">
     <div class="container">
-      <div class="columns">
-        <div class="column is-8 is-offset-2">
+      <div class="layout">
+        <div class="main-column">
           {# The main content block #}
           {% block content %}
           {% endblock %}
         </div>
-        <div class="column sidebar-column">
+        <div class="sidebar-column">
           {# The sidebar, which by default just includes the site title and description #}
           {% block sidebar %}
           <aside class="sidebar bio">
@@ -83,20 +83,16 @@
   {# Site Footer #}
   <footer class="section footer has-text-centered">
     <div class="container">
-      <div class="columns">
-        <div class="column is-8 is-offset-2">
-          <p class="copyright">
-            Copyright &copy; <a class="link" href="{{ config.url }}">{{ config.author }}</a>. {{ moment().format('YYYY') }} &bull; 
-            All rights reserved.
-          </p>
-          <a class="button is-small" href="{{ page.revision_url }}" title="Revision {{ page.revision }}" target="_blank">
-            <span class="icon">
-              <i class="fa fa-github"></i>
-            </span>
-            <span>GitHub</span>
-          </a>
-        </div>
-      </div>
+        <p class="copyright">
+          Copyright &copy; <a class="link" href="{{ config.url }}">{{ config.author }}</a>. {{ moment().format('YYYY') }} &bull; 
+          All rights reserved.
+        </p>
+        <a class="button is-small" href="{{ page.revision_url }}" title="Revision {{ page.revision }}" target="_blank">
+          <span class="icon">
+            <i class="fa fa-github"></i>
+          </span>
+          <span>GitHub</span>
+        </a>
     </div>
   </footer>
 
