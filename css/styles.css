@@ -6328,7 +6328,7 @@ body {
       .layout .sidebar-column {
         display: block; } }
 
-.sidebar {
+.sidebar-column .bio {
   padding-bottom: 20px;
   border-bottom: 1px solid #dbdbdb; }
 
@@ -6415,12 +6415,23 @@ body {
     margin-bottom: 2em; }
 
 .post .post-footer {
-  margin-top: 40px;
-  padding: 40px 0;
-  border-top: 1px solid #dbdbdb;
-  border-bottom: 1px solid #dbdbdb; }
-  .post .post-footer .media-left {
-    margin-right: 20px; }
+  margin-top: 40px; }
+  .post .post-footer .bio {
+    padding: 40px 0;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    text-align: center; }
+    .post .post-footer .bio .image {
+      margin: 0 auto 1em; }
+    @media screen and (min-width: 769px) {
+      .post .post-footer .bio {
+        text-align: left;
+        display: flex; }
+        .post .post-footer .bio .image {
+          margin: 0 20px 0 0;
+          flex: none; }
+        .post .post-footer .bio .bio-content {
+          flex: 1; } }
 
 .posts .post {
   padding: 40px 0;
@@ -6547,10 +6558,13 @@ body {
   .bio .image img {
     border-radius: 50%; }
 
-.bio .bio-text {
+.bio .bio-content .title {
+  font-size: 20px; }
+
+.bio .bio-content .bio-text {
   font-size: 14px;
   margin-bottom: 1em; }
-  .bio .bio-text:last-child {
+  .bio .bio-content .bio-text:last-child {
     margin-bottom: 0; }
 
 /**
