@@ -9,13 +9,19 @@
       border-radius: 50%;
     }
   }
-  
-  .bio-text {
-    font-size: $size-small;
-    margin-bottom: 1em;
 
-    &:last-child {
-      margin-bottom: 0;
+  .bio-content {
+    .title {
+      font-size: $size-4;
+    }
+
+    .bio-text {
+      font-size: $size-small;
+      margin-bottom: 1em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }

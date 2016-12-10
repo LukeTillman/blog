@@ -63,10 +63,12 @@ body {
   }
 }
 
-// Sidebars
-.sidebar {
-  padding-bottom: 20px;
-  border-bottom: 1px solid $border;
+// Sidebar content
+.sidebar-column {
+  .bio {
+    padding-bottom: 20px;
+    border-bottom: 1px solid $border;
+  }
 }
 
 .footer {

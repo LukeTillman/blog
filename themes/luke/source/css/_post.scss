@@ -70,12 +70,32 @@
   // The post footer
   .post-footer {
     margin-top: 40px;
-    padding: 40px 0;
-    border-top: 1px solid $border;
-    border-bottom: 1px solid $border;
 
-    .media-left {
-      margin-right: 20px;
+    // The author bio in the post footer
+    .bio {
+      padding: 40px 0;
+      border-top: 1px solid $border;
+      border-bottom: 1px solid $border;
+      text-align: center;
+
+      .image {
+        margin: 0 auto 1em;
+      }
+
+      // On tablet and larger, display image and content next to eachother
+      @include tablet {
+        text-align: left;
+        display: flex;
+        
+        .image {
+          margin: 0 20px 0 0;
+          flex: none;
+        }
+
+        .bio-content {
+          flex: 1;
+        }
+      }
     }
   }
 }

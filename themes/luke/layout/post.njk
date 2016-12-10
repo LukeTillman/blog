@@ -101,14 +101,13 @@
 
   {# Author information #}
   <footer class="post-footer">
-    <div class="media bio">
-      <figure class="media-left">
-        <p class="image is-128x128">
-          <img src="{{ url_for(site.data.author.image_path) }}" alt="{{ config.author }}">
-        </p>
-      </figure>
-      <div class="media-content">
-        <h4 class="title is-4">
+    <div class="bio">
+      <div class="image is-128x128">
+        <img src="{{ url_for(site.data.author.image_path) }}" alt="{{ config.author }}">
+      </div>
+
+      <div class="bio-content">
+        <h4 class="title">
           {{ config.author }}
         </h4>
         <p class="bio-text">
@@ -125,21 +124,22 @@
 
 {# The sidebar with the author bio #}
 {% block sidebar %}
-<aside class="sidebar bio">
+<aside class="bio">
   <p class="image is-128x128">
     <img src="{{ url_for(site.data.author.image_path) }}" alt="{{ config.author }}">
   </p>
+  <div class="bio-content">
+    <h4 class="title">
+      {{ config.author }}
+    </h4>
 
-  <h4 class="title is-4">
-    {{ config.author }}
-  </h4>
+    <p class="bio-text">
+      {{ socialButtons('small') }}
+    </p>
 
-  <p class="bio-text">
-    {{ socialButtons('small') }}
-  </p>
-
-  <p class="bio-text">
-    {{ site.data.author.bio }}
-  </p>
+    <p class="bio-text">
+      {{ site.data.author.bio }}
+    </p>
+  </div>
 </aside>
 {% endblock %}
