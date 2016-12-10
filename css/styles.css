@@ -6307,16 +6307,30 @@ body {
 .button {
   height: 36px; }
 
-.sidebar-column {
-  display: none; }
+.layout {
+  display: flex; }
+  @media screen and (min-width: 769px) {
+    .layout .main-column {
+      width: 728px;
+      margin: 0 auto;
+      flex: none; } }
   @media screen and (min-width: 1180px) {
-    .sidebar-column {
-      display: block; } }
-  .sidebar-column .sidebar {
-    padding-bottom: 20px;
-    border-bottom: 1px solid #dbdbdb; }
-    .sidebar-column .sidebar.bio .image {
-      margin-bottom: 16px; }
+    .layout .main-column {
+      padding: 0 40px;
+      margin-left: 190px;
+      margin-right: 0;
+      flex: 1; } }
+  .layout .sidebar-column {
+    display: none;
+    width: 190px;
+    flex: none; }
+    @media screen and (min-width: 1180px) {
+      .layout .sidebar-column {
+        display: block; } }
+
+.sidebar {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dbdbdb; }
 
 .footer {
   font-size: 14px; }
@@ -6441,13 +6455,12 @@ body {
       .content figure figcaption {
         position: absolute;
         top: 0;
-        left: -203.3374px;
-        width: 183.3374px;
+        left: -230px;
+        width: 190px;
         text-align: right;
         padding-top: 20px;
         border-top: 1px solid #dbdbdb; } }
     .content figure figcaption header {
-      font-size: 16px;
       font-weight: 600;
       margin-bottom: 1em; }
 
@@ -6529,8 +6542,10 @@ body {
 /**
  * Author and site bio styles
  */
-.bio .image img {
-  border-radius: 50%; }
+.bio .image {
+  margin-bottom: 1em; }
+  .bio .image img {
+    border-radius: 50%; }
 
 .bio .bio-text {
   font-size: 14px;
