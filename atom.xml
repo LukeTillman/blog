@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luketillman.com/"/>
-  <updated>2016-12-09T08:23:34.000Z</updated>
+  <updated>2016-12-09T15:23:34.000Z</updated>
   <id>http://www.luketillman.com/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>One (Token) Ring to Rule Them All</title>
     <link href="http://www.luketillman.com/one-token-ring-to-rule-them-all/"/>
     <id>http://www.luketillman.com/one-token-ring-to-rule-them-all/</id>
-    <published>2016-12-09T08:23:34.000Z</published>
-    <updated>2016-12-09T08:23:34.000Z</updated>
+    <published>2016-12-09T15:23:34.000Z</published>
+    <updated>2016-12-09T15:23:34.000Z</updated>
     
     <summary type="html">
     
@@ -37,8 +37,8 @@
     <title>Developing with Cassandra on Windows</title>
     <link href="http://www.luketillman.com/developing-with-cassandra-on-windows/"/>
     <id>http://www.luketillman.com/developing-with-cassandra-on-windows/</id>
-    <published>2015-01-27T17:06:23.569Z</published>
-    <updated>2015-01-27T17:06:23.569Z</updated>
+    <published>2015-01-28T00:06:23.569Z</published>
+    <updated>2015-01-28T00:06:23.569Z</updated>
     
     <summary type="html">
     
@@ -59,8 +59,8 @@
     <title>KillrVideo: Cassandra, C#, and Azure</title>
     <link href="http://www.luketillman.com/killrvideo-cassandra-csharp-and-azure/"/>
     <id>http://www.luketillman.com/killrvideo-cassandra-csharp-and-azure/</id>
-    <published>2015-01-21T22:27:00.000Z</published>
-    <updated>2015-01-21T22:27:00.000Z</updated>
+    <published>2015-01-22T05:27:00.000Z</published>
+    <updated>2015-01-22T05:27:00.000Z</updated>
     
     <summary type="html">
     
@@ -87,8 +87,8 @@
     <title>Intro to Python and Cassandra Presentation on Windows</title>
     <link href="http://www.luketillman.com/intro-to-python-and-cassandra-presentation-on-windows/"/>
     <id>http://www.luketillman.com/intro-to-python-and-cassandra-presentation-on-windows/</id>
-    <published>2014-10-13T19:19:03.236Z</published>
-    <updated>2014-10-13T19:19:03.236Z</updated>
+    <published>2014-10-14T01:19:03.236Z</published>
+    <updated>2014-10-14T01:19:03.236Z</updated>
     
     <summary type="html">
     
@@ -109,8 +109,8 @@
     <title>Showing Off Cassandra on Azure</title>
     <link href="http://www.luketillman.com/showing-off-cassandra-on-azure/"/>
     <id>http://www.luketillman.com/showing-off-cassandra-on-azure/</id>
-    <published>2014-09-15T23:07:14.376Z</published>
-    <updated>2014-09-15T23:07:14.376Z</updated>
+    <published>2014-09-16T05:07:14.376Z</published>
+    <updated>2014-09-16T05:07:14.376Z</updated>
     
     <summary type="html">
     
@@ -133,8 +133,8 @@
     <title>Introducing CqlPoco: an object mapper for Cassandra and .NET</title>
     <link href="http://www.luketillman.com/introducing-cqlpoco-an-object-mapper-for-cassandra-and-net/"/>
     <id>http://www.luketillman.com/introducing-cqlpoco-an-object-mapper-for-cassandra-and-net/</id>
-    <published>2014-08-11T18:17:30.880Z</published>
-    <updated>2014-08-11T18:17:30.880Z</updated>
+    <published>2014-08-12T00:17:30.880Z</published>
+    <updated>2014-08-12T00:17:30.880Z</updated>
     
     <summary type="html">
     
@@ -155,8 +155,8 @@
     <title>Cassandra Day Silicon Valley 2014 Roundup</title>
     <link href="http://www.luketillman.com/cassandra-day-silicon-valley-2014-roundup/"/>
     <id>http://www.luketillman.com/cassandra-day-silicon-valley-2014-roundup/</id>
-    <published>2014-04-09T15:09:53.939Z</published>
-    <updated>2014-04-09T15:09:53.939Z</updated>
+    <published>2014-04-09T21:09:53.939Z</published>
+    <updated>2014-04-09T21:09:53.939Z</updated>
     
     <summary type="html">
     
@@ -171,8 +171,8 @@
     <title>How My Favorite Oracle Error Led Me to DataStax and Cassandra</title>
     <link href="http://www.luketillman.com/how-my-favorite-oracle-error-led-me-to-datastax-and-cassandra/"/>
     <id>http://www.luketillman.com/how-my-favorite-oracle-error-led-me-to-datastax-and-cassandra/</id>
-    <published>2014-03-18T18:40:32.272Z</published>
-    <updated>2014-03-18T18:40:32.272Z</updated>
+    <published>2014-03-19T00:40:32.272Z</published>
+    <updated>2014-03-19T00:40:32.272Z</updated>
     
     <summary type="html">
     
