@@ -6442,10 +6442,23 @@ body {
   .posts .post:first-child {
     padding-top: 0; }
 
-.posts-pagination {
-  padding: 40px 0;
-  border-bottom: 1px solid #dbdbdb; }
-  .posts-pagination .button {
+.posts-nav {
+  display: flex;
+  padding: 40px 10px;
+  border-bottom: 1px solid #dbdbdb;
+  font-size: 14px; }
+  .posts-nav .posts-nav-left {
+    flex: 1;
+    text-align: left;
+    padding-right: 10px; }
+  .posts-nav .posts-nav-right {
+    flex: 1;
+    text-align: right;
+    padding-left: 10px; }
+  .posts-nav .title {
+    margin-bottom: 0;
+    text-transform: uppercase; }
+  .posts-nav .button {
     height: 50px;
     padding-left: 20px;
     padding-right: 20px;
