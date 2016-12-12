@@ -6308,7 +6308,10 @@ body {
   height: 36px; }
 
 .layout {
-  display: flex; }
+  display: block; }
+  @media screen and (min-width: 1180px) {
+    .layout {
+      display: flex; } }
   @media screen and (min-width: 769px) {
     .layout .main-column {
       width: 728px;
@@ -6496,6 +6499,15 @@ body {
 
 .content li + li {
   margin-top: 0.5em; }
+
+.content .embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  margin-bottom: 1em; }
+  .content .embed iframe {
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important; }
 
 /**
  * The bulma notification element (http://bulma.io/documentation/elements/notification/)
