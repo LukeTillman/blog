@@ -68,7 +68,9 @@ posted it to Facebook, sure that some of my other tech friends would enjoy ridic
 could become an internet meme on the order of Jake Weary.
 
 <figure>
-  <iframe width="560" height="315" src="//www.youtube.com/embed/UzyoT4DziQ4?rel=0&start=1261&wmode=transparent" frameborder="0" allowfullscreen></iframe>
+  <div class="embed">
+    <iframe width="560" height="315" src="//www.youtube.com/embed/UzyoT4DziQ4?rel=0&start=1261&wmode=transparent" frameborder="0" allowfullscreen></iframe>
+  </div>
   <figcaption>
     <header>The legend of Jake Weary is born</header>
     One of the funniest talks I've seen in a long time, you should probably watch the whole thing if you've got 20 minutes.

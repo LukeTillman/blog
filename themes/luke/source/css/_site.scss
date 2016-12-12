@@ -33,7 +33,12 @@ body {
 
 // Layout
 .layout {
-  display: flex;
+  display: block;
+
+  // On widescreen go to flexbox based layout
+  @include widescreen {
+    display: flex;
+  }
 
   .main-column {
     // On tablet and larger, set the width of the main column

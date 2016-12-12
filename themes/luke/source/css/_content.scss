@@ -73,4 +73,17 @@
       margin-top: 0.5em;
     }
   }
+
+  // Responsive embeds (for things like YouTube videos)
+  .embed {
+    position: relative;
+    padding-bottom: 56.25%; // For 16x9 aspect ratio
+    margin-bottom: 1em;
+  
+    iframe {
+      position: absolute;
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
 }

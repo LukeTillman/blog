@@ -150,7 +150,9 @@ development and prototyping with, it's definitely still in "beta".  In fact, Jon
 his recent keynote address at Cassandra Summit Europe 2014.
 
 <figure>
-  <iframe width="560" height="315" src="//www.youtube.com/embed/efYIRKs63T4#t=78m42s" frameborder="0" allowfullscreen></iframe>
+  <div class="embed">
+    <iframe width="560" height="315" src="//www.youtube.com/embed/efYIRKs63T4#t=78m42s" frameborder="0" allowfullscreen></iframe>
+  </div>
   <figcaption>
     <header>Cassandra Summit Europe 2014 Keynote</header>
     Jonathan Ellis, chair of the Apache Cassandra project and CTO of DataStax talks about Cassandra on Windows during his keynote
