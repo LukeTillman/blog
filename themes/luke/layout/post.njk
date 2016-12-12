@@ -120,6 +120,22 @@
     </div>
   </footer>
 </article>
+
+{# Previous / Next Post Links (since posts are ordered DESC order by time, post.next is older posts) #}
+<div class="posts-nav">
+  <div class="posts-nav-left">
+  {% if post.next %}
+    <h5 class="title is-5">Previous Post</h5>
+    <a href="{{ url_for(post.next.path) }}">{{ post.next.title }}</a>
+  {% endif %}
+  </div>
+  <div class="posts-nav-right">
+  {% if post.prev %}
+    <h5 class="title is-5">Next Post</h5>
+    <a href="{{ url_for(post.prev.path) }}">{{ post.prev.title }}</a>
+  {% endif %}
+  </div>
+</div>
 {% endblock %}
 
 {# The sidebar with the author bio #}

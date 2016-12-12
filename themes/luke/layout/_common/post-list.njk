@@ -11,26 +11,22 @@
   {% endfor %}
 </div>
 
-<nav class="level posts-pagination">
-  <div class="level-left">
-    {% if page.prev !== 0 %}
-    <div class="level-item">
-      <a class="button" href="{{ url_for(page.prev_link) }}">
-        <span class="icon"><i class="fa fa-angle-left"></i></span>
-        <span>Newer Posts</span>
-      </a>
-    </div>
-    {% endif %}
+<nav class="posts-nav">
+  <div class="posts-nav-left">
+  {% if page.prev !== 0 %}
+    <a class="button" href="{{ url_for(page.prev_link) }}">
+      <span class="icon"><i class="fa fa-angle-left"></i></span>
+      <span>Newer Posts</span>
+    </a>
+  {% endif %}
   </div>
 
-  <div class="level-right">
-    {% if page.next !== 0 %}
-    <div class="level-item">
-      <a class="button" href="{{ url_for(page.next_link) }}">
-        <span>Older Posts</span>
-        <span class="icon"><i class="fa fa-angle-right"></i></span>
-      </a>
-    </div>
-    {% endif %}
+  <div class="posts-nav-right">
+  {% if page.next !== 0 %}
+    <a class="button" href="{{ url_for(page.next_link) }}">
+      <span>Older Posts</span>
+      <span class="icon"><i class="fa fa-angle-right"></i></span>
+    </a>
+  {% endif %}
   </div>
 </nav>
