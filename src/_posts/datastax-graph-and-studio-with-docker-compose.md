@@ -302,6 +302,13 @@ The hostname `dse.graph` should be good enough. If we go back to the browser and
 web UI again (`localhost:9091`), we find out that we're now able to successfully connect when
 using the host `dse`.
 
+## Turns out that wasn't so easy
+
+The full working example [is available on GitHub][compose-example]. I'm not sure how I managed,
+but somehow a task that I thought would take an hour tops turned into a multi-day slog through
+source code, documentation, Stack Overflow, and trying multiple workarounds. While this turned
+out to be a weird confluence of long-standing Java and Docker Compose issues, I have hope that
+maybe one of them will get fixed, removing the need for complicated workarounds in the future.
 
 
 [dse]: http://www.datastax.com/products/datastax-enterprise
@@ -318,4 +325,3 @@ using the host `dse`.
 [stack-overflow]: http://stackoverflow.com/questions/25993225/uri-gethost-returns-null-why
 [java-bug-report]: http://bugs.java.com/view_bug.do?bug_id=6587184
 [compose-issue]: https://github.com/docker/compose/issues/229
-
