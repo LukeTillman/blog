@@ -135,7 +135,7 @@ for some clues (with emphasis added):
 We told Studio to connect using our service name (dse) as the hostname, so where is it getting
 the hostname `examples_dse_1.examples_default` from? It looks like somewhere along the line, our
 dse hostname is getting resolved to `examples_dse_1.examples_default`. We can test this theory
-out real quick by doing an `nslookup dse` inside our Studio container:
+out real quick by doing an `nslookup dse` inside our running Studio container:
 
 ```
 > docker-compose exec studio nslookup dse
@@ -153,7 +153,154 @@ the underscore characters (`_`) in the hostname. After some quick Googling, I ca
 It looks like that Java `URI` constructor doesn't play well with underscores. So how do we get
 rid of them?
 
+## Removing the Underscores from Docker Compose
 
+First, it's probably worth mentioning how that hostname returned from Docker's DNS is being
+constructed. When Docker Compose started up our two services, it first created a network so
+they could communicate. If you don't actually specify any networking setup in your `yaml` file,
+Compose will create a network using the convention `$PROJECT_default` where `$PROJECT` is the 
+name of your Docker Compose project. In my case, my project was called `examples`, so it was 
+creating a network called `examples_default`.
+
+The containers created by Docker Compose also follow a naming convention. The naming convention
+for containers created is `$PROJECT_$SERVICE_$INSTANCE` where `$PROJECT` is still the name of 
+your Docker Compose project, `$SERVICE` is the name of the service from your `yaml` file, and
+`$INSTANCE` is the instance number of that service container. The instance number allows Docker
+Compose to support "scaling" the number of instances of a running service. So for our single 
+instance of the DSE service, we end up getting a container named `examples_dse_1`.
+
+Put the container name and the network name together and you get the hostname we're getting from
+Docker's DNS:
+
+```
+examples_dse_1.examples_default
+```
+
+Unfortunately, the underscores being added by Docker Compose's naming conventions aren't 
+currently configurable (and the problems they cause as hostnames is a [known issue][compose-issue]
+going back to 2014). However, we can work around the problem by taking explicit control of both
+the network and the container names.
+
+### Changing the Network Name
+
+The `docker-compose.yml` file itself doesn't give us any way to explictly specify the network
+name created by Compose. Instead, we have to resort to creating a network manually using the 
+`docker network` command, then telling Compose to use that external network. Let's create a 
+network called `graph`:
+
+```
+> docker network create graph
+```
+
+Then, we can update the `yaml` to tell Compose about our network and to tell our services to use
+that network.
+
+```yaml
+version: '2'
+
+# Our external network named 'graph'
+networks:
+  graph:
+    external: true
+
+services:
+  # One DSE node
+  dse:
+    image: luketillman/datastax-enterprise:5.0.4
+    # Tell DSE to start a graph node
+    command: [ -g ]
+    cap_add:
+    - IPC_LOCK
+    ulimits:
+      memlock: -1
+    # Use the externally created network
+    networks:
+    - graph
+
+  # One instance of DataStax Studio
+  studio:
+    image: luketillman/datastax-studio:1.0.2
+    ports:
+    # The Web UI exposed to our host
+    - "9091:9091"
+    depends_on:
+    - dse
+    # Use the externally created network
+    networks:
+    - graph
+```
+
+Now if we start up our services and do an `nslookup dse` inside the Studio container, we can see
+some progress:
+
+```
+> docker-compose exec studio nslookup dse
+nslookup: can't resolve '(null)': Name does not resolve
+
+Name:      dse
+Address 1: 172.18.0.2 examples_dse_1.graph
+```
+
+Our container name still has underscores, but our network name `graph` is now good to go.
+
+### Changing the DSE Container's Name
+
+Overriding the container's name inside our `docker-compose.yml` file is actually a lot easier.
+The syntax supports adding a `container_name` to a service to explictly specify it, with the
+downside being that this will break the scaling feature of Compose. Since we don't care about
+scaling in this case, we can go ahead and override the container name for our DSE service:
+
+```yaml
+version: '2'
+
+# Our external network named 'graph'
+networks:
+  graph:
+    external: true
+
+services:
+  # One DSE node
+  dse:
+    image: luketillman/datastax-enterprise:5.0.4
+    # Tell DSE to start a graph node
+    command: [ -g ]
+    cap_add:
+    - IPC_LOCK
+    ulimits:
+      memlock: -1
+    # Use the externally created network
+    networks:
+    - graph
+    # Specify the container name explicitly to avoid getting underscores
+    container_name: dse
+
+  # One instance of DataStax Studio
+  studio:
+    image: luketillman/datastax-studio:1.0.2
+    ports:
+    # The Web UI exposed to our host
+    - "9091:9091"
+    depends_on:
+    - dse
+    # Use the externally created network
+    networks:
+    - graph
+```
+
+We've explicitly named the container `dse`. Now if we do a `nslookup dse` inside of our Studio
+container, we get the results we want:
+
+```
+> docker-compose exec studio nslookup dse
+nslookup: can't resolve '(null)': Name does not resolve
+
+Name:      dse
+Address 1: 172.18.0.2 dse.graph
+```
+
+The hostname `dse.graph` should be good enough. If we go back to the browser and open the Studio
+web UI again (`localhost:9091`), we find out that we're now able to successfully connect when
+using the host `dse`.
 
 
 
@@ -170,3 +317,5 @@ rid of them?
 [tinkerpop-host-java]: https://github.com/apache/tinkerpop/blob/3.2.3/gremlin-driver/src/main/java/org/apache/tinkerpop/gremlin/driver/Host.java
 [stack-overflow]: http://stackoverflow.com/questions/25993225/uri-gethost-returns-null-why
 [java-bug-report]: http://bugs.java.com/view_bug.do?bug_id=6587184
+[compose-issue]: https://github.com/docker/compose/issues/229
+
