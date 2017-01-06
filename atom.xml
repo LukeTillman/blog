@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luketillman.com/"/>
-  <updated>2016-12-09T15:23:34.000Z</updated>
+  <updated>2017-01-06T15:17:55.000Z</updated>
   <id>http://www.luketillman.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DataStax Graph and Studio with Docker Compose</title>
+    <link href="http://www.luketillman.com/datastax-graph-and-studio-with-docker-compose/"/>
+    <id>http://www.luketillman.com/datastax-graph-and-studio-with-docker-compose/</id>
+    <published>2017-01-06T15:17:55.000Z</published>
+    <updated>2017-01-06T15:17:55.000Z</updated>
+    
+    <summary type="html">
+    
+      Over the last year, Docker has quickly become my go-to way of spinning up infrastructure for  development in my local Windows 10 environment. This is especially true of tools that don&#39;t  otherwise support native Windows installation, for
+    
+    </summary>
+    
+    
+      <category term="datastax enterprise" scheme="http://www.luketillman.com/tags/datastax-enterprise/"/>
+    
+      <category term="graph" scheme="http://www.luketillman.com/tags/graph/"/>
+    
+      <category term="docker" scheme="http://www.luketillman.com/tags/docker/"/>
+    
+      <category term="windows" scheme="http://www.luketillman.com/tags/windows/"/>
+    
+  </entry>
   
   <entry>
     <title>One (Token) Ring to Rule Them All</title>
@@ -47,11 +71,11 @@
     </summary>
     
     
+      <category term="windows" scheme="http://www.luketillman.com/tags/windows/"/>
+    
       <category term="cassandra" scheme="http://www.luketillman.com/tags/cassandra/"/>
     
       <category term="killrvideo" scheme="http://www.luketillman.com/tags/killrvideo/"/>
-    
-      <category term="windows" scheme="http://www.luketillman.com/tags/windows/"/>
     
   </entry>
   
@@ -97,9 +121,9 @@
     </summary>
     
     
-      <category term="cassandra" scheme="http://www.luketillman.com/tags/cassandra/"/>
-    
       <category term="windows" scheme="http://www.luketillman.com/tags/windows/"/>
+    
+      <category term="cassandra" scheme="http://www.luketillman.com/tags/cassandra/"/>
     
       <category term="python" scheme="http://www.luketillman.com/tags/python/"/>
     

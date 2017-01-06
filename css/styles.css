@@ -6367,6 +6367,13 @@ body {
   .link:hover,
   .content a:not(.button):hover {
     border-bottom-color: #dbdbdb; }
+  .link code,
+  .content a:not(.button) code {
+    color: #026ed2;
+    transition: border-color 0.2s ease-out; }
+    .link code:hover,
+    .content a:not(.button) code:hover {
+      border-color: #026ed2; }
 
 .title a, .subtitle a,
 .content h1 a, .content h2 a, .content h3 a,
@@ -6501,7 +6508,8 @@ body {
     color: #4a4a4a;
     padding: 2px 6px;
     border: 1px solid #dbdbdb;
-    border-radius: 3px; }
+    border-radius: 3px;
+    display: inline-block; }
 
 .content pre:not(:last-child) {
   margin-bottom: 1em; }
