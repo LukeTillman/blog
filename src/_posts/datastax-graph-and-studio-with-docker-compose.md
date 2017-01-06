@@ -2,7 +2,7 @@
 title: DataStax Graph and Studio with Docker Compose
 date: 2017-01-06 08:17:55
 updated: 2017-01-06 08:17:55
-meta_image:
+meta_image: studio-connections.png
 tags:
 - datastax enterprise
 - graph
