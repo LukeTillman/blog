@@ -12,6 +12,15 @@
   &:hover {
     border-bottom-color: $grey-lighter;
   }
+
+  code {
+    color: $link;
+    transition: border-color 0.2s ease-out;
+
+    &:hover {
+      border-color: $link;
+    }
+  }
 }
 
 // Links inside titles
