@@ -36,6 +36,71 @@ little more complicated than that.
 > [GitHub repo][compose-example] of my DataStax Studio image. Please be sure to *read the comments*
 > in that file for instructions.
 
+## This will be easy!
+
+Basically what we need in our `docker-compose.yml` is two services:
+
+1. A node of DSE running in graph mode.
+1. An instance of Studio with port `9091` exposed so we can connect to the web UI.
+
+That seems pretty straightforward, so let's start with this:
+
+```yaml
+version: '2'
+
+services:
+  # One DSE node
+  dse:
+    image: luketillman/datastax-enterprise:5.0.4
+    # Tell DSE to start a graph node
+    command: [ -g ]
+    cap_add:
+    - IPC_LOCK
+    ulimits:
+      memlock: -1
+      
+  # One instance of DataStax Studio
+  studio:
+    image: luketillman/datastax-studio:1.0.2
+    ports:
+    # The Web UI exposed to our host
+    - "9091:9091"
+    depends_on:
+    - dse
+```
+
+We can then start our containers by running:
+
+```
+> docker-compose up -d
+```
+
+If we open up a web browser and go to `http://localhost:9091` we're able to see the Studio web
+UI. So far so good. Now if we go to the *Connections* tab, we can edit the connections to tell
+it to use our DSE Graph node that's also running in Docker.
+
+<figure>
+  {% asset_img studio-connections.png Editing a connection in Studio %}
+  <figcaption>
+    <header>Editing the connection to use our DSE Graph node</header>
+    Since we're using Docker Compose, we should be able to just use the service name from the 
+    <code>yaml</code> file (dse) as the host name and Docker's networking will provide the
+    proper DNS resolution.
+  </figcaption>
+</figure>
+
+Then we'll use the handy *Test* button to actually try out the connection.
+
+<figure>
+  {% asset_img studio-connections-test-error.png Error when testing connection %}  
+  <figcaption>
+    <header>Test Failed</header>
+    We get a cryptic <em>URI for host could not be constructed</em> error when trying to test
+    the connection to our DSE Graph node.
+  </figcaption>
+</figure>
+
+Wait, what?! Test failed? OK, time to try and figure out what's causing that error.
 
 
 
@@ -49,3 +114,7 @@ little more complicated than that.
 [graph-issue]: https://github.com/LukeTillman/dse-docker/issues/2
 [studio-docker-hub]: https://hub.docker.com/r/luketillman/datastax-studio/
 [compose-example]: https://github.com/LukeTillman/ds-studio-docker/blob/master/examples/docker-compose.yml
+[dse-graph]: http://www.datastax.com/products/datastax-enterprise-graph
+[github-tinkerpop]: https://github.com/apache/tinkerpop
+[tinkerpop-host-java]: https://github.com/apache/tinkerpop/blob/3.2.3/gremlin-driver/src/main/java/org/apache/tinkerpop/gremlin/driver/Host.java
+
