@@ -102,6 +102,57 @@ Then we'll use the handy *Test* button to actually try out the connection.
 
 Wait, what?! Test failed? OK, time to try and figure out what's causing that error.
 
+## Digging around in the Apache Tinkerpop source code
+
+Judging by that error message, Studio is trying to construct a URI of some kind in order to 
+connect to our DSE Graph node (and failing miserably). We know that DSE Graph is
+[built with Apache Tinkerpop][dse-graph] so it stands to reason that maybe Studio is using a
+Tinkerpop driver under the covers to try and connect to our node. If we go and check out the
+[source code for Tinkerpop][github-tinkerpop] and do some searching for that error message
+string, we come across [`Host.java`][tinkerpop-host-java] in the `gremlin-driver`.
+
+Here's the interesting method in that class:
+
+```java
+private static URI makeUriFromAddress(final InetSocketAddress addy, final boolean ssl) {
+  try {
+    final String scheme = ssl ? "wss" : "ws";
+    return new URI(scheme, null, addy.getHostName(), addy.getPort(), "/gremlin", null, null);
+  } catch (URISyntaxException use) {
+    throw new RuntimeException(String.format("URI for host could not be constructed from: %s", addy), use);
+  }
+}
+```
+
+It appears that while trying to construct a `URI`, we're getting a syntax exception. So why is 
+that happening? Let's go back and look at the `InetSocketAddress` included in the error message
+for some clues (with emphasis added):
+
+> Unable to connect to gremlin server on the following ip addresses and ports: 
+> (172.18.0.2:8182) - URI for host could not be constructed from: 
+> **examples_dse_1.examples_default/172.18.0.2:8182**
+
+We told Studio to connect using our service name (dse) as the hostname, so where is it getting
+the hostname `examples_dse_1.examples_default` from? It looks like somewhere along the line, our
+dse hostname is getting resolved to `examples_dse_1.examples_default`. We can test this theory
+out real quick by doing an `nslookup dse` inside our Studio container:
+
+```
+> docker-compose exec studio nslookup dse
+nslookup: can't resolve '(null)': Name does not resolve
+
+Name:      dse
+Address 1: 172.18.0.2 examples_dse_1.examples_default
+```
+
+OK, so it looks like the hostname is coming from Docker's DNS. But why is it causing an error? 
+Based on some experience from a bug at my previous company, I had an inkling that it might be 
+the underscore characters (`_`) in the hostname. After some quick Googling, I came across 
+[this StackOverflow question][stack-overflow] and a related [Java bug report][java-bug-report].
+
+It looks like that Java `URI` constructor doesn't play well with underscores. So how do we get
+rid of them?
+
 
 
 
@@ -117,4 +168,5 @@ Wait, what?! Test failed? OK, time to try and figure out what's causing that err
 [dse-graph]: http://www.datastax.com/products/datastax-enterprise-graph
 [github-tinkerpop]: https://github.com/apache/tinkerpop
 [tinkerpop-host-java]: https://github.com/apache/tinkerpop/blob/3.2.3/gremlin-driver/src/main/java/org/apache/tinkerpop/gremlin/driver/Host.java
-
+[stack-overflow]: http://stackoverflow.com/questions/25993225/uri-gethost-returns-null-why
+[java-bug-report]: http://bugs.java.com/view_bug.do?bug_id=6587184
